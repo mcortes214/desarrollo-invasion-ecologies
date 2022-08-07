@@ -1,0 +1,148 @@
+// --- Table of Contents ---
+    
+//# Reset
+//# Custom properties (global definition)
+
+//## UTILITIES
+    //# Global utilities (.u-, strict property name)
+        //Scaled (without parameters, shortcut)
+        //Unscaled (use with parameters)
+    //# Tag-specific utilities (.[tag]-)
+
+//## COMPONENTS
+    //# Components defining a custom property set (eg. themes) (.props-)
+    //# View components (.view-)
+    //# Shape components (.shape-)
+    //# Color components (.color-)
+    //# Font components (.font-)
+    //# Layout components (.l-)
+    //# Javascript handles (.js-)
+    
+
+// ----------------
+    
+
+
+
+    
+//# Reset
+body
+    margin: 0
+    padding: 0
+
+//# Custom properties (global definition)
+
+html
+    --color-primary: #fee
+    --color-secondary: black
+    --color-overlay: rgba(0,0,0,0.7)
+
+    --s1: 1em
+    --s2: 2em
+    --s3: 3em
+    --s4: 4em
+
+//## UTILITIES
+//Only one CSS property per utility allowed
+
+//# Global utilities (.u-, strict property name)
+
+//Scaled (without parameters, shortcut)
+.u-top-0 
+    top: 0
+
+.u-height-100vh
+    height: 100vh
+
+.u-width-100
+    width: 100%
+
+.u-position-absolute
+    position: absolute
+
+.u-pointer-events-none
+    pointer-events: none
+
+.u-pointer-events-all
+    pointer-events: all
+
+//Unscaled (use with parameters)
+
+.u-top
+    top: var(--t)
+
+.u-left
+    left: var(--l)
+
+.u-right
+    right: var(--r)
+
+.u-bottom
+    bottom: var(--b)
+
+.u-z-index
+    z-index: var(--z)
+
+.u-background-color
+    background-color: var(--b)
+
+.u-padding
+    padding: var(--p)
+
+
+//# Tag-specific utilities (.[tag]-)
+
+
+//## COMPONENTS
+//Use to group several properties, contexts, or to manage states and breakpoints of single elements
+//Never use a namespace equal to a tag name
+
+//# Components defining a custom property set (eg. themes) (.props-)
+
+//# View components (.view-)
+//Styles pertaining to views (fading in-out, sliding from an edge)
+
+.view-fade-in
+    opacity: 0
+    transition-property: opacity
+    transition-duration: 0.4s
+    &--visible
+        opacity: 1
+
+//# Shape components (.shape-)
+    
+.shape-popup
+    width: 80%
+    height: 80%
+    border-radius: 20px
+
+//# Color components (.color-)
+
+.color-dark-bg
+    background-color: var(--color-secondary)
+    color: var(--color-primary)
+
+//# Font components (.font-)
+
+//# Layout components (.l-)
+//Possible components: grid, stack
+
+.l-flex
+    --j: center
+    --a: center
+    --d: row
+    display: flex
+    justify-content: var(--j)
+    align-items: var(--a)
+    flex-direction: var(--d)
+
+.l-abs
+    & > *
+        position: absolute
+
+.l-spacer
+    --s: 0
+    height: var(--s)
+
+
+//# Javascript handles (.js-)

@@ -1,0 +1,17 @@
+a-scene(vr-mode-ui="enabled: false"
+        cursor="rayOrigin: mouse; fuse: false"
+        raycaster="objects: .clickable")
+    a-assets
+        img(id="ocean-background" src="img/8k-1.jpg")
+    
+    a-camera(look-controls="enabled: true; reverseMouseDrag: true"
+        wasd-controls="enabled: false" fov="60" position="0 0 0")
+
+    a-sky(material="src: #ocean-background")
+
+    //- Create rigged objects
+    - for(let i=0; i < 7; i++)
+        +partials_sea-object({color: '#ffdddd', className: 'red'})
+        
+    - for(let i=0; i < 7; i++)
+        +partials_sea-object({color: '#ddffdd', className: 'green'})

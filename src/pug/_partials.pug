@@ -1,23 +1,24 @@
 
 
 mixin partials_popup(block)
-    div.shape-popup.color-dark-bg.view-fade-in.view-fade-in--visible
-        - if(block)
-            block
+        div#popup-body.shape-popup.color-dark-bg.u-padding.view-fade-in.view-togglable-pointer.u-padding(style="--p: 4em")
+            - if(block)
+                block
 
 
 mixin partials_sea-object(config)
-    - const {color, className} = config;
+    - const {color, className, link} = config;
     //- Create rigged objects
     - const a = `${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)}`;
-    - const r = (Math.random() + 1) / 2;
-    - const geometryString = `primitive: circle; radius: ${r}`;
+    - const rad = (className === 'greenSmall') ? '0.5' : '1';
+    - const geometryString = `primitive: circle; radius: ${rad}`;
     - const materialString = `color: ${color}`;
     - const classString = `clickable ${className}`;
     a-entity.wanderer(animation rotation=a)
-        a-entity(
+        a-entity.js-load-content(
             class=classString
             geometry=geometryString
             material=materialString
             position="0 0 -4"
+            href=link
             )

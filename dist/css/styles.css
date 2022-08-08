@@ -1,11 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 html {
-  --color-primary: #fee;
-  --color-secondary: black;
+  --color-primary: #614d4d;
+  --color-secondary: #ffffee;
   --color-overlay: rgba(0,0,0,0.7);
   --s1: 1em;
   --s2: 2em;
@@ -72,6 +86,13 @@ html {
 }
 .view-fade-in--visible {
   opacity: 1;
+}
+
+.view-togglable-pointer {
+  pointer-events: none;
+}
+.view-togglable-pointer--active {
+  pointer-events: all;
 }
 
 .shape-popup {

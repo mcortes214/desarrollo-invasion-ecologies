@@ -22,9 +22,9 @@ class Wanderer{
     animate(){
         // Actualizar posición
         for (let i=0; i < this.currentRotation.length; i++){
-            console.log("Rotación previa:", this.currentRotation);
+            // console.log("Rotación previa:", this.currentRotation);
             this.currentRotation[i] += this.deltaRotation[i];
-            console.log("Rotación actual:", this.currentRotation);
+            // console.log("Rotación actual:", this.currentRotation);
         }
 
         //Aplicar posición

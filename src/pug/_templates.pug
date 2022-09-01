@@ -1,18 +1,21 @@
-mixin templates_main(scripts, block)
+mixin templates_main(classes, block)
     //-"block" siempre como último argumento
     doctype html
-    html(lang="en" class=scripts.includes("aframe") ? 'aframe' : '')
+    - const classNames = classes.join(' ');
+    html(lang="en" class=classNames)
         head
             meta(charset="UTF-8")
             meta(http-equiv="X-UA-Compatible", content="IE=edge")
             meta(name="viewport", content="width=device-width, initial-scale=1.0")
+            link(rel="stylesheet", href="https://use.typekit.net/pvh0wef.css")
             link(rel="stylesheet" href="css/styles.css")
-            - if(scripts.includes("aframe"))
+            - if(classes.includes("aframe"))
                 script(src="https://aframe.io/releases/1.3.0/aframe.min.js")
             title Invasion Ecologies
         body
             - if(block)
                 block
-            - if(scripts.includes("aframe"))
+            - if(classes.includes("home"))
                 script(src="js/wanderers.js")
+            //- Small default libraries
             script(type="text/javascript" src="js/scripts.js")

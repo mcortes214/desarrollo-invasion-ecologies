@@ -1,7 +1,7 @@
 // --- Table of Contents ---
     
-//# Reset
 //# Custom properties (global definition)
+//# Reset/basic styles
 
 //## UTILITIES
     //# Global utilities (.u-, strict property name)
@@ -12,20 +12,41 @@
 //## COMPONENTS
     //# Components defining a custom property set (eg. themes) (.props-)
     //# View components (.view-)
+    //# Hover components (.hover-)
     //# Shape components (.shape-)
     //# Color components (.color-)
     //# Font components (.font-)
     //# Layout components (.l-)
+    //# SVG Overlay Components (.svgo-)
+    //# Animation components (.anim-) & keyframes
     //# Javascript handles (.js-)
+  //# Accessibility components (.acc-)
     
 
 // ----------------
     
 
+//# Custom properties (global definition)
+
+:root
+    --color-black: #000
+    --color-black-tr: rgba(0,0,0,0.9)
+
+    --color-primary: #302d13
+    --color-primary-tr: rgba(48, 45, 19, 0.7)
+
+    --color-secondary: #f5e7d3
+    --color-secondary-tr: rgba(245,231,211,0.75)
+
+    --color-accent: #bf5161
+
+    --s1: 1em
+    --s2: 2em
+    --s3: 3em
+    --s4: 4em
 
 
-    
-//# Reset
+//# Reset/basic styles
 
 *
     box-sizing: border-box
@@ -33,7 +54,8 @@
 body
     margin: 0
     padding: 0
-    font-family: sans-serif
+    font-family: costa, sans-serif
+    line-height: 1.8em
 
 a:link,
 a:visited,
@@ -42,18 +64,24 @@ a:active
     color: inherit
     font-family: inherit
     cursor: pointer
+    text-decoration: none
 
-//# Custom properties (global definition)
+h1
+    font-weight: normal
+    font-size: 3em
+    letter-spacing: -0.04em
+    color: var(--color-accent)
 
-html
-    --color-primary: #614d4d
-    --color-secondary: #ffffee
-    --color-overlay: rgba(0,0,0,0.7)
+*::-webkit-scrollbar
+    width: 8px
+    height: 8px
 
-    --s1: 1em
-    --s2: 2em
-    --s3: 3em
-    --s4: 4em
+*::-webkit-scrollbar-thumb
+    background: var(--color-accent)
+
+*::-webkit-scrollbar-track
+    opacity: 0
+
 
 //## UTILITIES
 //Only one CSS property per utility allowed
@@ -61,14 +89,44 @@ html
 //# Global utilities (.u-, strict property name)
 
 //Scaled (without parameters, shortcut)
-.u-top-0 
-    top: 0
+
+.u-background-color-secondary-tr
+    background-color: var(--color-secondary-tr)
+
+.u-background-color-primary-tr
+    background-color: var(--color-primary-tr)
+
+.u-background-color-black-tr
+    background-color: var(--color-black-tr)
+
+.u-color-primary
+    color: var(--color-primary)
+
+.u-display-inline-block
+  display: inline-block
+
+/* Eliminar o refactorizar. Solo para fines de preview */
+.u-outline-primary
+    outline: 1px solid var(--color-primary)
+
+.u-padding-1em
+    padding: 1em
+
+
+.u-cursor-pointer
+    cursor: pointer
+
+.u-cursor-auto
+    cursor: auto
 
 .u-height-100vh
     height: 100vh
 
-.u-width-100
-    width: 100%
+.u-height-100
+    height: 100%
+
+.u-overflow-y-scroll
+    overflow-y: scroll
 
 .u-position-absolute
     position: absolute
@@ -78,6 +136,18 @@ html
 
 .u-pointer-events-all
     pointer-events: all
+
+.u-top-0 
+    top: 0
+
+.u-text-align-center
+    text-align: center
+
+.u-width-100
+    width: 100%
+
+.u-transform-origin-center
+    transform-origin: center
 
 //Unscaled (use with parameters)
 
@@ -93,8 +163,10 @@ html
 .u-bottom
     bottom: var(--b)
 
+
 .u-z-index
     z-index: var(--z)
+
 
 .u-background-color
     background-color: var(--b)
@@ -102,9 +174,15 @@ html
 .u-padding
     padding: var(--p)
 
+.u-transform-translate
+    transform: translateX(var(--tx)) translateY(var(--ty))
 
 //# Tag-specific utilities (.[tag]-)
 
+.img-contain
+    width: 100%
+    height: 100%
+    object-fit: contain
 
 //## COMPONENTS
 //Use to group several properties, contexts, or to manage states and breakpoints of single elements
@@ -112,27 +190,68 @@ html
 
 //# Components defining a custom property set (eg. themes) (.props-)
 
+.props-palette-fluid
+    --color-black: #000
+    --color-black-tr: rgba(0,0,0,0.9)
+
+    --color-primary: #302d13
+    --color-primary-tr: rgba(48, 45, 19, 0.7)
+
+    --color-secondary: #f5e7d3
+    --color-secondary-tr: rgba(245,231,211,0.85)
+
+    --color-accent: #bf5161
+    
+
+.props-palette-material
+    --color-black: #000
+    --color-black-tr: rgba(0,0,0,0.9)
+
+    --color-primary: #be7758
+    --color-primary-tr: rgba(201, 115, 78, 0.7)
+
+    --color-secondary: #0a0000
+    --color-secondary-tr: rgba(10,0,0,0.9)
+
+    --color-accent: #f3221e
+
 //# View components (.view-)
 //Styles pertaining to views (fading in-out, sliding from an edge)
 
 .view-fade-in
     opacity: 0
     transition-property: opacity
-    transition-duration: 0.4s
+    transition-duration: 0.8s
     &--visible
         opacity: 1
 
-.view-togglable-pointer
+.view-togglable-pointer-events
     pointer-events: none
     &--active
         pointer-events: all
+
+//# Filter components (.filter-)
+
+.filter-interactive-blur
+    cursor: pointer
+    filter: blur(3px)
+    transition: 0.4s
+    &:hover
+        filter: none
+
 
 //# Shape components (.shape-)
     
 .shape-popup
     width: 80%
     height: 80%
-    border-radius: 20px
+    border-radius: 20px 0 20px 0
+
+.shape-fullscreen-overlay
+    position: absolute
+    top: 0
+    width: 100%
+    height: 100vh
 
 //# Color components (.color-)
 
@@ -154,7 +273,16 @@ html
     align-items: var(--a)
     flex-direction: var(--d)
 
+.l-grid
+    --c: auto
+    --r: auto
+    --g: 0px
+    grid-template-columns: var(--c)
+    grid-template-rows: var(--r)
+    gap: var(--g)
+
 .l-abs
+    position: relative
     & > *
         position: absolute
 
@@ -162,5 +290,141 @@ html
     --s: 0
     height: var(--s)
 
+//# SVG Overlay Components (#svgo-)
+
+#svgo-ave-pico
+    path
+        transition: 0.4s
+        cursor: pointer
+        &:hover
+            opacity: 0.4
+
+//# Animation components (.anim-) & keyframes
+
+@keyframes shake-horizontal
+  0%
+    transform: translate(0, 0) rotate(0)
+  2%
+    transform: translate(-1px, 0) rotate(0)
+  4%
+    transform: translate(-5px, 0) rotate(0)
+  6%
+    transform: translate(-5px, 0) rotate(0)
+  8%
+    transform: translate(-9px, 0) rotate(0)
+  10%
+    transform: translate(-7px, 0) rotate(0)
+  12%
+    transform: translate(4px, 0) rotate(0)
+  14%
+    transform: translate(1px, 0) rotate(0)
+  16%
+    transform: translate(7px, 0) rotate(0)
+  18%
+    transform: translate(9px, 0) rotate(0)
+  20%
+    transform: translate(-8px, 0) rotate(0)
+  22%
+    transform: translate(-2px, 0) rotate(0)
+  24%
+    transform: translate(-9px, 0) rotate(0)
+  26%
+    transform: translate(2px, 0) rotate(0)
+  28%
+    transform: translate(-4px, 0) rotate(0)
+  30%
+    transform: translate(-2px, 0) rotate(0)
+  32%
+    transform: translate(0px, 0) rotate(0)
+  34%
+    transform: translate(1px, 0) rotate(0)
+  36%
+    transform: translate(-9px, 0) rotate(0)
+  38%
+    transform: translate(-4px, 0) rotate(0)
+  40%
+    transform: translate(-7px, 0) rotate(0)
+  42%
+    transform: translate(2px, 0) rotate(0)
+  44%
+    transform: translate(6px, 0) rotate(0)
+  46%
+    transform: translate(3px, 0) rotate(0)
+  48%
+    transform: translate(-3px, 0) rotate(0)
+  50%
+    transform: translate(-3px, 0) rotate(0)
+  52%
+    transform: translate(6px, 0) rotate(0)
+  54%
+    transform: translate(-8px, 0) rotate(0)
+  56%
+    transform: translate(-8px, 0) rotate(0)
+  58%
+    transform: translate(7px, 0) rotate(0)
+  60%
+    transform: translate(4px, 0) rotate(0)
+  62%
+    transform: translate(1px, 0) rotate(0)
+  64%
+    transform: translate(8px, 0) rotate(0)
+  66%
+    transform: translate(-9px, 0) rotate(0)
+  68%
+    transform: translate(9px, 0) rotate(0)
+  70%
+    transform: translate(7px, 0) rotate(0)
+  72%
+    transform: translate(2px, 0) rotate(0)
+  74%
+    transform: translate(7px, 0) rotate(0)
+  76%
+    transform: translate(3px, 0) rotate(0)
+  78%
+    transform: translate(-9px, 0) rotate(0)
+  80%
+    transform: translate(-5px, 0) rotate(0)
+  82%
+    transform: translate(0px, 0) rotate(0)
+  84%
+    transform: translate(-5px, 0) rotate(0)
+  86%
+    transform: translate(7px, 0) rotate(0)
+  88%
+    transform: translate(-8px, 0) rotate(0)
+  90%
+    transform: translate(-9px, 0) rotate(0)
+  92%
+    transform: translate(6px, 0) rotate(0)
+  94%
+    transform: translate(0px, 0) rotate(0)
+  96%
+    transform: translate(-9px, 0) rotate(0)
+  98%
+    transform: translate(9px, 0) rotate(0)
+  100%
+    transform: translate(0, 0) rotate(0)
+
+.animation-interactive-shake
+  animation-name: shake-horizontal
+  animation-duration: 1s
+  animation-timing-function: ease-in-out
+  animation-iteration-count: infinite
+  &:hover
+    animation-name: none
+
 
 //# Javascript handles (.js-)
+
+//# Accessibility components (.acc-)
+
+.acc-sr-only
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  white-space: nowrap
+  border-width: 0

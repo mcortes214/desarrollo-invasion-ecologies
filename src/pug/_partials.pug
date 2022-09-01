@@ -1,24 +1,70 @@
 
 
-mixin partials_popup(block)
-        div#popup-body.shape-popup.color-dark-bg.u-padding.view-fade-in.view-togglable-pointer.u-padding(style="--p: 4em")
-            - if(block)
-                block
+mixin partials_modal(options, block)
+    #popup-main.view-togglable-pointer-events.view-fade-in
+        - let palette;
+        - if(options.palette === "material") palette = 'props-palette-material'
+        - if(options.palette === "fluid") palette = 'props-palette-fluid'
+        div(class=palette)
+            .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal
+                div.shape-popup.u-color-primary.u-background-color-secondary-tr.u-padding(style="--p: 4em").u-cursor-auto.u-overflow-y-scroll
+                    -if(block)
+                        block
 
+mixin partials_test-ana
+    img.img-contain(src="img/ave_pico.png")
+    include ../assets/ave_pico.svg
 
 mixin partials_sea-object(config)
-    - const {color, className, link} = config;
+    - const {scriptDependencies, linkScripts, color, className, link} = config;
     //- Create rigged objects
     - const a = `${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)}`;
     - const rad = (className === 'greenSmall') ? '0.5' : '1';
     - const geometryString = `primitive: circle; radius: ${rad}`;
     - const materialString = `color: ${color}`;
     - const classString = `clickable ${className}`;
+    - const positionString = `0 0 -${Math.round(Math.random()*2 + 4)}`;
+    - const scriptsString = linkScripts ? JSON.stringify(linkScripts) : '[]';
+    - const dependenciesString = scriptDependencies ? JSON.stringify(scriptDependencies) : '[]';
+    //-Markup
     a-entity.wanderer(animation rotation=a)
         a-entity.js-load-content(
             class=classString
             geometry=geometryString
             material=materialString
-            position="0 0 -4"
+            position=positionString
             href=link
+            data-scripts=scriptsString
+            data-dependencies=dependenciesString
             )
+
+
+mixin partials_sea-figure(config)
+    - const {dependencies, scripts, img, className, link} = config;
+    //- Create rigged objects
+    - const a = `${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)}`;
+    - const rad = (className === 'greenSmall') ? '0.5' : '1';
+    - const geometryString = `primitive: circle; radius: ${rad}`;
+    - const materialString = `color: ${color}`;
+    - const classString = `clickable ${className}`;
+    - const positionString = `0 0 -${Math.round(Math.random()*2 + 4)}`;
+    - const scriptsString = scripts ? JSON.stringify(scripts) : '[]';
+    - const dependenciesString = dependencies ? JSON.stringify(dependencies) : '[]';
+    //-Markup
+    a-entity.wanderer(animation rotation=a)
+        a-image.js-load-content(
+            material="alphaTest: 0.5"
+            class=classString
+            position=positionString
+            src=img
+            href=link
+            data-scripts=scriptsString
+            data-dependencies=dependenciesString
+            scale="2 2 2"
+            )
+
+
+mixin partials_test-texto-hover(block)
+    div(data-span-classes="hover-no-blur hover-no-shake")
+        - if(block)
+            block

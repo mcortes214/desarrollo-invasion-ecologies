@@ -3,18 +3,64 @@ a-scene(vr-mode-ui="enabled: false"
         raycaster="objects: .clickable")
     a-assets
         img(id="ocean-background" src="img/8k-1.jpg")
+        img(id="ana-1" src="img/ojo.png")
+        img(id="ana-2" src="img/ave_pico.png")
+        img(id="ana-3" src="img/ave_pico_izq.png")
+        img(id="ana-4" src="img/alga_cotorra_maquina.png")
+        img(id="ana-5" src="img/alga_reves.png")
+
+        img(id="circulo-verde" src="img/circulo-verde.png")
+        img(id="circulo-amarillo" src="img/circulo-amarillo.png")
+        img(id="circulo-verde-chico" src="img/circulo-verde-chico.png")
     
+        img(id="circulo-violeta" src="img/circulo-violeta.png")
+
+
     a-camera(look-controls="enabled: true; reverseMouseDrag: true"
         wasd-controls="enabled: false" fov="60" position="0 0 0")
 
     a-sky(material="src: #ocean-background")
 
-    //- Create rigged objects
-    - for(let i=0; i < 2; i++)
-        +partials_sea-object({color: '#ffdddd', className: 'red', link: `2_${i+1}.html`})
-        
-    - for(let i=0; i < 2; i++)
-        +partials_sea-object({color: '#ddffdd', className: 'green', link: `1_${i+1}.html`})
-        
-    - for(let i=0; i < 3; i++)
-        +partials_sea-object({color: '#ddffdd', className: 'greenSmall', link: `1_1${String.fromCharCode(65+i)}.html`})
+    //- //- Create rigged objects
+    //- - for(let i=0; i < 5; i++)
+    //-     +partials_sea-object({
+    //-         color: '#ddffdd', 
+    //-         className: 'green', 
+    //-         link: `mariela-${String.fromCharCode(65+i)}.html`,
+    //-         linkScripts: ['js/spanifyRun.js'],
+    //-         scriptDependencies: ['js/spanify.js']}
+    //-     )
+
+    //- Mariela
+    +partials_sea-figure({img: '#circulo-verde', className: 'icono-mariela', link: `mariela-A.html`})
+    +partials_sea-figure({img: '#circulo-verde', className: 'icono-mariela', link: `mariela-B.html`})
+    +partials_sea-figure({img: '#circulo-verde', className: 'icono-mariela', link: `mariela-C.html`})
+    +partials_sea-figure({img: '#circulo-verde', className: 'icono-mariela', link: `mariela-D.html`})
+    +partials_sea-figure({img: '#circulo-amarillo', className: 'icono-mariela', link: `mariela-E.html`, 
+            scripts: ['js/mouseoverText.js'], dependencies: ['js/spanify.js'],
+    })
+
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-A1.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-A2.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-A3.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-A4.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-B1.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-C1.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-C2.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-D1.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-E1.html`})
+    +partials_sea-figure({img: '#circulo-verde-chico', className: 'icono-mariela', link: `mariela-E2.html`})
+
+    //- Ana
+    +partials_sea-figure({img: '#ana-1', className: 'icono-ana', link: `ana-01.html`})
+    +partials_sea-figure({img: '#ana-2', className: 'icono-ana', link: `ana-02.html`})
+    +partials_sea-figure({img: '#ana-3', className: 'icono-ana', link: `ana-03.html`})
+    +partials_sea-figure({img: '#ana-4', className: 'icono-ana', link: `ana-04.html`})
+    +partials_sea-figure({img: '#ana-5', className: 'icono-ana', link: `ana-05.html`})
+
+    //- Gabriela
+    +partials_sea-figure({img: '#circulo-violeta', className: 'icono-gabriela', link: `gabriela-01.html`})
+    +partials_sea-figure({img: '#circulo-violeta', className: 'icono-gabriela', link: `gabriela-02.html`})
+    +partials_sea-figure({img: '#circulo-violeta', className: 'icono-gabriela', link: `gabriela-03.html`})
+    +partials_sea-figure({img: '#circulo-violeta', className: 'icono-gabriela', link: `gabriela-04.html`})
+    +partials_sea-figure({img: '#circulo-violeta', className: 'icono-gabriela', link: `gabriela-05.html`})

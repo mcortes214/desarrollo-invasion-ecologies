@@ -2,10 +2,5 @@ include ../_templates
 include ../_partials
 include ../_content
 
-+templates_main(['aframe'])
++templates_main(['aframe', 'home'])
     include ../_360ocean
-    .u-pointer-events-none
-        .l-flex.u-position-absolute.u-top-0.u-width-100.u-height-100vh
-            +partials_popup()
-                a.js-close-modal [X Cerrar]
-                .popup-content-wrapper.view-fade-in

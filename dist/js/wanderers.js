@@ -12,11 +12,21 @@ class Wanderer{
         this.currentRotationValue = this.element.getAttribute('rotation');
         const crv = this.currentRotationValue;
         this.currentRotation = [Math.floor(crv.x), Math.floor(crv.y), Math.floor(crv.z)];
-        this.deltaRotation = [10, 10, 10];
+        this.deltaRotation = [this._intRand(6, 12), this._intRand(6, 12), this._intRand(6, 12)];
 
         this.element.addEventListener('animationcomplete', () => {
             return this.animate();
         })
+    }
+
+
+    _intRand(m, n){
+        if(!n){
+            return Math.floor(Math.random() * m);
+        }
+        else {
+            return Math.floor(Math.random() * (n-m) + m);
+        }
     }
 
     animate(){

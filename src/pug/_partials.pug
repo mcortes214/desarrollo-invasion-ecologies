@@ -12,47 +12,56 @@ mixin partials_modal(options, block)
                         block
 
 mixin partials_test-ana
-    img.img-contain(src="img/ave_pico.png")
-    include ../assets/ave_pico.svg
+    img.img-contain(src="img/ave.png")
+    include ../assets/ave.svg
 
-mixin partials_sea-object(config)
-    - const {scriptDependencies, linkScripts, color, className, link} = config;
+//- mixin partials_sea-object(config)
+//-     - const {scriptDependencies, linkScripts, color, className, link} = config;
+//-     //- Create rigged objects
+//-     - const a = `${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)}`;
+//-     - const rad = (className === 'greenSmall') ? '0.5' : '1';
+//-     - const geometryString = `primitive: circle; radius: ${rad}`;
+//-     - const materialString = `color: ${color}`;
+//-     - const classString = `clickable ${className}`;
+//-     - const positionString = `0 0 -${Math.round(Math.random()*2 + 4)}`;
+//-     - const scriptsString = linkScripts ? JSON.stringify(linkScripts) : '[]';
+//-     - const dependenciesString = scriptDependencies ? JSON.stringify(scriptDependencies) : '[]';
+//-     //-Markup
+//-     a-entity.wanderer(animation rotation=a)
+//-         a-entity.js-load-content(
+//-             class=classString
+//-             geometry=geometryString
+//-             material=materialString
+//-             position=positionString
+//-             href=link
+//-             data-scripts=scriptsString
+//-             data-dependencies=dependenciesString
+//-             )
+
+
+mixin partials_sea-figure(options)
+    - const {img, className, link, dependencies, scripts, aspectRatio} = options;
     //- Create rigged objects
-    - const a = `${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)}`;
+        //-Figure
+    - const randAng = (min, max) => Math.floor(Math.random()*(max-min) + min);
+    - const initialRotationString = `${randAng(-15, 15)} ${randAng(0, 360)} 0`;
+
     - const rad = (className === 'greenSmall') ? '0.5' : '1';
     - const geometryString = `primitive: circle; radius: ${rad}`;
     - const materialString = `color: ${color}`;
-    - const classString = `clickable ${className}`;
+    - const classString = `clickable ${className} ${link ? 'js-load-content' : ''}`;
     - const positionString = `0 0 -${Math.round(Math.random()*2 + 4)}`;
-    - const scriptsString = linkScripts ? JSON.stringify(linkScripts) : '[]';
-    - const dependenciesString = scriptDependencies ? JSON.stringify(scriptDependencies) : '[]';
-    //-Markup
-    a-entity.wanderer(animation rotation=a)
-        a-entity.js-load-content(
-            class=classString
-            geometry=geometryString
-            material=materialString
-            position=positionString
-            href=link
-            data-scripts=scriptsString
-            data-dependencies=dependenciesString
-            )
-
-
-mixin partials_sea-figure(config)
-    - const {dependencies, scripts, img, className, link} = config;
-    //- Create rigged objects
-    - const a = `${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)}`;
-    - const rad = (className === 'greenSmall') ? '0.5' : '1';
-    - const geometryString = `primitive: circle; radius: ${rad}`;
-    - const materialString = `color: ${color}`;
-    - const classString = `clickable ${className}`;
-    - const positionString = `0 0 -${Math.round(Math.random()*2 + 4)}`;
+    //- - const scaleString = link ? `2 ${aspectRatio ? 2/aspectRatio : 2} 0.1` : `1 ${aspectRatio ? 1/aspectRatio : 1} 0.1`;
+    - const widthString = link ? 2 : 1;
+    - const heightString = link ? (aspectRatio ? 2/aspectRatio : 2) : (aspectRatio ? 1/aspectRatio : 1);
+        //-Functionality
     - const scriptsString = scripts ? JSON.stringify(scripts) : '[]';
     - const dependenciesString = dependencies ? JSON.stringify(dependencies) : '[]';
+    -
+        console.log(img);
     //-Markup
-    a-entity.wanderer(animation rotation=a)
-        a-image.js-load-content(
+    a-entity.wanderer(animation rotation=initialRotationString)
+        a-image(
             material="alphaTest: 0.5"
             class=classString
             position=positionString
@@ -60,8 +69,10 @@ mixin partials_sea-figure(config)
             href=link
             data-scripts=scriptsString
             data-dependencies=dependenciesString
-            scale="2 2 2"
-            )
+            width=widthString
+            height=heightString
+        )
+
 
 
 mixin partials_test-texto-hover(block)

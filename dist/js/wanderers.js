@@ -11,8 +11,19 @@ class Wanderer{
 
         this.currentRotationValue = this.element.getAttribute('rotation');
         const crv = this.currentRotationValue;
-        this.currentRotation = [Math.floor(crv.x), Math.floor(crv.y), Math.floor(crv.z)];
-        this.deltaRotation = [this._intRand(6, 12), this._intRand(6, 12), this._intRand(6, 12)];
+        // this.currentRotation = [Math.floor(crv.x), Math.floor(crv.y), Math.floor(crv.z)];
+        this.currentRotation = [Math.floor(crv.x), Math.floor(crv.y)];
+        // this.deltaRotation = [this._intRand(6, 12), this._intRand(6, 12), this._intRand(6, 12)];
+        
+        this.deltaRotation = [this._intRand(-12, 12), this._intRand(-12, 12, 6)];
+        
+        //Force minimum horizontal rotation (second coordinate) so they don't stay in place
+        // if ( this.deltaRotation[1] > 0 && this.deltaRotation[1] < 6 ){
+        //     this.deltaRotation[1] = this._intRand(6, 12);
+        // }
+        // if ( this.deltaRotation[1] < 0 && this.deltaRotation[1] > -6 ){
+        //     this.deltaRotation[1] = this._intRand(-12, -6);
+        // }
 
         this.element.addEventListener('animationcomplete', () => {
             return this.animate();
@@ -20,13 +31,28 @@ class Wanderer{
     }
 
 
-    _intRand(m, n){
+    _intRand(m, n, minDistToZero){
+        let num;
         if(!n){
-            return Math.floor(Math.random() * m);
+            num = Math.floor(Math.random() * m);
         }
         else {
-            return Math.floor(Math.random() * (n-m) + m);
+            num = Math.floor(Math.random() * (n-m) + m);
         }
+        if (minDistToZero){
+            if ( num > 0 && num < minDistToZero ){
+                num = this._intRand(minDistToZero, n);
+            }
+            if ( num < 0 && num > -minDistToZero ){
+                num = this._intRand(m, -minDistToZero);
+            }
+        }
+
+        return num;
+    }
+
+    _forceMinDistanceToZero(property, n){
+        
     }
 
     animate(){
@@ -37,8 +63,16 @@ class Wanderer{
             // console.log("Rotación actual:", this.currentRotation);
         }
 
+        //Limit elevation coordinate to prevent figures from crossing poles
+        if (this.currentRotation[0] > 20){
+            this.deltaRotation[0] -= 3;
+        }
+        if (this.currentRotation[0] < -20) {
+            this.deltaRotation[0] += 3;
+        }
+
         //Aplicar posición
-        let newRotationString = `${this.currentRotation[0]} ${this.currentRotation[1]} ${this.currentRotation[2]}`;
+        let newRotationString = `${this.currentRotation[0]} ${this.currentRotation[1]} 0`;
         this.element.setAttribute(
             'animation', `property: rotation;
             to: ${newRotationString};

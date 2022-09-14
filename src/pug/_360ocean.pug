@@ -4,10 +4,12 @@ a-scene(vr-mode-ui="enabled: false"
     a-assets
         img(id="ocean-background" src="img/8k-1.jpg")
         img(id="ana-1" src="img/ojo.png")
-        img(id="ana-2" src="img/ave_pico.png")
-        img(id="ana-3" src="img/ave_pico_izq.png")
-        img(id="ana-4" src="img/alga_cotorra_maquina.png")
-        img(id="ana-5" src="img/alga_reves.png")
+        img(id="ana-2" src="img/ave.png")
+        img(id="ana-3" src="img/tibu.png")
+        img(id="ana-4" src="img/medusa.png")
+        img(id="ana-5" src="img/alga.png")
+        img(id="ana-5b" src="img/alga_reves.png")
+        img(id="ana-2b" src="img/ave_reves.png")
 
         img(id="circulo-verde" src="img/circulo-verde.png")
         img(id="circulo-amarillo" src="img/circulo-amarillo.png")
@@ -20,16 +22,6 @@ a-scene(vr-mode-ui="enabled: false"
         wasd-controls="enabled: false" fov="60" position="0 0 0")
 
     a-sky(material="src: #ocean-background")
-
-    //- //- Create rigged objects
-    //- - for(let i=0; i < 5; i++)
-    //-     +partials_sea-object({
-    //-         color: '#ddffdd', 
-    //-         className: 'green', 
-    //-         link: `mariela-${String.fromCharCode(65+i)}.html`,
-    //-         linkScripts: ['js/spanifyRun.js'],
-    //-         scriptDependencies: ['js/spanify.js']}
-    //-     )
 
     //- Mariela
     +partials_sea-figure({img: '#circulo-verde', className: 'icono-mariela', link: `mariela-A.html`})
@@ -53,10 +45,12 @@ a-scene(vr-mode-ui="enabled: false"
 
     //- Ana
     +partials_sea-figure({img: '#ana-1', className: 'icono-ana', link: `ana-01.html`})
-    +partials_sea-figure({img: '#ana-2', className: 'icono-ana', link: `ana-02.html`})
-    +partials_sea-figure({img: '#ana-3', className: 'icono-ana', link: `ana-03.html`})
-    +partials_sea-figure({img: '#ana-4', className: 'icono-ana', link: `ana-04.html`})
-    +partials_sea-figure({img: '#ana-5', className: 'icono-ana', link: `ana-05.html`})
+    +partials_sea-figure({img: '#ana-2', className: 'icono-ana', link: `ana-02.html`, aspectRatio: '1.557'})
+    +partials_sea-figure({img: '#ana-3', className: 'icono-ana', link: `ana-03.html`, aspectRatio: '2.463'})
+    +partials_sea-figure({img: '#ana-4', className: 'icono-ana', link: `ana-04.html`, aspectRatio: '1.333'})
+    +partials_sea-figure({img: '#ana-5', className: 'icono-ana', link: `ana-05.html`, aspectRatio: '1.333'})
+    +partials_sea-figure({img: '#ana-2b', className: 'icono-ana', aspectRatio: '1.557'})
+    +partials_sea-figure({img: '#ana-5b', className: 'icono-ana', aspectRatio: '1.333'})
 
     //- Gabriela
     +partials_sea-figure({img: '#circulo-violeta', className: 'icono-gabriela', link: `gabriela-01.html`})

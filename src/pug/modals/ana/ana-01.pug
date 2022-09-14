@@ -1,0 +1,33 @@
+include ../../_templates
+include ../../_partials
+include ../../_content
+
++partials_modal({palette: 'fluid'})
+    .popup-content-wrapper.l-flex.u-height-100.u-width-100
+        .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
+            a.js-close-modal(style="grid-row: 1/2") [X Cerrar]
+            .l-flex.l-abs.u-height-100.u-width-100(style="grid-row: 2/3")
+                +partials_test-ana
+
+
+        //- h1 Serie 1
+        //- .l-abs.l-flex.u-padding(style="--p: 30%").u-background-color-black-tr
+        //-     div.u-outline-primary.u-padding-1em.u-top.u-left(
+        //-         style="--t: 10%; --l: 15%"
+        //-     )
+        //-         a.js-load-content(href="ana-02.html") Contenido 1A (texto)
+
+        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-left(
+        //-         style="--b: 20%; --l: 10%"
+        //-     )
+        //-         a.js-load-content(href="ana-1B.html") Contenido 1B (audio)
+
+        //-     div.u-outline-primary.u-padding-1em.u-top.u-right(
+        //-         style="--t: 20%; --r: 10%"
+        //-     )
+        //-         a.js-load-content(href="ana-1C.html") Contenido 1C (podcast)
+
+        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-right(
+        //-         style="--b: 40%; --r: 10%"
+        //-     )                
+        //-         a.js-load-content(href="ana-1D.html") Contenido 1D (animación Processing)

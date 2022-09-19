@@ -3,32 +3,46 @@
 class Wanderer{
 
     constructor(config){
+
         if(config === undefined) return console.error('No config object defined for Wanderer');
-        let {element} = config;
+        let {element,
+            direction,
+            minVerticalSpeed,
+            maxVerticalSpeed,
+            minHorizontalSpeed,
+            maxHorizontalSpeed} = config;
         if(element === undefined) return console.error('No element defined for Wanderer');
+        if(direction === undefined) return console.error('No direction defined for Wanderer');
+        if(minVerticalSpeed === undefined) return console.error('No minimum V speed defined for Wanderer');
+        if(maxVerticalSpeed === undefined) return console.error('No maximum V speed defined for Wanderer');
+        if(minHorizontalSpeed === undefined) return console.error('No minimum H speed defined for Wanderer');
+        if(maxHorizontalSpeed === undefined) return console.error('No maximum H speed defined for Wanderer');
 
         this.element = element;
+        this.direction = direction;
+        this.maxVertSpeed = maxVerticalSpeed;
+        this.minVertSpeed = minVerticalSpeed;
+        this.maxHorizSpeed = maxHorizontalSpeed;
+        this.minHorizSpeed = minHorizontalSpeed;
 
         this.currentRotationValue = this.element.getAttribute('rotation');
         const crv = this.currentRotationValue;
-        // this.currentRotation = [Math.floor(crv.x), Math.floor(crv.y), Math.floor(crv.z)];
         this.currentRotation = [Math.floor(crv.x), Math.floor(crv.y)];
-        // this.deltaRotation = [this._intRand(6, 12), this._intRand(6, 12), this._intRand(6, 12)];
-        
-        this.deltaRotation = [this._intRand(-12, 12), this._intRand(-12, 12, 6)];
-        
-        //Force minimum horizontal rotation (second coordinate) so they don't stay in place
-        // if ( this.deltaRotation[1] > 0 && this.deltaRotation[1] < 6 ){
-        //     this.deltaRotation[1] = this._intRand(6, 12);
-        // }
-        // if ( this.deltaRotation[1] < 0 && this.deltaRotation[1] > -6 ){
-        //     this.deltaRotation[1] = this._intRand(-12, -6);
-        // }
+        console.log('Direction:', direction);
+        this.deltaRotation = [
+            this._intRand(-this.maxVertSpeed, this.maxVertSpeed, this.minVertSpeed),
+            //-read direction. Keep in mind that "left" means positive rotation and vice versa
+            (this.direction === 'right') ?
+                this._intRand(-this.maxHorizSpeed, -this.minHorizSpeed) :
+                this._intRand(this.minHorizSpeed, this.maxHorizSpeed)
+            ];
 
         this.element.addEventListener('animationcomplete', () => {
             return this.animate();
         })
     }
+
+
 
 
     _intRand(m, n, minDistToZero){
@@ -97,7 +111,14 @@ class Wanderers {
             this.wanderers = [];
             for ( let element of this.wandererElements ){
                 element.addEventListener('loaded', () => {
-                    this.wanderers.push(new Wanderer({element: element}));
+                    this.wanderers.push(new Wanderer({
+                        element: element,
+                        direction: element.dataset.direction,
+                        minHorizontalSpeed: 6,
+                        maxHorizontalSpeed: 12,
+                        minVerticalSpeed: 1,
+                        maxVerticalSpeed: 12,
+                    }));
                     if(this.wanderers.length === this.wandererElements.length){
                         resolve(this.wanderers);
                     }

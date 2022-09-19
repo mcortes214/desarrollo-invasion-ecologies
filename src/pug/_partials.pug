@@ -39,6 +39,63 @@ mixin partials_test-ana
 //-             )
 
 
+
+//- TODO: terminar de implementar este componente
+
+mixin partials_new-sea-figure(options)
+    -
+        const randNum = (min, max) => Math.floor(Math.random()*(max-min) + min);
+
+        const figure = {};
+        const {classes, image, contentLoader, wandererAnimation} = options;
+        figure.classes = ['clickable'].concat(classes);
+
+        figure.src = image.src;
+        figure.aspectRatio = image.aspectRatio;
+        figure.width = contentLoader ? 2 : 1;
+        figure.height = contentLoader ?
+            (figure.aspectRatio ? 2/figure.aspectRatio : 2)
+            : (figure.aspectRatio ? 1/figure.aspectRatio : 1);
+
+        figure.position = `0 0 -${randNum(4, 6)}`;
+        figure.initialRotation = `${randNum(-15, 15)} ${randNum(0, 360)} 0`;
+
+        if(contentLoader){
+            figure.classes.push('js-load-content');
+            figure.link = contentLoader.link;
+            figure.dataScripts = contentLoader.scripts ? contentLoader.scripts : [];
+            figure.dataDependencies = contentLoader.dependencies ? contentLoader.dependencies : [];
+        }
+
+        if(wandererAnimation) {
+            figure.direction = wandererAnimation.direction;
+        }
+        
+    //-Markup
+    a-entity.wanderer(
+        animation
+        rotation=figure.initialRotation
+        data-direction=figure.direction
+    )
+        a-image(
+            material="alphaTest: 0.5"
+            class=figure.classes.join(' ')
+            position=figure.position
+            src=figure.src
+            href=figure.link
+            data-scripts=JSON.stringify(figure.dataScripts)
+            data-dependencies=JSON.stringify(figure.dataDependencies)
+            width=figure.width
+            height=figure.height
+        )
+
+
+
+
+
+
+
+
 mixin partials_sea-figure(options)
     - const {img, className, link, dependencies, scripts, aspectRatio} = options;
     //- Create rigged objects

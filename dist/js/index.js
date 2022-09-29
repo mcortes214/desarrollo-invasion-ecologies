@@ -19,25 +19,30 @@ App.wanderers = new Wanderers('.wanderer');
 //Asignar event listeners a las figuras para abrir los modales
 setupGlobalLoaderListeners();
 
-App.aframeScene.addEventListener('loaded', ()=>{
+App.aframeScene.addEventListener('loaded', () => {
     //Esperar 1 segundo más y liberar overlay
     setTimeout(() => {
         App.StateComponents.changeState(App.preloader, 'overlay', 'default');
-    }, 1000);
+    });
 });
-
-
 
 // Preloader
 //TODO: Agregar un método .add() a StateComponents, para poder agregar componentes en distintas secciones
 
-App.StateComponents = new StateComponents({
-    'overlay': {
-        stateClasses: {
+// App.StateComponents = new StateComponents({
+//     'overlay': {
+//         stateClasses: {
+//         'default': ['view-fade-in', 'view-togglable-pointer-events'],
+//         'active': ['view-fade-in--visible', 'view-togglable-pointer-events--active'],
+//         }
+//     }
+// });
+
+App.StateComponents = new StateComponents();
+
+App.StateComponents.add('overlay', {
+    stateClasses: {
         'default': ['view-fade-in', 'view-togglable-pointer-events'],
         'active': ['view-fade-in--visible', 'view-togglable-pointer-events--active'],
-        }
     }
 });
-
-

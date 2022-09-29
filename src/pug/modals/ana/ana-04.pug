@@ -3,11 +3,10 @@ include ../../_partials
 include ../../_content
 
 +partials_modal({palette: 'fluid'})
-    .popup-content-wrapper.l-flex.u-height-100.u-width-100
-        .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
-            a.js-close-modal(style="grid-row: 1/2") [X Cerrar]
-            .l-flex.l-abs.u-height-100.u-width-100(style="grid-row: 2/3")
-                +partials_test-ana
+    +templates_main-popup-ana()
+        img.img-contain(src="img/medusa.png")
+        //- include ../../../assets/ave.svg
+
 
 
 

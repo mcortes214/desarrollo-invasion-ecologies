@@ -214,9 +214,15 @@ h1 {
 }
 
 .shape-popup {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   border-radius: 20px 0 20px 0;
+}
+@media screen and (min-width: 800px) {
+  .shape-popup {
+    width: 80%;
+    height: 80%;
+  }
 }
 
 .shape-fullscreen-overlay {
@@ -260,6 +266,17 @@ h1 {
 .l-spacer {
   --s: 0;
   height: var(--s);
+}
+
+.l-responsive-padding {
+  --m: 0;
+  --d: 0;
+  padding: var(--m);
+}
+@media screen and (min-width: 800px) {
+  .l-responsive-padding {
+    padding: var(--d);
+  }
 }
 
 #svgo-ave-pico path {
@@ -435,6 +452,18 @@ h1 {
   animation-name: none;
 }
 
+#preloader-icon {
+  opacity: 0;
+  transform: scale(0.96);
+  animation: SVG-main-preloader_opacity 2000ms ease-in-out 0ms;
+}
+
+@keyframes SVG-main-preloader_opacity {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .acc-sr-only {
   position: absolute;
   width: 1px;

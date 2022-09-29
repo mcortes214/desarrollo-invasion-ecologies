@@ -18,4 +18,14 @@ mixin templates_main(classes, block)
             - if(classes.includes("home"))
                 script(src="js/wanderers.js")
             //- Small default libraries
-            script(type="text/javascript" src="js/scripts.js")
+            script(type="text/javascript" src="js/stateComponents.js")
+            script(type="text/javascript" src="js/modal.js")
+            script(type="text/javascript" src="js/index.js")
+
+mixin templates_main-popup-ana
+    .popup-content-wrapper.l-flex.u-height-100.u-width-100
+        .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
+            a.js-close-modal(style="grid-row: 1/2") [X Cerrar]
+            .l-flex.l-abs.u-height-100.u-width-100(style="grid-row: 2/3")
+                - if(block)
+                    block

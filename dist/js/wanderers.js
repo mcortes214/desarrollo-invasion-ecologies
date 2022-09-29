@@ -3,7 +3,6 @@
 class Wanderer{
 
     constructor(config){
-
         if(config === undefined) return console.error('No config object defined for Wanderer');
         let {element,
             direction,
@@ -28,7 +27,6 @@ class Wanderer{
         this.currentRotationValue = this.element.getAttribute('rotation');
         const crv = this.currentRotationValue;
         this.currentRotation = [Math.floor(crv.x), Math.floor(crv.y)];
-        console.log('Direction:', direction);
         this.deltaRotation = [
             this._intRand(-this.maxVertSpeed, this.maxVertSpeed, this.minVertSpeed),
             //-read direction. Keep in mind that "left" means positive rotation and vice versa
@@ -38,7 +36,7 @@ class Wanderer{
             ];
 
         this.element.addEventListener('animationcomplete', () => {
-            return this.animate();
+            return this.animateWanderer();
         })
     }
 
@@ -69,7 +67,7 @@ class Wanderer{
         
     }
 
-    animate(){
+    animateWanderer(){
         // Actualizar posición
         for (let i=0; i < this.currentRotation.length; i++){
             // console.log("Rotación previa:", this.currentRotation);
@@ -98,32 +96,47 @@ class Wanderer{
 
 class Wanderers {
     constructor(query){
-        this.wandererElements = document.querySelectorAll(query);
+        this.wandererElements = [...document.querySelectorAll(query)];
+        this.loadedWandererElements = [];
+        this.wanderers = [];
+
+        //Once everything is loaded, begin animation chain
         this.setup().then((wandererObjects) => {
-            for (let w of wandererObjects){
-                w.animate();
+            for (let wanderer of wandererObjects){
+                wanderer.animateWanderer();
             }
         });
     }
 
+    _createWanderersFromElements(){
+        for ( let element of this.wandererElements ){
+            this.wanderers.push(new Wanderer({
+                element: element,
+                direction: element.dataset.direction,
+                minHorizontalSpeed: 6,
+                maxHorizontalSpeed: 12,
+                minVerticalSpeed: 1,
+                maxVerticalSpeed: 12,
+            }));
+        }
+    }
+
     setup(){
         return new Promise((resolve, reject) => {
-            this.wanderers = [];
-            for ( let element of this.wandererElements ){
-                element.addEventListener('loaded', () => {
-                    this.wanderers.push(new Wanderer({
-                        element: element,
-                        direction: element.dataset.direction,
-                        minHorizontalSpeed: 6,
-                        maxHorizontalSpeed: 12,
-                        minVerticalSpeed: 1,
-                        maxVerticalSpeed: 12,
-                    }));
-                    if(this.wanderers.length === this.wandererElements.length){
-                        resolve(this.wanderers);
-                    }
-                })
-            }
+            //Test for all elements loaded
+            //NOT using 'loaded' event because it might fire before execution of this file
+            let wandererLoadInterval = window.setInterval(() => {
+                this.loadedWandererElements = this.wandererElements.filter( (cur) => {
+                    return cur.hasLoaded;
+                });
+                if(this.loadedWandererElements.length === this.wandererElements.length) {
+                    // Populate this.wanderers with Wanderer instances
+                    this._createWanderersFromElements();
+                    // Clear load interval and resolve
+                    clearInterval(wandererLoadInterval);
+                    resolve(this.wanderers);
+                }
+            }, 500);
         });
     }
 }

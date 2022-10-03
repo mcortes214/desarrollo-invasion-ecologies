@@ -1,6 +1,42 @@
 
 //TODO: Agrupar estas funciones en un componente/clase Modal
 
+/*
+TODO:
+
+Modelar toda la parte de modales de la siguiente manera:
+
+- .js-content-loader es un componente de comportamiento.
+Hay un gestor de componentes que rastrea esa clase en el DOM y añade
+event listeners o nuevas clases en el setup, basado en un objeto-modelo
+de ese componente (igual que los state components)
+
+- setupModalListeners: solo agrega listeners de apertura/cierre, y pasa como callback una
+función que gestiona la apertura/cierre de modales.
+
+- swapModal(target): función que cierra un modal (de haberlo) y abre otro. Llama
+a las funciones destroyModal() y loadModal(). En algún lado debería haber una
+propiedad que guarde una referencia al wrapper actual, generado por loadModal().
+
+- destroyModal(current): Realiza dos acciones en secuencia:
+* App.stateComponents.changeState(modal, 'overlay', 'invisible')
+* .then( (wrapper) => { wrapper.remove } );
+
+- getContent(url): está perfecto como está. Solo retorna un div de contenido.
+
+- addModal(wrapper): Realiza cuatro acciones en secuencia:
+* agrega el wrapper al DOM. then ->
+*   agrega event listeners a los elementos del DOM (inicializa localmente behavior/state components).
+*   registra dependencias de JS. then ->
+*       carga scripts locales al final del DOM.
+Cada una de estas tareas es llamada por una sola línea de código o función.
+
+registerScriptDependencies(scripts): Registra dependencias de forma global y persistente.
+
+registerDynamicScripts(scripts, wrapper): Agrega scripts a un wrapper y los ejecuta.
+
+*/
+
 
 //Self-removing listeners
 function setupLocalClosingListeners(wrapper) {
@@ -93,11 +129,14 @@ function hideModal(wrapper){
 //     }
 // }
 
+
 function loadModal(options){
     let {link, scripts, dependencies} = options;
     if ([link, scripts, dependencies].some((value) => {return value === undefined})){
         throw 'undefined arguments found for loadModal';
     }
+
+    //Después de obtener un elemento HTML con contenido:
     getContent({url: link}).then((wrapper) => {
         //1- Load dynamic DOM content    
         document.querySelector('body').append(wrapper); //agregar el contenido
@@ -167,6 +206,8 @@ function registerDynamicScripts(scripts, wrapper){
 
 }
 
+//Devuelve un div contenedor ("wrapper"), que adentro tiene el contenido recuperado del HTML.
+//Asigna al wrapper las clases e ID pasadas desde las opciones.
 function getContent(options) {
     return new Promise((resolve) => {
 

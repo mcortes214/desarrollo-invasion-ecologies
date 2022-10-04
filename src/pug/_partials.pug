@@ -1,7 +1,11 @@
 
 
 mixin partials_modal(options, block)
-    #popup-main.view-togglable-pointer-events.view-fade-in
+    //- #popup-main.view-togglable-pointer-events.view-fade-in
+    #popup-main.js-state-components(
+        data-component-name="overlay"
+        data-component-state="default"
+    )
         - let palette;
         - if(options.palette === "material") palette = 'props-palette-material'
         - if(options.palette === "fluid") palette = 'props-palette-fluid'

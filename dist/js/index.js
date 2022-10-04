@@ -1,5 +1,4 @@
 //Funciones de modal inicializadas en modal.js
-//TODO: refactorizar modales como ¿objetos?
 //¿Considerar al DOM del index como un solo objeto mutado por las funciones de modales?
 
 //Inicializar objeto global app
@@ -16,8 +15,20 @@ const utils = {
 
 //Wanderers
 App.wanderers = new Wanderers('.wanderer');
+
 //Asignar event listeners a las figuras para abrir los modales
-setupGlobalLoaderListeners();
+App.modals = new Modals({
+    modalSelector: '#popup-main',
+    afterInsertFunction: () => {
+        App.StateComponents.initializeAllComponentsOnDOM();
+    },
+    showingFunction: (popup) => {
+        App.StateComponents.changeState(popup, 'overlay', 'active');
+    },
+    hidingFunction: (popup) => {
+        App.StateComponents.changeState(popup, 'overlay', 'default');
+    }
+});
 
 App.aframeScene.addEventListener('loaded', () => {
     //Esperar 1 segundo más y liberar overlay
@@ -26,17 +37,6 @@ App.aframeScene.addEventListener('loaded', () => {
     });
 });
 
-// Preloader
-//TODO: Agregar un método .add() a StateComponents, para poder agregar componentes en distintas secciones
-
-// App.StateComponents = new StateComponents({
-//     'overlay': {
-//         stateClasses: {
-//         'default': ['view-fade-in', 'view-togglable-pointer-events'],
-//         'active': ['view-fade-in--visible', 'view-togglable-pointer-events--active'],
-//         }
-//     }
-// });
 
 App.StateComponents = new StateComponents();
 

@@ -3,31 +3,30 @@ class StateComponents {
     constructor(componentList){
         this.componentList = componentList ? componentList : {};
         if(componentList){
-            this._initializeAllComponentsOnDOM();
+            this.initializeAllComponentsOnDOM();
         }
     }
 
-    _initializeAllComponentsOnDOM(){
-        for (let component in this.componentList) {
-            _setupInitialStateOnDOM(component);
+    initializeAllComponentsOnDOM(){
+        for (let componentName of Object.keys(this.componentList)) {
+            this._setupInitialStateOnDOM(componentName);
         }
     }
 
     //Assign base classes (default) and current state classes to all elements linked to this component
-    _setupInitialStateOnDOM(component) {
-        let elements = document.querySelectorAll(`.js-state-components[data-component-name=${component}]`);
+    _setupInitialStateOnDOM(componentName) {
+        let elements = document.querySelectorAll(`.js-state-components[data-component-name=${componentName}]`);
         for (let el of elements) {
             //Add defaults
-            this._changeStateClassesOfElement(el, component, 'default', 'add');
+            this._changeStateClassesOfElement(el, componentName, 'default', 'add');
             //Add additional classes of initial declared state
             if (el.dataset.componentState !== 'default') {
-                this._changeStateClassesOfElement(el, component, el.dataset.componentState, 'add');
+                this._changeStateClassesOfElement(el, componentName, el.dataset.componentState, 'add');
             }
         }
     }
 
     _changeStateClassesOfElement(elem, componentName, componentState, action){
-        console.log(this.componentList[componentName].stateClasses[componentState]);
         for (let stateClass of this.componentList[componentName].stateClasses[componentState]) {
             elem.classList[action](stateClass);
         }
@@ -49,6 +48,6 @@ class StateComponents {
     add(name, componentObject) {
         this.componentList[name] = componentObject;
         //Initialize DOM elements linked to this component
-        _setupInitialStateOnDOM(this.componentList[name]);
+        this._setupInitialStateOnDOM(name);
     }
 }

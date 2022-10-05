@@ -3,16 +3,17 @@ a-scene(vr-mode-ui="enabled: false"
         raycaster="objects: .clickable")
     a-assets
         img(id="ocean-background" src="img/8k-1.jpg")
-        img(id="ana-ojo" src="img/ojo.png")
-        img(id="ana-ave" src="img/ave.png")
-        img(id="ana-tibu" src="img/tibu.png")
-        img(id="ana-medusa" src="img/medusa.png")
-        img(id="ana-alga" src="img/alga.png")
-        img(id="ana-cotorra" src="img/cotorra.png")
-        img(id="ana-alga-chiquito" src="img/alga_reves.png")
-        img(id="ana-ave-chiquito" src="img/ave_reves.png")
-
-        img(id="circulo-verde" src="img/circulo-verde.png")
+        //-Ana
+        img(id="ana-ojo" src="img/ana_ojo.png")
+        img(id="ana-ave" src="img/ana_ave.png")
+        img(id="ana-tibu" src="img/ana_tibu.png")
+        img(id="ana-medusa" src="img/ana_medusa.png")
+        img(id="ana-alga" src="img/ana_alga.png")
+        img(id="ana-cotorra" src="img/ana_cotorra.png")
+        img(id="ana-alga-chiquito" src="img/ana_alga-reves.png")
+        img(id="ana-ave-chiquito" src="img/ana_ave-reves.png")
+        //-Mariela
+        img(id="mariela-loro-2" src="img/mariela_loro2.png")
         img(id="circulo-amarillo" src="img/circulo-amarillo.png")
         img(id="circulo-verde-chico" src="img/circulo-verde-chico.png")
     
@@ -42,7 +43,7 @@ a-scene(vr-mode-ui="enabled: false"
     - for (let sufijo of sufijosLinksGrandesMariela)
         +partials_new-sea-figure({
             classes: ['icono-mariela'],
-            image: { src: '#circulo-verde' },
+            image: { src: '#mariela-loro-2', aspectRatio: 1.750 },
             contentLoader: { link: `mariela-${sufijo}.html` },
             wandererAnimation: { direction: 'right' }
         })

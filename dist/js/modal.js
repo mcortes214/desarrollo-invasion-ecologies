@@ -177,21 +177,41 @@ class Modals {
     registerScriptDependencies(scriptsToLoad){
         return new Promise((resolve) => {
 
-            //TODO: Llevar registro de dependencias cargadas en App, y no en el DOM
+            //TODO: Llevar registro de dependencias cargadas en App, y no en el DOM.
+            //No debería ser _necesario_, porque nada va a borrar los script tags del DOM,
+            //Así que dejarlo para lo último.
             const scriptLoadedPromises = [];
             const alreadyLoadedScripts = [...document.querySelectorAll('script')].map(script => script.src);
     
-            for(let scriptUrl of scriptsToLoad){
-                    if ( alreadyLoadedScripts.some(url => url.includes(scriptUrl)) ){
-                        console.log(`${scriptUrl} already registered. Skipping`);
-                        continue;
+            //TODO: Ver si podemos convertir esto en un map/filter. Así no se complejiza demasiado.
+            for(let scriptToLoad of scriptsToLoad){
+                //Verificar si tenemos un string solo (shortcut), o un objeto con atributos
+                let hasConfigObject = typeof scriptToLoad === 'object';
+
+                //Verificar que la dependencia no se haya registrado ya
+                let scriptUrl = hasConfigObject ?
+                    scriptToLoad.src :
+                    scriptToLoad;
+
+                if ( alreadyLoadedScripts.some(url => url.includes(scriptUrl)) ){
+                    console.log(`${scriptUrl} already registered. Skipping`);
+                    continue;
+                }
+
+                //Add script to the document
+                const scriptElement = document.createElement('script');
+
+                if (hasConfigObject){
+                    for (let prop in scriptToLoad){
+                        scriptElement.setAttribute(prop, scriptToLoad[prop]);
                     }
-                    //Add script to the document
-                    const scriptElement = document.createElement('script');
-                    scriptElement.src = scriptUrl;
-                    document.querySelector('body').append(scriptElement);
-                    //Tell the function to wait for this script to finish loading before resolving
-                    scriptLoadedPromises.push(this.getScriptLoadedPromise(scriptElement));
+                }
+                else { scriptElement.src = scriptUrl; }
+
+                document.querySelector('body').append(scriptElement);
+                
+                //Tell the function to wait for this script to finish loading before resolving
+                scriptLoadedPromises.push(this.getScriptLoadedPromise(scriptElement));
             }
     
             //Resolve after every dependency has loaded

@@ -1,17 +1,23 @@
 //Funciones de modal inicializadas en modal.js
 //¿Considerar al DOM del index como un solo objeto mutado por las funciones de modales?
 
-//Inicializar objeto global app
-const App = {};
-App.aframeScene = document.querySelector('a-scene');
-App.preloader = document.querySelector('#app-preloader');
-
 //Inicializar utilidades globales (refactorizar?)
 const utils = {
     forceReflow: (el) => {
         el.getBoundingClientRect();
     }
 };
+
+//Inicializar objeto global app
+const App = {
+    loadedModules: {}
+};
+
+
+
+//Registrar
+App.aframeScene = document.querySelector('a-scene');
+App.preloader = document.querySelector('#app-preloader');
 
 //Wanderers
 App.wanderers = new Wanderers('.wanderer');
@@ -46,3 +52,8 @@ App.StateComponents.add('overlay', {
         'active': ['view-fade-in--visible', 'view-togglable-pointer-events--active'],
     }
 });
+
+//Three.js
+
+//Ver si ya estamos accediendo el objeto THREE, para no importarlo
+console.log(THREE);

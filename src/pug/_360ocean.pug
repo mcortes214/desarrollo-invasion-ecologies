@@ -18,6 +18,7 @@ a-scene(vr-mode-ui="enabled: false"
         img(id="circulo-verde-chico" src="img/circulo-verde-chico.png")
     
         img(id="circulo-violeta" src="img/circulo-violeta.png")
+        img(id="circulo-rojo" src="img/circulo-rojo.png")
 
 
     a-camera(look-controls="enabled: true; reverseMouseDrag: true; magicWindowTrackingEnabled: false"
@@ -27,13 +28,27 @@ a-scene(vr-mode-ui="enabled: false"
 
 
     //- Círculos Gabi
-    - for (let i=0; i < 5; i++)
+    - for (let i=1; i <= 4; i++)
         +partials_new-sea-figure({
             classes: ['icono-gabriela'],
             image: { src: '#circulo-violeta' },
             contentLoader: { link: `gabriela-0${i}.html` },
             wandererAnimation: { direction: 'left' }
         })
+
+        //- Test 3D
+    +partials_new-sea-figure({
+        classes: ['icono-gabriela'],
+        image: { src: '#circulo-rojo' },
+        contentLoader: { link: `gabriela-05.html`, scripts: ['js/scripts/testScene.js'], dependencies: [
+            {
+                src: 'js/lib/threeJsScenes.js',
+                type: 'module',
+            }
+            ]
+        },
+        wandererAnimation: { direction: 'left' }
+    })
 
     //- Círculos Mariela
 
@@ -60,7 +75,7 @@ a-scene(vr-mode-ui="enabled: false"
     +partials_new-sea-figure({
         classes: ['icono-mariela'],
         image: { src: '#circulo-amarillo' },
-        contentLoader: { link: `mariela-E.html`, scripts: ['js/mouseoverText.js'], dependencies: ['js/spanify.js'] },
+        contentLoader: { link: `mariela-E.html`, scripts: ['js/scripts/mouseoverText.js'], dependencies: ['js/lib/spanify.js'] },
         wandererAnimation: { direction: 'right' }
     })
 

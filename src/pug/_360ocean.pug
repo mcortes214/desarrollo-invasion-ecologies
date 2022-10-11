@@ -1,6 +1,8 @@
 a-scene(vr-mode-ui="enabled: false"
         cursor="rayOrigin: mouse; fuse: false"
-        raycaster="objects: .clickable")
+        raycaster="objects: .clickable"
+        fog="type: linear; color: #AAC; far: 20"
+        )
     a-assets
         img(id="ocean-background" src="img/8k-1.jpg")
         //-Ana
@@ -24,7 +26,9 @@ a-scene(vr-mode-ui="enabled: false"
     a-camera(look-controls="enabled: true; reverseMouseDrag: true; magicWindowTrackingEnabled: false"
         wasd-controls="enabled: false" fov="60" position="0 0 0")
 
-    a-sky(material="src: #ocean-background")
+    a-sky(material="src: #ocean-background; fog:false")
+
+    //- a-light(type="point" intensity="1" distance="50" decay="3" position="0 0 0")
 
 
     //- Círculos Gabi

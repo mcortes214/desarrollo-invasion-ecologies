@@ -117,7 +117,7 @@ class Wanderers {
                 minHorizontalSpeed: 6,
                 maxHorizontalSpeed: 6 + (6 * element.dataset.speedModifier), //keep between 6 and 12
                 minVerticalSpeed: 1,
-                maxVerticalSpeed: 12,
+                maxVerticalSpeed: 6 + (6 * element.dataset.speedModifier),
             }));
             console.log(element.dataset.speedModifier);
         }

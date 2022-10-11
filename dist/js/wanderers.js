@@ -34,6 +34,7 @@ class Wanderer{
                 this._intRand(-this.maxHorizSpeed, -this.minHorizSpeed) :
                 this._intRand(this.minHorizSpeed, this.maxHorizSpeed)
             ];
+        console.log(this.deltaRotation);
 
         this.element.addEventListener('animationcomplete', () => {
             return this.animateWanderer();
@@ -114,10 +115,11 @@ class Wanderers {
                 element: element,
                 direction: element.dataset.direction,
                 minHorizontalSpeed: 6,
-                maxHorizontalSpeed: 12,
+                maxHorizontalSpeed: 6 + (6 * element.dataset.speedModifier), //keep between 6 and 12
                 minVerticalSpeed: 1,
                 maxVerticalSpeed: 12,
             }));
+            console.log(element.dataset.speedModifier);
         }
     }
 
@@ -140,3 +142,7 @@ class Wanderers {
         });
     }
 }
+
+//TODO: Unificar lógica de dependency loaders y dependencias:
+//que los loaders no incluyan las clases, sino que las clases sean
+//archivos separados igual que este

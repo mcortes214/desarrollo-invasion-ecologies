@@ -43,11 +43,14 @@ mixin partials_modal(options, block)
 //- TODO: terminar de implementar este componente
 
 mixin partials_new-sea-figure(options)
+    //-JS Logic
     -
         const randNum = (min, max) => Math.floor(Math.random()*(max-min) + min);
 
         const figure = {};
         const {classes, image, contentLoader, wandererAnimation} = options;
+        const distanceModifier = Math.random();
+
         figure.classes = ['clickable'].concat(classes);
 
         figure.src = image.src;
@@ -57,7 +60,7 @@ mixin partials_new-sea-figure(options)
             (figure.aspectRatio ? 2/figure.aspectRatio : 2)
             : (figure.aspectRatio ? 1/figure.aspectRatio : 1);
 
-        figure.position = `0 0 -${randNum(4, 6)}`;
+        figure.position = `0 0 -${distanceModifier * 6 + 4}`;
         figure.initialRotation = `${randNum(-15, 15)} ${randNum(0, 360)} 0`;
 
         if(contentLoader){
@@ -76,6 +79,7 @@ mixin partials_new-sea-figure(options)
         animation
         rotation=figure.initialRotation
         data-direction=figure.direction
+        data-speed-modifier=distanceModifier
     )
         a-image(
             material="alphaTest: 0.5"

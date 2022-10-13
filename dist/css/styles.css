@@ -73,6 +73,10 @@ h1 {
   display: inline-block;
 }
 
+.u-display-none {
+  display: none;
+}
+
 /* Eliminar o refactorizar. Solo para fines de preview */
 .u-outline-primary {
   outline: 1px solid var(--color-primary);
@@ -128,6 +132,10 @@ h1 {
 
 .u-transform-origin-center {
   transform-origin: center;
+}
+
+.u-height {
+  height: var(--h);
 }
 
 .u-top {

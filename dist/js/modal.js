@@ -82,13 +82,7 @@ class Modals {
     
             const modal = wrapper.querySelector(this.modalSelector);
             this.showingFunction(modal);
-            // if(! modal.classList.contains('view-fade-in--visible')){
-            //     modal.classList.add('view-fade-in--visible');
-            // }
-            // if(! modal.classList.contains('view-togglable-pointer-events--active')){
-            //     modal.classList.add('view-togglable-pointer-events--active');
-            // }
-    
+
             //2- Add scripts to the wrapper we just added to the DOM
             this.registerScriptDependencies(dependencies)
             .then(() => {this.registerDynamicScripts(scripts, wrapper)});

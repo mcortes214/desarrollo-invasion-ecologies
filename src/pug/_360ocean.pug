@@ -63,7 +63,7 @@ a-scene(vr-mode-ui="enabled: false"
         +partials_new-sea-figure({
             classes: ['icono-mariela'],
             image: { src: '#mariela-loro-2', aspectRatio: 1.750 },
-            contentLoader: { link: `mariela-${sufijo}.html` },
+            contentLoader: { link: `mariela-${sufijo}.html`, scripts: ['js/scripts/voice-over-player.js']},
             wandererAnimation: { direction: 'right' }
         })
 

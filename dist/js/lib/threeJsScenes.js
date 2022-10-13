@@ -92,6 +92,20 @@ class ThreeJsScenes {
         const scene = new ThreeJsScene({containerElement, format, modelPath, width, height});
         this.scenes[name] = scene;
     }
+
+    clearScenes(name) {
+        for(let registeredScene in this.scenes){
+            const scene = registeredScene.scene;
+            //Remove all objects from scene
+            while (scene.children.length > 0){
+                scene.remove(scene.children[scene.children.length - 1]);
+            }
+            //Remove loaded model from memory
+            THREE.Cache.clear();
+            //Delete references to the scene, to allow for garbage collection
+            registeredScene = undefined;
+        }
+    }
 }
 
 

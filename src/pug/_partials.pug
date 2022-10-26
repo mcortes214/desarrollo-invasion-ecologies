@@ -65,9 +65,14 @@ mixin partials_new-sea-figure(options)
 
         if(contentLoader){
             figure.classes.push('js-load-content');
+
+            figure.modalName = contentLoader.modalName ? contentLoader.modalName : undefined;
             figure.link = contentLoader.link;
-            figure.dataScripts = contentLoader.scripts ? contentLoader.scripts : [];
-            figure.dataDependencies = contentLoader.dependencies ? contentLoader.dependencies : [];
+            figure.dataScripts = contentLoader.script ? contentLoader.script : undefined;
+            figure.beforeInsert = contentLoader.beforeInsert ? contentLoader.beforeInsert : undefined;
+            figure.afterInsert = contentLoader.afterInsert ? contentLoader.afterInsert : undefined;
+            figure.beforeRemove = contentLoader.beforeRemove ? contentLoader.beforeRemove : undefined;
+            figure.afterRemove = contentLoader.afterRemove ? contentLoader.afterRemove : undefined;
         }
 
         if(wandererAnimation) {
@@ -87,8 +92,12 @@ mixin partials_new-sea-figure(options)
             position=figure.position
             src=figure.src
             href=figure.link
-            data-scripts=JSON.stringify(figure.dataScripts)
-            data-dependencies=JSON.stringify(figure.dataDependencies)
+            data-scripts=figure.dataScripts
+            data-before-insert=figure.beforeInsert
+            data-after-insert=figure.afterInsert
+            data-before-remove=figure.beforeRemove
+            data-after-remove=figure.afterRemove
+            data-modal-name=figure.modalName
             width=figure.width
             height=figure.height
         )

@@ -34,7 +34,6 @@ class Wanderer{
                 this._intRand(-this.maxHorizSpeed, -this.minHorizSpeed) :
                 this._intRand(this.minHorizSpeed, this.maxHorizSpeed)
             ];
-        console.log(this.deltaRotation);
 
         this.element.addEventListener('animationcomplete', () => {
             return this.animateWanderer();
@@ -119,7 +118,6 @@ class Wanderers {
                 minVerticalSpeed: 1,
                 maxVerticalSpeed: 6 + (6 * element.dataset.speedModifier),
             }));
-            console.log(element.dataset.speedModifier);
         }
     }
 

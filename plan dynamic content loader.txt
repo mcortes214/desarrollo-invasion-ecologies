@@ -1,0 +1,55 @@
+
+
+Clase Modal: Almacena solo información, que va a ser ejecutada por ContentLoader y moduleManager.
+Almacena una URL para pedir contenidos HTML, y callbacks para que el usuario elija qué pasa al cargar y eliminar ese contenido en particular. Los objetos Content almacenan los contenidos de forma abstracta, no gestionan su propia inserción en el DOM (más allá de los callbacks). ContentLoader es el que gestiona la relación entre objetos Content y el DOM.
+
+Opciones del constructor:
+Gestionados por ContentLoader:
+- HTMLUrl: El link del archivo HTML a descargar (referencia desde index/root del servidor)
+- beforeInsert: Callback que se ejecuta antes de insertar este contenido específico en el DOM
+- afterInsert: Callback que se ejecuta después de insertar este contenido específico en el DOM
+- beforeRemove: Callback que se ejecuta antes de eliminar este contenido específico del DOM
+- afterRemove: Callback que se ejecuta después de eliminar este contenido específico del DOM
+Gestionados por moduleManager:
+- scriptUrl: El link al módulo que contiene 
+
+Otras propiedades:
+this.HTMLContent: guarda el HTMLElement devuelto por getHTMLContent().
+
+Métodos:
+
+
+
+
+
+-------------------------------
+
+Clase ContentLoader: Gestiona el proceso de cargar y eliminar objetos Content en el DOM de manera asíncrona, a través de métodos. Proporciona los mismos callbacks que Content, para ejecutar algunos scripts cada vez que se cargue cualquier contenido (más allá de los scripts específicos).
+
+Opciones del constructor:
+- beforeAnyInsert: Callback que se ejecuta antes de insertar un contenido en el DOM
+- afterAnyInsert: Callback que se ejecuta después de insertar un contenido en el DOM
+- beforeAnyRemove: Callback que se ejecuta antes de eliminar un contenido del DOM
+- afterAnyRemove: Callback que se ejecuta después de eliminar un contenido del DOM
+
+Métodos:
+
+createContentLoadersFromDOM() -- NO. Esto va a ser implementado dentro de EventManager. Se va a llamar un constructor de 
+
+- getHTMLContent(wrapperId, wrapperClasses]): Devuelve una promesa con el contenido del archivo al que apunta this.url. La promesa devuelve un wrapper (HTMLElement) que adentro contiene el HTML; este wrapper se almacena en this.HTMLContent.
+Argumentos:
+* wrapperId (string): un ID para agregar al wrapper (opcional).
+* wrapperClasses (string[]): un array de clases para agregar al wrapper (opcional).
+
+- appendContent(name, parent[, key]): Inserta un contenido en el DOM, al final de la lista de children.
+Argumentos:
+* name (string): El nombre que se usó en getContent() para cargar el contenido. Es un key dentro del objeto Contents.
+* parent (HTMLElement): El elemento en el cual se va a insertar el contenido.
+* key (number) (opcional, implementar después): Permite asignar un número único a esta instancia del contenido, lo cual permite seleccionarlo para eliminarlo más adelante.
+> Si no se incluye un key, no será posible seleccionar este elemento específico para eliminarlo después. Siempre que haya más de una instancia del mismo contenido, incluir un key.
+
+- prependContent(name, parent[, key]): Similar a appendContent, pero añade el contenido al principio de la lista de children.
+
+> Tanto appendContent() como prependContent() asignan al elemento un data-content-key igual al key especificado, si es que se incluyó el argumento.
+
+- removeContent(name, parent[, key]): Elimina un contenido de un elemento del DOM. Si hay más de un contenido, y no se especifica un key, se elimina el primer contenido en orden de aparición.

@@ -1,0 +1,40 @@
+Modal:
+Almacena un objeto con scripts, contenidos HTML, y referencias a funciones, y depende de moduleManager y a contentLoader.
+
+Parámetros del constructor:
+- HTMLUrl
+- HTMLContent: contenido obtenido a partir de HTMLUrl
+- scriptUrl
+- scriptFunctions: funciones obtenidas a partir de scriptUrl
+- beforeInsert
+- afterInsert
+- beforeRemove
+- afterRemove
+
+Métodos:
+
+OK - loadHTMLContent(): Toma this.HTMLUrl y carga su contenido en this.HTMLContent.
+- loadScript(): Toma this.scriptUrl y carga una <referencia> a App.moduleManager.scripts.nombredelscript. El nombre del script puede o no tener un namespace (debería).
+
+
+----------------------------------------------
+
+Modals:
+Gestiona la aparición y desaparición(?) de modales, registra una lista con todos los modales de la app.
+
+Parámetros del constructor:
+- modals: un array de objetos Modal
+- displayFunction: función llamada para incluir el contenido en el DOM. en mi caso incluye una promesa inline, para gestionar etapas de display (primero insertar, después mostrar)
+- hideFunction: Función llamada para ocultar el modal. Al igual que mi displayFunction, también tiene dos etapas: ocultar -> remover.
+
+
+Otras propiedades:
+activeModal (string): key del modal activo en this.modals. Sirve para el método switchModal().
+
+
+Métodos:
+createModal(...Modalparams, name): Inserta un nuevo objeto Modal (toma todos los parámetros del constructor de Modal MÁS un parámetro "name") y lo registra en this.modals[name].
+destroyModal(name): Asigna undefined a this.modals[name].
+displayModal(): beforeInsert > displayFunction > afterInsert
+hideModal(): beforeRemove > hideFunction > afterRemove
+switchModal(): hide + display.

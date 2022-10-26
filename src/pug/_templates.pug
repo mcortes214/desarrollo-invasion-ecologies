@@ -26,7 +26,10 @@ mixin templates_main(classes, block)
             - if(classes.includes("home"))
                 script(src="js/wanderers.js")
             //- Small default libraries
+            script(type="text/javascript" src="js/contentLoader.js")
+            script(type="text/javascript" src="js/moduleManager.js")
             script(type="text/javascript" src="js/stateComponents.js")
+            script(type="text/javascript" src="js/eventManager.js")
             script(type="text/javascript" src="js/modal.js")
             script(type="text/javascript" src="js/index.js")
 

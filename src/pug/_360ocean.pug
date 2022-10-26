@@ -32,107 +32,122 @@ a-scene(vr-mode-ui="enabled: false"
     //- a-light(type="point" intensity="1" distance="50" decay="3" position="0 0 0")
 
 
-    //- Círculos Gabi
+    //- Círculos Gabi -- PILOTO DE NUEVO SISTEMA DE MODALES
     - for (let i=1; i <= 4; i++)
         +partials_new-sea-figure({
             classes: ['icono-gabriela'],
             image: { src: '#circulo-violeta' },
-            contentLoader: { link: `gabriela-0${i}.html` },
+            contentLoader: {
+                link: `contents/gabriela-0${i}.html`,
+                modalName: 'modal-test-gabi',
+                script: '/js/moduleTests/gabi-script.js',
+                beforeInsert: 'beforeInsertGabi',
+                afterInsert: 'afterInsertGabi',
+                beforeRemove: 'beforeRemoveGabi',
+                afterRemove: 'afterRemoveGabi',
+            },
             wandererAnimation: { direction: 'left' }
         })
 
-        //- Test 3D
-    +partials_new-sea-figure({
-        classes: ['icono-gabriela'],
-        image: { src: '#circulo-rojo' },
-        contentLoader: { link: `gabriela-05.html`, scripts: ['js/scripts/testScene.js'], dependencies: [
-            {
-                src: 'js/lib/threeJsScenes.js',
-                type: 'module',
-            }
-            ]
-        },
-        wandererAnimation: { direction: 'left' }
-    })
 
-    //- Círculos Mariela
 
-    - const sufijosLinksGrandesMariela = ['A', 'B', 'C', 'D'];
-    - const sufijosLinksChicosMariela = ['A1', 'A2', 'A3', 'A4', 'B1', 'C1', 'C2', 'D1', 'E1', 'E2'];
+    //- //- Test 3D
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-gabriela'],
+    //-     image: { src: '#circulo-rojo' },
+    //-     contentLoader: {
+    //-         link: `gabriela-05.html`,
+    //-         dependencies: [
+    //-             {
+    //-                 src: 'js/lib/threeJsScenes.js',
+    //-                 type: 'module',
+    //-             }
+    //-         ],
+    //-         scripts: ['js/scripts/testScene.js'],
+    //-         onLoad: 'testLoadFunction',
+    //-         onUnload: 'testUnloadFunction',
+    //-     },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
 
-    - for (let sufijo of sufijosLinksGrandesMariela)
-        +partials_new-sea-figure({
-            classes: ['icono-mariela'],
-            image: { src: '#mariela-loro-2', aspectRatio: 1.750 },
-            contentLoader: { link: `mariela-${sufijo}.html`, scripts: ['js/scripts/voice-over-player.js']},
-            wandererAnimation: { direction: 'right' }
-        })
+    //- //- Círculos Mariela
 
-    - for (let sufijo of sufijosLinksChicosMariela)
-        +partials_new-sea-figure({
-            classes: ['icono-mariela'],
-            image: { src: '#circulo-verde-chico' },
-            contentLoader: { link: `mariela-${sufijo}.html` },
-            wandererAnimation: { direction: 'right' }
-        })
+    //- - const sufijosLinksGrandesMariela = ['A', 'B', 'C', 'D'];
+    //- - const sufijosLinksChicosMariela = ['A1', 'A2', 'A3', 'A4', 'B1', 'C1', 'C2', 'D1', 'E1', 'E2'];
 
-    //- Test texto animado
-    +partials_new-sea-figure({
-        classes: ['icono-mariela'],
-        image: { src: '#circulo-amarillo' },
-        contentLoader: { link: `mariela-E.html`, scripts: ['js/scripts/mouseoverText.js'], dependencies: ['js/lib/spanify.js'] },
-        wandererAnimation: { direction: 'right' }
-    })
+    //- - for (let sufijo of sufijosLinksGrandesMariela)
+    //-     +partials_new-sea-figure({
+    //-         classes: ['icono-mariela'],
+    //-         image: { src: '#mariela-loro-2', aspectRatio: 1.750 },
+    //-         contentLoader: { link: `mariela-${sufijo}.html`, scripts: ['js/scripts/voice-over-player.js']},
+    //-         wandererAnimation: { direction: 'right' }
+    //-     })
 
-    //- Figuras Ana
+    //- - for (let sufijo of sufijosLinksChicosMariela)
+    //-     +partials_new-sea-figure({
+    //-         classes: ['icono-mariela'],
+    //-         image: { src: '#circulo-verde-chico' },
+    //-         contentLoader: { link: `mariela-${sufijo}.html` },
+    //-         wandererAnimation: { direction: 'right' }
+    //-     })
 
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-ojo', aspectRatio: 0.884 },
-        contentLoader: { link: `ana-01.html` },
-        wandererAnimation: { direction: 'right' }
-    })
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-ave', aspectRatio: 1.321 },
-        contentLoader: { link: `ana-02.html` },
-        wandererAnimation: { direction: 'right' }
-    })
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-tibu', aspectRatio: 2.469 },
-        contentLoader: { link: `ana-03.html` },
-        wandererAnimation: { direction: 'left' }
-    })
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-medusa', aspectRatio: 1.089 },
-        contentLoader: { link: `ana-04.html` },
-        wandererAnimation: { direction: 'left' }
-    })
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-alga', aspectRatio: 1.433 },
-        contentLoader: { link: `ana-05.html` },
-        wandererAnimation: { direction: 'right' }
-    })
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-cotorra', aspectRatio: 1.506 },
-        contentLoader: { link: `ana-06.html` },
-        wandererAnimation: { direction: 'left' }
-    })
+    //- //- Test texto animado
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-mariela'],
+    //-     image: { src: '#circulo-amarillo' },
+    //-     contentLoader: { link: `mariela-E.html`, scripts: ['js/scripts/mouseoverText.js'], dependencies: ['js/lib/spanify.js'] },
+    //-     wandererAnimation: { direction: 'right' }
+    //- })
 
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-ave-chiquito', aspectRatio: 1.321 },
-        wandererAnimation: { direction: 'left' }
-    })
+    //- //- Figuras Ana
 
-    +partials_new-sea-figure({
-        classes: ['icono-ana'],
-        image: { src: '#ana-alga-chiquito', aspectRatio: 1.433 },
-        wandererAnimation: { direction: 'left' }
-    })
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-ojo', aspectRatio: 0.884 },
+    //-     contentLoader: { link: `ana-01.html` },
+    //-     wandererAnimation: { direction: 'right' }
+    //- })
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-ave', aspectRatio: 1.321 },
+    //-     contentLoader: { link: `ana-02.html` },
+    //-     wandererAnimation: { direction: 'right' }
+    //- })
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-tibu', aspectRatio: 2.469 },
+    //-     contentLoader: { link: `ana-03.html` },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-medusa', aspectRatio: 1.089 },
+    //-     contentLoader: { link: `ana-04.html` },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-alga', aspectRatio: 1.433 },
+    //-     contentLoader: { link: `ana-05.html` },
+    //-     wandererAnimation: { direction: 'right' }
+    //- })
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-cotorra', aspectRatio: 1.506 },
+    //-     contentLoader: { link: `ana-06.html` },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
+
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-ave-chiquito', aspectRatio: 1.321 },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
+
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-ana'],
+    //-     image: { src: '#ana-alga-chiquito', aspectRatio: 1.433 },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
 
 

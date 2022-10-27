@@ -39,17 +39,17 @@ a-scene(vr-mode-ui="enabled: false"
             image: { src: '#circulo-violeta' },
             contentLoader: {
                 link: `contents/gabriela-0${i}.html`,
-                modalName: 'modal-test-gabi',
+                modalName: `modal-gabriela-0${i}`,
                 script: '/js/moduleTests/gabi-script.js',
-                beforeInsert: 'beforeInsertGabi',
-                afterInsert: 'afterInsertGabi',
-                beforeRemove: 'beforeRemoveGabi',
-                afterRemove: 'afterRemoveGabi',
             },
             wandererAnimation: { direction: 'left' }
         })
 
-
+                //- script: '/js/moduleTests/gabi-script.js',
+                //- beforeInsert: 'beforeInsertGabi',
+                //- afterInsert: 'afterInsertGabi',
+                //- beforeRemove: 'beforeRemoveGabi',
+                //- afterRemove: 'afterRemoveGabi',
 
     //- //- Test 3D
     //- +partials_new-sea-figure({

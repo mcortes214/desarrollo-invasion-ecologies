@@ -1,4 +1,3 @@
-console.log('hola Gabi');
 import messages from './gabi-script-dep.js';
 
 //Los nombres de las funciones tienen que ser exactamente estos!
@@ -7,7 +6,6 @@ import messages from './gabi-script-dep.js';
 const beforeInsert = () => {
     return new Promise( (resolve) => {
         console.log(messages.befIns);
-        console.log('beforeInsert');
         resolve();
     } );
 }
@@ -19,18 +17,26 @@ const afterInsert = () => {
     } );
 }
 
-const beforeRemove = () => {
-    return new Promise( (resolve) => {
-        console.log(messages.befRem);
+// const beforeRemove = () => {
+//     return new Promise( (resolve) => {
+//         console.log(messages.befRem);
+//         resolve();
+//     } );
+// }
+
+// const afterRemove = () => {
+//     return new Promise( (resolve) => {
+//         console.log(messages.afRem);
+//         resolve();
+//     } );
+// }
+
+const papa = () => {
+    return new Promise((resolve) => {
+        console.log(papa);
         resolve();
-    } );
+    });
 }
 
-const afterRemove = () => {
-    return new Promise( (resolve) => {
-        console.log(messages.afRem);
-        resolve();
-    } );
-}
-
-export default { beforeInsert, afterInsert, beforeRemove, afterRemove };
+// export default { beforeInsert, afterInsert, beforeRemove, afterRemove };
+export default { beforeInsert, afterInsert };

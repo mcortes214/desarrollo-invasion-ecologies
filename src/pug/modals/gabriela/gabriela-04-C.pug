@@ -2,11 +2,11 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal({palette: 'fluid'})
-    a.js-close-modal [X Cerrar]
++partials_modal({palette: 'fluid', name: 'modal-gabriela-04-C'})
+    a.js-close-modal(data-modal-name='modal-gabriela-04-C') [X Cerrar]
     article.content
         h1 Serie 04 C
         p Serie 04 C - Sonido
         ul
             li
-                a.js-load-content(href="gabriela-04.html") Volver a nodo principal (serie 04)
+                a.js-load-content(data-modal-name="modal-gabriela-04" href="contents/gabriela-04.html") Volver a nodo principal (serie 04)

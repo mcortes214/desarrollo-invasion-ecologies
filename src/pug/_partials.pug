@@ -7,11 +7,12 @@ mixin partials_modal(options, block)
         data-component-state="default"
     )
         - let palette;
+        - let modalName = options.name;
         - if(options.palette === "material") palette = 'props-palette-material'
         - if(options.palette === "fluid") palette = 'props-palette-fluid'
         div(class=palette)
             .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal(
-                data-modal-name="modal-test-gabi"
+                data-modal-name=modalName
             )
                 div.shape-popup.u-color-primary.u-background-color-secondary-tr.l-responsive-padding(style="--m: 2em; --d: 4em").u-cursor-auto.u-overflow-y-scroll
                     -if(block)

@@ -2,17 +2,17 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal({palette: 'fluid'})
-    a.js-close-modal [X Cerrar]
++partials_modal({palette: 'fluid', name: 'modal-gabriela-03'})
+    a.js-close-modal(data-modal-name="modal-gabriela-03") [X Cerrar]
     article.content
         h1 Serie 03
         p Serie 03 - Nodo principal
         ul
             li
-                a.js-load-content(href="gabriela-03-A.html") Contenido 03-A (Texto-problemática)
+                a.js-load-content(data-modal-name="modal-gabriela-03-A" href="contents/gabriela-03-A.html") Contenido 03-A (Texto-problemática)
             li
-                a.js-load-content(href="gabriela-03-B.html") Contenido 03-B (Dataset de imágenes - Muestrario)
+                a.js-load-content(data-modal-name="modal-gabriela-03-B" href="contents/gabriela-03-B.html") Contenido 03-B (Dataset de imágenes - Muestrario)
             li
-                a.js-load-content(href="gabriela-03-C.html") Contenido 03-C (Imágenes generadas por GAN)
+                a.js-load-content(data-modal-name="modal-gabriela-03-C" href="contents/gabriela-03-C.html") Contenido 03-C (Imágenes generadas por GAN)
             li
-                a.js-load-content(href="gabriela-03-D.html") Contenido 03-D (Video de interpolación)
+                a.js-load-content(data-modal-name="modal-gabriela-03-D" href="contents/gabriela-03-D.html") Contenido 03-D (Video de interpolación)

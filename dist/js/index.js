@@ -58,13 +58,11 @@ const App = {
             console.log('hiding function');
             return new Promise((resolve) => {
                 let modalWrapper = document.querySelector('.modal-wrapper');
-                console.log(modalWrapper);
                 let popup = modalWrapper.querySelector('#popup-main');
 
                 popup.addEventListener('transitionend', function removeModal() {
                     //Event listener de un solo uso
                     popup.removeEventListener('transitionend', removeModal);
-                    console.log(modalWrapper);
                     document.querySelector('body').removeChild(modalWrapper);
                     resolve();
                 })
@@ -86,16 +84,20 @@ const App = {
                     const target = e.target;
                     const modalName = target.dataset.modalName;
 
+                    console.log(modalName);
+
                     //Si el modal no fue creado aún, generarlo
                     if(! App.modalManager.modals[modalName]){
+                        console.log('Generating new modal from HTML element...')
                         setupNewModal(target, modalName);
                         App.modalManager.modals[modalName].loadContentAndFunctions()
                         .then(() => {
-                            App.modalManager.displayModal(modalName);
+                            App.modalManager.switchToModal(modalName);
                         })
                     }
                     else {
-                        App.modalManager.displayModal(modalName);
+                        console.log('Modal already in memory. Skipping...');
+                        App.modalManager.switchToModal(modalName);
                     }
                 },
             },
@@ -108,7 +110,6 @@ const App = {
                     const modalName = target.dataset.modalName;
                     //Do something only if we click exactly on the target
                     if(target.classList.contains('js-close-modal')){
-                        console.log(modalName);
                         App.modalManager.hideModal(modalName);
                     }
                 },

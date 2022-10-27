@@ -58,7 +58,9 @@ class Modal {
 
     loadContentAndFunctions() {
         return new Promise( (resolve) => {
-            this.loadHTMLContent()
+            this.loadHTMLContent({
+                wrapperClasses: ['modal-wrapper']
+            })
             .then( () => this.loadFunctions() )
             .then( () => { resolve() } );
         } );
@@ -110,7 +112,7 @@ class Modals {
             const modal = this.modals[name];
             modal.modalFunctions.beforeRemove()
             .then(() => {
-                return this.hideFunction(modal);
+                return this.hidingFunction(modal);
             })
             .then(() => {
                 return modal.modalFunctions.afterRemove();

@@ -126,6 +126,10 @@ h1 {
   text-align: center;
 }
 
+.u-transition-04s {
+  transition: 0.4s;
+}
+
 .u-width-100 {
   width: 100%;
 }

@@ -7,7 +7,7 @@ import messages from './gabi-script-dep.js';
 const beforeInsert = () => {
     return new Promise( (resolve) => {
         console.log(messages.befIns);
-        console.log('cacaaa');
+        console.log('beforeInsert');
         resolve();
     } );
 }

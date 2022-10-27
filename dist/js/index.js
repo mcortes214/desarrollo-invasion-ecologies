@@ -33,12 +33,45 @@ const App = {
     modalManager: new Modals({
         modals: [],
         displayFunction: (modal) => {
-            let popup = modal.HTMLContent.querySelector('#popup-main');
-            App.StateComponents.changeState(popup, 'overlay', 'active');
+            //esperar a final de la transición para pasar a la siguiente etapa
+            return new Promise((resolve) => {
+                //Hacer una copia del elemento HTML, para desacoplar memoria y DOM
+                let HTMLContentClone = modal.HTMLContent.cloneNode(true);
+                console.log(HTMLContentClone);
+                document.querySelector('body').append(HTMLContentClone);
+                App.StateComponents.initializeAllComponentsOnDOM();
+                //Force reflow - preparar para transiciones:
+                HTMLContentClone.getBoundingClientRect();
+
+                let popup = HTMLContentClone.querySelector('#popup-main');
+                popup.addEventListener('transitionend', function addModal() {
+                    //Event listener de un solo uso
+                    popup.removeEventListener('transitionend', addModal);
+                    resolve();
+                });
+                App.StateComponents.changeState(popup, 'overlay', 'active');
+            });
+
         },
-        hidingFunction: (modal) => {
-            let popup = modal.HTMLContent.querySelector('#popup-main');
-            App.StateComponents.changeState(popup, 'overlay', 'default');
+        hidingFunction: () => {
+            //esperar a final de la transición para pasar a la siguiente etapa
+            console.log('hiding function');
+            return new Promise((resolve) => {
+                let modalWrapper = document.querySelector('.modal-wrapper');
+                console.log(modalWrapper);
+                let popup = modalWrapper.querySelector('#popup-main');
+
+                popup.addEventListener('transitionend', function removeModal() {
+                    //Event listener de un solo uso
+                    popup.removeEventListener('transitionend', removeModal);
+                    console.log(modalWrapper);
+                    document.querySelector('body').removeChild(modalWrapper);
+                    resolve();
+                })
+
+                App.StateComponents.changeState(popup, 'overlay', 'default');
+            });
+
         }
     }),
     eventManager: new EventManager({
@@ -49,6 +82,7 @@ const App = {
                 selector: '.js-load-content',
                 type: 'click',
                 callbackFunction: (e) => {
+                    e.preventDefault();
                     const target = e.target;
                     const modalName = target.dataset.modalName;
 
@@ -63,7 +97,6 @@ const App = {
                     else {
                         App.modalManager.displayModal(modalName);
                     }
-                    
                 },
             },
             {
@@ -71,9 +104,12 @@ const App = {
                 type: 'click',
                 callbackFunction: (e) => {
                     e.preventDefault();
-                    //Do nothing if clicking on children of overlay
-                    if(e.target.classList.contains('js-close-modal')){
-                        alert('content removed');
+                    const target = e.target;
+                    const modalName = target.dataset.modalName;
+                    //Do something only if we click exactly on the target
+                    if(target.classList.contains('js-close-modal')){
+                        console.log(modalName);
+                        App.modalManager.hideModal(modalName);
                     }
                 },
             }

@@ -2,7 +2,7 @@
 
 mixin partials_modal(options, block)
     //- #popup-main.view-togglable-pointer-events.view-fade-in
-    #popup-main.js-state-components(
+    #popup-main.u-transition-04s.js-state-components(
         data-component-name="overlay"
         data-component-state="default"
     )
@@ -10,7 +10,9 @@ mixin partials_modal(options, block)
         - if(options.palette === "material") palette = 'props-palette-material'
         - if(options.palette === "fluid") palette = 'props-palette-fluid'
         div(class=palette)
-            .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal
+            .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal(
+                data-modal-name="modal-test-gabi"
+            )
                 div.shape-popup.u-color-primary.u-background-color-secondary-tr.l-responsive-padding(style="--m: 2em; --d: 4em").u-cursor-auto.u-overflow-y-scroll
                     -if(block)
                         block

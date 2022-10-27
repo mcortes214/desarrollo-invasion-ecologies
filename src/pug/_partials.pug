@@ -18,32 +18,13 @@ mixin partials_modal(options, block)
                     -if(block)
                         block
 
-//- mixin partials_sea-object(config)
-//-     - const {scriptDependencies, linkScripts, color, className, link} = config;
-//-     //- Create rigged objects
-//-     - const a = `${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)} ${Math.floor(Math.random()*360)}`;
-//-     - const rad = (className === 'greenSmall') ? '0.5' : '1';
-//-     - const geometryString = `primitive: circle; radius: ${rad}`;
-//-     - const materialString = `color: ${color}`;
-//-     - const classString = `clickable ${className}`;
-//-     - const positionString = `0 0 -${Math.round(Math.random()*2 + 4)}`;
-//-     - const scriptsString = linkScripts ? JSON.stringify(linkScripts) : '[]';
-//-     - const dependenciesString = scriptDependencies ? JSON.stringify(scriptDependencies) : '[]';
-//-     //-Markup
-//-     a-entity.wanderer(animation rotation=a)
-//-         a-entity.js-load-content(
-//-             class=classString
-//-             geometry=geometryString
-//-             material=materialString
-//-             position=positionString
-//-             href=link
-//-             data-scripts=scriptsString
-//-             data-dependencies=dependenciesString
-//-             )
 
+mixin partials_first-text-external-link(text, url)
+    a.filter-interactive-blur.animation-interactive-shake.u-display-inline-block(target="_blank" href=url)=text
 
-
-//- TODO: terminar de implementar este componente
+mixin partials_first-text-internal-link(name, text)
+    - let url = `contents/${name}.html`;
+    a.filter-interactive-blur.animation-interactive-shake.u-display-inline-block.js-load-content(data-modal-name=name href=url)=text
 
 mixin partials_new-sea-figure(options)
     //-JS Logic

@@ -17,14 +17,7 @@ const setupNewModal = (dataElement, modalName) => {
     );
 }
 
-// const loadModalContentAndScripts = (modalName, scriptUrl) => {
-//     return new Promise( () => {
-//         const modal = App.modalManager.modals[modalName];
-//         modal.loadHTMLContent()
-//         .then( () => modal.loadFunctions() )
-//         .then( () => { resolve() } );
-//     } );
-// }
+
 
 //Inicializar objeto global app
 const App = {
@@ -116,8 +109,6 @@ const App = {
             }
         ]
     }),
-
-
 };
 
 
@@ -145,17 +136,14 @@ App.StateComponents.add('overlay', {
     }
 });
 
-//Three.js
+//Crear y cargar primer modal de presentación
 
-
-//TEST
-let testEl = document.createElement('div');
-testEl.classList.add('divicito');
-let testP = document.createElement('p');
-testP.classList.add('js-load-content');
-testP.innerText = 'aaddd';
-testEl.append(testP);
-let body = document.querySelector('body');
-body.append(testEl);
+const modalName = 'presentacion-01';
+//Crear modal, sin scripts (ya no usa spanify sino pre-baked spans)
+App.modalManager.createModal(modalName, { HTMLUrl: 'contents/presentacion-01.html' });
+App.modalManager.modals[modalName].loadContentAndFunctions()
+.then(() => {
+    App.modalManager.switchToModal(modalName);
+})
 
 

@@ -105,12 +105,9 @@ class Modals {
         this.modals[name] = modal;
     }
 
-    destroyModal(name) {
-        this.modals[name] = undefined;
-    }
-
     displayModal(modalName) {
         this.activeModalName = modalName;
+        console.log('active modal:', this.activeModalName);
         return new Promise((resolve) => {
             const modal = this.modals[modalName];
             // console.log(App.modalManager.modals[modalName]);
@@ -130,7 +127,7 @@ class Modals {
     }
 
     hideModal(name) {
-        console.log('modals: hide modal');
+        console.log('modals - hide modal:', name);
         return new Promise((resolve) => {
             
             //Try to close only once, even if triggered many times

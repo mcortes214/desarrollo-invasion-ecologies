@@ -1,4 +1,4 @@
-import { OBJLoader } from 'https://unpkg.com/three@0.144.0/examples/jsm/loaders/OBJLoader';
+import { OBJLoader } from './OBJLoader.js';
 
 // Esto iría en el objloader.
 
@@ -110,6 +110,5 @@ class ThreeJsScenes {
 
 
 
-App.loadedModules.threeJsScenes = new ThreeJsScenes();
-
-console.log('three Obj loader registrado');
+// App.loadedModules.threeJsScenes = new ThreeJsScenes();
+export default ThreeJsScenes;

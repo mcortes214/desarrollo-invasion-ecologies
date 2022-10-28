@@ -2,11 +2,11 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal({palette: 'fluid'})
-    a.js-close-modal [X Cerrar]
++partials_modal({palette: 'fluid', name: 'modal-ana-01-B'})
+    a.js-close-modal(data-modal-name="modal-ana-01-B") [X Cerrar]
     article.content
         h1 Serie 1B
         p Contenido 1B (audio)
         ul
             li
-                a.js-load-content(href="ana-01.html") Contenido A1 (primero en la secuencia)
+                a.js-load-content(href="contents/ana-01.html" data-modal-name="modal-ana-01") Contenido A1 (primero en la secuencia)

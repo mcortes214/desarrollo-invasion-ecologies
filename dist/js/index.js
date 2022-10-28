@@ -22,6 +22,7 @@ const setupNewModal = (dataElement, modalName) => {
 //Inicializar objeto global app
 const App = {
     // moduleManager: new ModuleManager(),
+    loadedModules: {},
     StateComponents: new StateComponents(), //TODO: < cambiar por s minúscula en todas partes
     modalManager: new Modals({
         modals: [],

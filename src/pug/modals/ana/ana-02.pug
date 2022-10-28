@@ -2,28 +2,22 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal({palette: 'fluid'})
-    +templates_main-popup-ana()
-        img.img-contain(src="img/ana_ave.png")
-        include ../../../assets/ave.svg
++partials_modal--ana({palette: 'fluid', name: 'modal-ana-02'})
+    img.img-contain(src="img/ana_ave.png")
+    include ../../../assets/ave.svg
+    //- h1 Serie 2
+    //- .l-abs.l-flex.u-padding(style="--p: 30%").u-background-color-black-tr
+    //-     div.u-outline-primary.u-padding-1em.u-top.u-left(
+    //-         style="--t: 10%; --l: 15%"
+    //-     )
+    //-         a.js-load-content(href="ana-2A.html") Contenido 2A (texto)
 
+    //-     div.u-outline-primary.u-padding-1em.u-bottom.u-left(
+    //-         style="--b: 20%; --l: 10%"
+    //-     )
+    //-         a.js-load-content(href="ana-2B.html") Contenido 2B (relato europeo)
 
-
-
-
-        //- h1 Serie 2
-        //- .l-abs.l-flex.u-padding(style="--p: 30%").u-background-color-black-tr
-        //-     div.u-outline-primary.u-padding-1em.u-top.u-left(
-        //-         style="--t: 10%; --l: 15%"
-        //-     )
-        //-         a.js-load-content(href="ana-2A.html") Contenido 2A (texto)
-
-        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-left(
-        //-         style="--b: 20%; --l: 10%"
-        //-     )
-        //-         a.js-load-content(href="ana-2B.html") Contenido 2B (relato europeo)
-
-        //-     div.u-outline-primary.u-padding-1em.u-top.u-right(
-        //-         style="--t: 20%; --r: 10%"
-        //-     )
-        //-         a.js-load-content(href="ana-2C.html") Contenido 2C (relato argentino)
+    //-     div.u-outline-primary.u-padding-1em.u-top.u-right(
+    //-         style="--t: 20%; --r: 10%"
+    //-     )
+    //-         a.js-load-content(href="ana-2C.html") Contenido 2C (relato argentino)

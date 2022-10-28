@@ -1,4 +1,16 @@
 
+//- Contenidos:
+
+//- Modales
+//- Figuras del mar
+
+
+
+
+//----------------------------
+
+
+//- Modales
 
 mixin partials_modal(options, block)
     //- #popup-main.view-togglable-pointer-events.view-fade-in
@@ -17,6 +29,27 @@ mixin partials_modal(options, block)
                 div.shape-popup.u-color-primary.u-background-color-secondary-tr.l-responsive-padding(style="--m: 2em; --d: 4em").u-cursor-auto.u-overflow-y-scroll
                     -if(block)
                         block
+
+mixin partials_modal--mariela(options, block)
+    -let modalName = options.name
+    +partials_modal({palette: 'fluid', name: modalName})
+        a.js-close-modal(data-modal-name=modalName) [X Cerrar]
+        article.content
+            - if (block)
+                block
+
+mixin partials_modal--ana(options, block)
+    -let modalName = options.name
+    +partials_modal({palette: 'fluid', name: modalName})
+        .popup-content-wrapper.l-flex.u-height-100.u-width-100
+            .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
+
+                a.js-close-modal(data-modal-name=modalName style="grid-row: 1/2") [X Cerrar]
+
+                .l-flex.l-abs.u-height-100.u-width-100(style="grid-row: 2/3")
+                    - if(block)
+                        block
+
 
 mixin partials_modal--first-text(options, block)
     - let modalName = options.name
@@ -38,6 +71,11 @@ mixin partials_first-text-external-link(text, url)
 mixin partials_first-text-internal-link(name, text)
     - let url = `contents/${name}.html`;
     a.filter-interactive-blur.animation-interactive-shake.u-display-inline-block.js-load-content(data-modal-name=name href=url)=text
+
+
+
+
+//- Figuras del mar
 
 mixin partials_new-sea-figure(options)
     //-JS Logic
@@ -142,7 +180,7 @@ mixin partials_sea-figure(options)
 
 
 
-mixin partials_test-texto-hover(block)
+mixin partials_test-audio()
     audio.u-display-none.audio-player.voice-over(src="audio/voice-over.mp3" preload="metadata" controls="false")
     .player-progress.u-cursor-pointer.l-abs.u-width-100.u-height.u-background-color(
         style="--h: 5px; --b: var(--color-primary)"

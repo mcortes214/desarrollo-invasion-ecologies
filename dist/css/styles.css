@@ -69,6 +69,10 @@ h1 {
   color: var(--color-primary);
 }
 
+.u-color-accent {
+  color: var(--color-accent);
+}
+
 .u-display-inline-block {
   display: inline-block;
 }

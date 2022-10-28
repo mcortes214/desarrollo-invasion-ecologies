@@ -2,10 +2,8 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal({palette: 'fluid', name: 'presentacion-07'})
-    .l-flex.u-min-height-100
-        article.content.u-text-align-center
-            p Myiopsitta monachus, cotorra argentina o cotorra monje es una especie nativa de Sudamérica. Fue introducida en Europa hace ya algunas decenas de años, principalmente como mascota para el ámbito doméstico. 
-            p Se dice que estas cotorras son muy bulliciosas y eso, en muchos casos, fastidiaba a sus dueños, por lo que decidieron soltarlas. Y así las cotorras se volvieron #[+partials_first-text-external-link("“plaga”", "https://elpais.com/politica/2015/11/11/actualidad/1447244033_751019.html")]. Actualmente, la especie se encuentra distribuida principalmente por el litoral mediterráneo.
-            p Del desplazamiento forzado a la percepción de este Otro como invasor no median muchos pasos. Tampoco hay mucha distancia entre este Otro percibido como invasor y su exterminio programado. #[+partials_first-text-internal-link("presentacion-08", "Hay, en todo caso, un “mundo-cotorra” que devela complejos entramados.")]
-            a.js-load-content(data-modal-name="presentacion-09" href="contents/presentacion-09.html") [ Continuar ]
++partials_modal--first-text({palette: 'fluid', name: 'presentacion-07'})
+    p Myiopsitta monachus, cotorra argentina o cotorra monje es una especie nativa de Sudamérica. Fue introducida en Europa hace ya algunas decenas de años, principalmente como mascota para el ámbito doméstico. 
+    p Se dice que estas cotorras son muy bulliciosas y eso, en muchos casos, fastidiaba a sus dueños, por lo que decidieron soltarlas. Y así las cotorras se volvieron #[+partials_first-text-external-link("“plaga”", "https://elpais.com/politica/2015/11/11/actualidad/1447244033_751019.html")]. Actualmente, la especie se encuentra distribuida principalmente por el litoral mediterráneo.
+    p Del desplazamiento forzado a la percepción de este Otro como invasor no median muchos pasos. Tampoco hay mucha distancia entre este Otro percibido como invasor y su exterminio programado. #[+partials_first-text-internal-link("presentacion-08", "Hay, en todo caso, un “mundo-cotorra” que devela complejos entramados.")]
+    a.js-load-content(data-modal-name="presentacion-09" href="contents/presentacion-09.html") [ Continuar ]

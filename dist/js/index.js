@@ -121,7 +121,6 @@ App.preloader = document.querySelector('#app-preloader');
 App.wanderers = new Wanderers('.wanderer');
 
 
-
 App.aframeScene.addEventListener('loaded', () => {
     //Esperar 1 segundo más y liberar overlay
     setTimeout(() => {

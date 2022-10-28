@@ -18,6 +18,19 @@ mixin partials_modal(options, block)
                     -if(block)
                         block
 
+mixin partials_modal--first-text(options, block)
+    - let modalName = options.name
+    +partials_modal({palette: 'fluid', name: modalName})
+        +partials_first-text-wrapper(modalName)
+            - if (block)
+                block
+
+mixin partials_first-text-wrapper(name, block)
+    .l-flex.u-min-height-100
+        article.content.u-text-align-center
+            a.u-color-accent.u-cursor-pointer.js-close-modal(data-modal-name=name) [ Salir ]
+            - if (block)
+                block
 
 mixin partials_first-text-external-link(text, url)
     a.filter-interactive-blur.animation-interactive-shake.u-display-inline-block(target="_blank" href=url)=text

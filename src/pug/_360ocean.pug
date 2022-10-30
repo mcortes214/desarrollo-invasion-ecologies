@@ -22,6 +22,11 @@ a-scene(vr-mode-ui="enabled: false"
         img(id="circulo-amarillo" src="img/circulo-amarillo.png")
         img(id="circulo-verde-chico" src="img/circulo-verde-chico.png")
     
+        img(id="gabriela-red" src="img/gabriela_red.png")
+        img(id="gabriela-botella" src="img/gabriela_botella.png")
+        img(id="gabriela-plastiaglomerados" src="img/gabriela_plastiaglomerados.png")
+        img(id="gabriela-bolsa" src="img/gabriela_bolsa.png")
+
         img(id="circulo-violeta" src="img/circulo-violeta.png")
         img(id="circulo-rojo" src="img/circulo-rojo.png")
 
@@ -36,15 +41,41 @@ a-scene(vr-mode-ui="enabled: false"
 
 
     //- Círculos Gabi -- PILOTO DE NUEVO SISTEMA DE MODALES
-    - for (let i=1; i <= 4; i++)
+    -
+        let imagenesGabi = [
+            {
+                id: 'gabriela-red',
+                aspectRatio: 3.1316,
+                direction: 'left',
+            },
+            {
+                id: 'gabriela-botella',
+                aspectRatio: 2.495,
+                direction: 'right',
+            },
+            {
+                id: 'gabriela-plastiaglomerados',
+                aspectRatio: 0.6943,
+                direction: 'right',
+            },
+            {
+                id: 'gabriela-bolsa',
+                aspectRatio: 0.988,
+                direction: 'right',
+            },
+        ];
+    - for (let i=0; i < 4; i++)
         +partials_new-sea-figure({
             classes: ['icono-gabriela'],
-            image: { src: '#circulo-violeta' },
+            image: {
+                src: `#${imagenesGabi[i].id}`,
+                aspectRatio: `${imagenesGabi[i].aspectRatio}`
+                },
             contentLoader: {
-                link: `contents/gabriela-0${i}.html`,
-                modalName: `modal-gabriela-0${i}`,
+                link: `contents/gabriela-0${i+1}.html`,
+                modalName: `modal-gabriela-0${i+1}`,
             },
-            wandererAnimation: { direction: 'left' }
+            wandererAnimation: { direction: imagenesGabi[i].direction }
         })
 
     //- Test 3D
@@ -62,17 +93,46 @@ a-scene(vr-mode-ui="enabled: false"
 
     //- //- Círculos Mariela
 
-    - const sufijosLinksGrandesMariela = ['A', 'B', 'C', 'D'];
-    - const sufijosLinksChicosMariela = ['A1', 'A2', 'A3', 'A4', 'B1', 'C1', 'C2', 'D1', 'E1', 'E2'];
+    //- - const sufijosLinksGrandesMariela = ['A', 'B', 'C', 'D'];
+    //- - const sufijosLinksChicosMariela = ['A1', 'A2', 'A3', 'A4', 'B1', 'C1', 'C2', 'D1', 'E1', 'E2'];
 
-    - for (let sufijo of sufijosLinksGrandesMariela)
+    //- No hay punto de entrada general, los X1 son los puntos de entrada
+    //- - const sufijosLinksGrandesMariela = ['A1', 'B1', 'C1', 'D1', 'E1'];
+    - const sufijosLinksChicosMariela = ['A2', 'A3', 'A4', 'C2', 'E2'];
+
+    -
+        const botonesMarielaLoritos = [
+            {
+                fileSuffix: 'A1',
+                scriptsUrl: '/js/scripts/voice-over-player.js'
+            },
+            {
+                fileSuffix: 'B1',
+                scriptsUrl: '/js/scripts/voice-over-player.js'
+            },
+            {
+                fileSuffix: 'C1',
+                scriptsUrl: '/js/scripts/voice-over-player.js'
+            },
+            {
+                fileSuffix: 'D1',
+                scriptsUrl: '/js/scripts/voice-over-player.js'
+            },
+            {
+                fileSuffix: 'E1',
+                scriptsUrl: '/js/scripts/voice-over-player.js'
+            }
+        ];
+
+
+    - for (let boton of botonesMarielaLoritos)
         +partials_new-sea-figure({
             classes: ['icono-mariela'],
             image: { src: '#mariela-lorita', aspectRatio: 1.786 },
             contentLoader: {
-                link: `contents/mariela-${sufijo}.html`,
-                modalName: `modal-mariela-${sufijo}`,
-                script: '/js/scripts/voice-over-player.js',
+                link: `contents/mariela-${boton.fileSuffix}.html`,
+                modalName: `modal-mariela-${boton.fileSuffix}`,
+                script: boton.scriptsUrl,
             },
             wandererAnimation: { direction: 'right' }
         })

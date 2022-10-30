@@ -39,7 +39,7 @@ $breakpoint: 800px //Always use MIN-width -- mobile first
     --color-primary-tr: rgba(48, 45, 19, 0.7)
 
     --color-secondary: #f5e7d3
-    --color-secondary-tr: rgba(245,231,211,0.75)
+    --color-secondary-tr: rgba(245,231,211,0.7)
 
     --color-accent: #bf5161
 
@@ -215,7 +215,7 @@ h1
     --color-primary-tr: rgba(48, 45, 19, 0.7)
 
     --color-secondary: #f5e7d3
-    --color-secondary-tr: rgba(245,231,211,0.85)
+    --color-secondary-tr: rgba(245,231,211,0.7)
 
     --color-accent: #bf5161
     
@@ -448,9 +448,12 @@ h1
 #preloader-icon
   opacity: 0
   transform: scale(0.96)
-  animation: SVG-main-preloader_opacity 2000ms ease-in-out 0ms
+  animation: SVG-main-preloader_opacity 2000ms ease-in-out 0ms forwards
 
 @keyframes SVG-main-preloader_opacity
+    100%
+        opacity: 0
+        transform: scale(0.96)
     100%
         opacity: 1
         transform: scale(1)

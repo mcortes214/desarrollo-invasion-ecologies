@@ -16,36 +16,52 @@ const afterInsert = () => {
         const seekBar = document.querySelector('.player-progress');
         const seekBarEllapsed = document.querySelector('.player-progress__ellapsed');
 
-        playButton.addEventListener('click', () => {
-            audioPlayer.play();
-        });
+        if( ! audioPlayer ){
+            // if there isn't any player, resolve immediately
+            resolve();
+        }
 
-        pauseButton.addEventListener('click', () => {
-            audioPlayer.pause();
-        });
+        if(playButton) {
+            playButton.addEventListener('click', () => {
+                audioPlayer.play();
+            });
+        }
 
-        stopButton.addEventListener('click', () => {
-            audioPlayer.pause();
-            audioPlayer.currentTime = 0;
-        });
+        if(pauseButton) {
+            pauseButton.addEventListener('click', () => {
+                audioPlayer.pause();
+            });
+        }
 
-        seekBar.addEventListener('click', (e) => {
-            const bar = seekBar.getBoundingClientRect();
-            console.log('bar:', bar);
-            const clickXPosition = e.clientX - bar.x;
-            console.log('e:', e);
-            console.log('e.clientX:', e.clientX);
-            console.log('clickXPosition:', clickXPosition);
-            //Round time in seconds to three decimals
-            const newTime = Math.round(clickXPosition / bar.width * audioPlayer.duration * 1000 ) / 1000;
-            console.log(newTime);
-            audioPlayer.currentTime = newTime;
-        });
+        if(stopButton) {
+            stopButton.addEventListener('click', () => {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+            });
+        }
 
-        //Couple seek bar width to current time
-        audioPlayer.addEventListener('timeupdate', () => {
-            seekBarEllapsed.style.width = audioPlayer.currentTime / audioPlayer.duration * 100 + "%";
-        })
+        if(seekBar){
+            seekBar.addEventListener('click', (e) => {
+                const bar = seekBar.getBoundingClientRect();
+                console.log('bar:', bar);
+                const clickXPosition = e.clientX - bar.x;
+                console.log('e:', e);
+                console.log('e.clientX:', e.clientX);
+                console.log('clickXPosition:', clickXPosition);
+                //Round time in seconds to three decimals
+                const newTime = Math.round(clickXPosition / bar.width * audioPlayer.duration * 1000 ) / 1000;
+                console.log(newTime);
+                audioPlayer.currentTime = newTime;
+            });
+        }
+
+        if(seekBarEllapsed){
+            //Couple seek bar width to current time
+            audioPlayer.addEventListener('timeupdate', () => {
+                seekBarEllapsed.style.width = audioPlayer.currentTime / audioPlayer.duration * 100 + "%";
+            })
+        }
+
         resolve();
     } );
 }

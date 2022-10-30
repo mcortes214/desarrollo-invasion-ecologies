@@ -99,11 +99,11 @@ const App = {
                 selector: '.js-close-modal',
                 type: 'click',
                 callbackFunction: (e) => {
-                    e.preventDefault();
                     const target = e.target;
-                    const modalName = target.dataset.modalName;
                     //Do something only if we click exactly on the target
                     if(target.classList.contains('js-close-modal')){
+                        e.preventDefault();
+                        const modalName = target.dataset.modalName;
                         App.modalManager.hideModal(modalName);
                     }
                 },
@@ -118,16 +118,9 @@ const App = {
 App.aframeScene = document.querySelector('a-scene');
 App.preloader = document.querySelector('#app-preloader');
 
+
 //Wanderers
 App.wanderers = new Wanderers('.wanderer');
-
-
-App.aframeScene.addEventListener('loaded', () => {
-    //Esperar 1 segundo más y liberar overlay
-    setTimeout(() => {
-        App.StateComponents.changeState(App.preloader, 'overlay', 'default');
-    });
-});
 
 App.StateComponents.add('overlay', {
     stateClasses: {
@@ -135,6 +128,22 @@ App.StateComponents.add('overlay', {
         'active': ['view-fade-in--visible', 'view-togglable-pointer-events--active'],
     }
 });
+
+App.aframeScene.addEventListener('loaded', () => {
+    console.log('a-frame loaded');
+    //Esperar 1 segundo más y liberar overlay
+    setTimeout(() => {
+        console.log('releasing overlay in 1 second');
+        App.StateComponents.changeState(App.preloader, 'overlay', 'default');
+    }, 1000);
+});
+
+//O, si no se dispara el evento "loaded", liberar overlay igual después de 5 segundos
+setTimeout(() => {
+    console.log('a-frame not loaded after 5 seconds - bailing and releasing overlay');
+    App.StateComponents.changeState(App.preloader, 'overlay', 'default');
+}, 5000);
+
 
 //Crear y cargar primer modal de presentación
 

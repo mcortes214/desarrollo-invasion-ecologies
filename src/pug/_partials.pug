@@ -12,17 +12,16 @@
 
 //- Modales
 
-mixin partials_modal(options, block)
+//- 1- general modal templates
+
+mixin partials_modal_outer-structure(options, block)
     //- #popup-main.view-togglable-pointer-events.view-fade-in
     #popup-main.u-transition-04s.js-state-components(
         data-component-name="overlay"
         data-component-state="default"
     )
-        - let palette;
         - let modalName = options.name;
-        - if(options.palette === "material") palette = 'props-palette-material'
-        - if(options.palette === "fluid") palette = 'props-palette-fluid'
-        div(class=palette)
+        div.props-palette-fluid
             .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal(
                 data-modal-name=modalName
             )
@@ -30,17 +29,20 @@ mixin partials_modal(options, block)
                     -if(block)
                         block
 
-mixin partials_modal--mariela(options, block)
+
+//-ex partials_modal--mariela
+mixin partials_modal--grow(options, block)
     -let modalName = options.name
-    +partials_modal({palette: 'fluid', name: modalName})
+    +partials_modal_outer-structure({palette: 'fluid', name: modalName})
         a.js-close-modal(data-modal-name=modalName) [X Cerrar]
         article.content
             - if (block)
                 block
 
-mixin partials_modal--ana(options, block)
+//-ex partials_modal--fixed
+mixin partials_modal--fixed(options, block)
     -let modalName = options.name
-    +partials_modal({palette: 'fluid', name: modalName})
+    +partials_modal_outer-structure({palette: 'fluid', name: modalName})
         .popup-content-wrapper.l-flex.u-height-100.u-width-100
             .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
 
@@ -53,7 +55,7 @@ mixin partials_modal--ana(options, block)
 
 mixin partials_modal--first-text(options, block)
     - let modalName = options.name
-    +partials_modal({palette: 'fluid', name: modalName})
+    +partials_modal_outer-structure({palette: 'fluid', name: modalName})
         +partials_first-text-wrapper(modalName)
             - if (block)
                 block
@@ -179,9 +181,11 @@ mixin partials_sea-figure(options)
         )
 
 
+//- Media Players
 
-mixin partials_test-audio()
-    audio.u-display-none.audio-player.voice-over(src="audio/voice-over.mp3" preload="metadata" controls="false")
+
+mixin partials_audio-player(audioUrl)
+    audio.u-display-none.audio-player.voice-over(src=audioUrl preload="metadata" controls="false")
     .player-progress.u-cursor-pointer.l-abs.u-width-100.u-height.u-background-color(
         style="--h: 5px; --b: var(--color-primary)"
         data-audio-player=".voice-over" data-audio-player-behavior="progress"
@@ -193,3 +197,7 @@ mixin partials_test-audio()
         img.u-cursor-pointer.audio-control(src="img/icon-play.svg", alt="Play" data-audio-player=".voice-over" data-audio-player-behavior="play")
         img.u-cursor-pointer.audio-control(src="img/icon-pause.svg", alt="Pause" data-audio-player=".voice-over" data-audio-player-behavior="pause")
         img.u-cursor-pointer.audio-control(src="img/icon-stop.svg", alt="Stop" data-audio-player=".voice-over" data-audio-player-behavior="stop")
+
+mixin partials_video-player(videoUrl)
+    //- video.video-player.u-pointer-events-none.u-max-width-100.u-height-100.u-object-position-center(src=videoUrl preload="metadata")
+    video.video-player.u-cursor-pointer.u-max-width-100.u-height-100.u-object-position-center(src=videoUrl preload="metadata")

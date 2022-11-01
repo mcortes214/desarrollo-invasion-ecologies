@@ -40,7 +40,7 @@ a-scene(vr-mode-ui="enabled: false"
     //- a-light(type="point" intensity="1" distance="50" decay="3" position="0 0 0")
 
 
-    //- Círculos Gabi -- PILOTO DE NUEVO SISTEMA DE MODALES
+    //- Figuras Gabriela
     -
         let imagenesGabi = [
             {
@@ -91,36 +91,47 @@ a-scene(vr-mode-ui="enabled: false"
     })
 
 
-    //- //- Círculos Mariela
+    //- Figuras Mariela
 
     //- - const sufijosLinksGrandesMariela = ['A', 'B', 'C', 'D'];
     //- - const sufijosLinksChicosMariela = ['A1', 'A2', 'A3', 'A4', 'B1', 'C1', 'C2', 'D1', 'E1', 'E2'];
 
-    //- No hay punto de entrada general, los X1 son los puntos de entrada
-    //- - const sufijosLinksGrandesMariela = ['A1', 'B1', 'C1', 'D1', 'E1'];
-    - const sufijosLinksChicosMariela = ['A2', 'A3', 'A4', 'C2', 'E2'];
 
+    //- A1 y A3 - presentación
+    +partials_new-sea-figure({
+        classes: ['icono-mariela'],
+        image: { src: '#mariela-lorita', aspectRatio: 1.786 },
+        contentLoader: {
+            link: `contents/presentacion-01.html`,
+            modalName: `presentacion-01`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    +partials_new-sea-figure({
+        classes: ['icono-mariela'],
+        image: { src: '#mariela-pluma', aspectRatio: 1.056 },
+        contentLoader: {
+            link: `contents/presentacion-04.html`,
+            modalName: `presentacion-04`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    //- No hay punto de entrada general, los X1 son los puntos de entrada
     -
         const botonesMarielaLoritos = [
             {
-                fileSuffix: 'A1',
-                scriptsUrl: '/js/scripts/voice-over-player.js'
-            },
-            {
                 fileSuffix: 'B1',
-                scriptsUrl: '/js/scripts/voice-over-player.js'
             },
             {
                 fileSuffix: 'C1',
-                scriptsUrl: '/js/scripts/voice-over-player.js'
             },
             {
                 fileSuffix: 'D1',
-                scriptsUrl: '/js/scripts/voice-over-player.js'
             },
             {
                 fileSuffix: 'E1',
-                scriptsUrl: '/js/scripts/voice-over-player.js'
             }
         ];
 
@@ -137,16 +148,51 @@ a-scene(vr-mode-ui="enabled: false"
             wandererAnimation: { direction: 'right' }
         })
 
-    - for (let sufijo of sufijosLinksChicosMariela)
+    //- Plumitas
+    //- - const sufijosLinksChicosMariela = ['A2', 'A3', 'A4', 'C2', 'E2'];
+    -
+        const botonesMarielaPlumitas = [
+            {
+                fileSuffix: 'A2',
+                scriptsUrl: '/js/scripts/audio-player.js'
+            },
+            {
+                fileSuffix: 'A4',
+                scriptsUrl: '/js/scripts/video-player.js'
+            },
+            {
+                fileSuffix: 'A5',
+                scriptsUrl: '/js/scripts/video-player.js'
+            },
+            {
+                fileSuffix: 'C2',
+            },
+            {
+                fileSuffix: 'E2',
+            },
+        ];
+    - for (let boton of botonesMarielaPlumitas)
         +partials_new-sea-figure({
             classes: ['icono-mariela'],
             image: { src: '#mariela-pluma', aspectRatio: 1.056 },
             contentLoader: {
-                link: `contents/mariela-${sufijo}.html`,
-                modalName: `modal-mariela-${sufijo}`,
-                },
+                link: `contents/mariela-${boton.fileSuffix}.html`,
+                modalName: `modal-mariela-${boton.fileSuffix}`,
+                script: boton.scriptsUrl,
+            },
             wandererAnimation: { direction: 'right' }
         })
+
+    //- - for (let sufijo of sufijosLinksChicosMariela)
+    //-     +partials_new-sea-figure({
+    //-         classes: ['icono-mariela'],
+    //-         image: { src: '#mariela-pluma', aspectRatio: 1.056 },
+    //-         contentLoader: {
+    //-             link: `contents/mariela-${sufijo}.html`,
+    //-             modalName: `modal-mariela-${sufijo}`,
+    //-             },
+    //-         wandererAnimation: { direction: 'right' }
+    //-     })
 
     //- //- Test texto animado
     //- +partials_new-sea-figure({

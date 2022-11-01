@@ -21,12 +21,12 @@ files.writeFile(__dirname + '/dist/index.html', pug.renderFile(pageSrcPath + 'in
 const modalSrcPath = __dirname + '/src/pug/modals/';
 const outputPath = __dirname + '/dist/contents/';
 const modalFilenames = [
-    {fileName: 'mariela-A1', folder: 'mariela/'},
+    //A1 y A3 son links a modales de presentación
     {fileName: 'mariela-A2', folder: 'mariela/'},
-    {fileName: 'mariela-A3', folder: 'mariela/'},
     {fileName: 'mariela-A4', folder: 'mariela/'},
     {fileName: 'mariela-A5', folder: 'mariela/'},
     {fileName: 'mariela-B1', folder: 'mariela/'},
+    //B2 es un link a un modal de presentación
     {fileName: 'mariela-C1', folder: 'mariela/'},
     {fileName: 'mariela-C2', folder: 'mariela/'},
     {fileName: 'mariela-D1', folder: 'mariela/'},

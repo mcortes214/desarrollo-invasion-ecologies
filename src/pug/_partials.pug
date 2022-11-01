@@ -15,7 +15,6 @@
 //- 1- general modal templates
 
 mixin partials_modal_outer-structure(options, block)
-    //- #popup-main.view-togglable-pointer-events.view-fade-in
     #popup-main.u-transition-04s.js-state-components(
         data-component-name="overlay"
         data-component-state="default"
@@ -39,15 +38,13 @@ mixin partials_modal--grow(options, block)
             - if (block)
                 block
 
-//-ex partials_modal--fixed
+//-ex partials_modal--ana
 mixin partials_modal--fixed(options, block)
     -let modalName = options.name
     +partials_modal_outer-structure({palette: 'fluid', name: modalName})
         .popup-content-wrapper.l-flex.u-height-100.u-width-100
             .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
-
                 a.js-close-modal(data-modal-name=modalName style="grid-row: 1/2") [X Cerrar]
-
                 .l-flex.l-abs.u-height-100.u-width-100(style="grid-row: 2/3")
                     - if(block)
                         block

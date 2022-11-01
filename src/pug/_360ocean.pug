@@ -26,6 +26,7 @@ a-scene(vr-mode-ui="enabled: false"
         img(id="gabriela-botella" src="img/gabriela_botella.png")
         img(id="gabriela-plastiaglomerados" src="img/gabriela_plastiaglomerados.png")
         img(id="gabriela-bolsa" src="img/gabriela_bolsa.png")
+        img(id="gabriela-zooplankton" src="img/gabriela_zooplankton.png")
 
         img(id="circulo-violeta" src="img/circulo-violeta.png")
         img(id="circulo-rojo" src="img/circulo-rojo.png")
@@ -63,8 +64,13 @@ a-scene(vr-mode-ui="enabled: false"
                 aspectRatio: 0.988,
                 direction: 'right',
             },
+            {
+                id: 'gabriela-zooplankton',
+                aspectRatio: 1.368,
+                direction: 'left',
+            },
         ];
-    - for (let i=0; i < 4; i++)
+    - for (let i=0; i < imagenesGabi.length; i++)
         +partials_new-sea-figure({
             classes: ['icono-gabriela'],
             image: {
@@ -78,17 +84,17 @@ a-scene(vr-mode-ui="enabled: false"
             wandererAnimation: { direction: imagenesGabi[i].direction }
         })
 
-    //- Test 3D
-    +partials_new-sea-figure({
-        classes: ['icono-gabriela'],
-        image: { src: '#circulo-rojo' },
-        contentLoader: {
-            link: `contents/gabriela-05.html`,
-            modalName: `modal-gabriela-05`,
-            script: '/js/scripts/testScene.js',
-        },
-        wandererAnimation: { direction: 'left' }
-    })
+    //- //- Test 3D
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-gabriela'],
+    //-     image: { src: '#circulo-rojo' },
+    //-     contentLoader: {
+    //-         link: `contents/gabriela-05.html`,
+    //-         modalName: `modal-gabriela-05`,
+    //-         script: '/js/scripts/testScene.js',
+    //-     },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
 
 
     //- Figuras Mariela
@@ -97,7 +103,8 @@ a-scene(vr-mode-ui="enabled: false"
     //- - const sufijosLinksChicosMariela = ['A1', 'A2', 'A3', 'A4', 'B1', 'C1', 'C2', 'D1', 'E1', 'E2'];
 
 
-    //- A1 y A3 - presentación
+    //- A1, A3 - presentación
+    //-A1
     +partials_new-sea-figure({
         classes: ['icono-mariela'],
         image: { src: '#mariela-lorita', aspectRatio: 1.786 },
@@ -108,6 +115,7 @@ a-scene(vr-mode-ui="enabled: false"
         wandererAnimation: { direction: 'right' }
     })
 
+    //-A3
     +partials_new-sea-figure({
         classes: ['icono-mariela'],
         image: { src: '#mariela-pluma', aspectRatio: 1.056 },
@@ -149,7 +157,19 @@ a-scene(vr-mode-ui="enabled: false"
         })
 
     //- Plumitas
-    //- - const sufijosLinksChicosMariela = ['A2', 'A3', 'A4', 'C2', 'E2'];
+
+
+    //-B2 - Presentación
+    +partials_new-sea-figure({
+        classes: ['icono-mariela'],
+        image: { src: '#mariela-pluma', aspectRatio: 1.056 },
+        contentLoader: {
+            link: `contents/presentacion-07.html`,
+            modalName: `presentacion-07`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
     -
         const botonesMarielaPlumitas = [
             {

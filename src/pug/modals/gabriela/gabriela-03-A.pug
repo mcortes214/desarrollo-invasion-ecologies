@@ -2,11 +2,8 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal({palette: 'fluid', name: 'modal-gabriela-03-A'})
-    a.js-close-modal(data-modal-name='modal-gabriela-03-A') [X Cerrar]
-    article.content
-        h1 Serie 03 A
-        p Serie 03 A - Texto-problemática
-        ul
-            li
-                a.js-load-content(data-modal-name="modal-gabriela-03" href="contents/gabriela-03.html") Volver a nodo principal (serie 03)
+- let name = 'modal-gabriela-03-A';
+
++partials_modal--grow({palette: 'fluid', name: name})
+    - let tituloTemporal = name.split('-').join(' ');
+    h1=tituloTemporal

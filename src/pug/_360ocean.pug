@@ -48,6 +48,7 @@ a-scene(vr-mode-ui="enabled: false"
                 id: 'gabriela-red',
                 aspectRatio: 3.1316,
                 direction: 'left',
+                script: '/js/scripts/gabriela-01-A.js',
             },
             {
                 id: 'gabriela-botella',
@@ -78,8 +79,9 @@ a-scene(vr-mode-ui="enabled: false"
                 aspectRatio: `${imagenesGabi[i].aspectRatio}`
                 },
             contentLoader: {
-                link: `contents/gabriela-0${i+1}.html`,
-                modalName: `modal-gabriela-0${i+1}`,
+                link: `contents/gabriela-0${i+1}-A.html`,
+                modalName: `modal-gabriela-0${i+1}-A`,
+                script: imagenesGabi[i].script,
             },
             wandererAnimation: { direction: imagenesGabi[i].direction }
         })
@@ -288,11 +290,11 @@ a-scene(vr-mode-ui="enabled: false"
     +partials_new-sea-figure({
         classes: ['icono-ana'],
         image: { src: '#ana-ave-chiquito', aspectRatio: 1.321 },
-        wandererAnimation: { direction: 'right' }
+        wandererAnimation: { direction: 'left' }
     })
 
     +partials_new-sea-figure({
         classes: ['icono-ana'],
         image: { src: '#ana-alga-chiquito', aspectRatio: 1.433 },
-        wandererAnimation: { direction: 'right' }
+        wandererAnimation: { direction: 'left' }
     })

@@ -19,7 +19,6 @@ const afterInsert = () => {
         const videoPlayer = document.querySelector('.video-player');
         // const playPauseOverlay = document.querySelector('.video-control[data-video-player-behavior="play-pause"]');
 
-        videoPlayer.style.opacity = 0.5;
         videoPlayer.style.transition = '0.4s';
 
         videoPlayer.addEventListener('click', () => {
@@ -32,6 +31,9 @@ const afterInsert = () => {
                 videoPlayer.style.opacity = 0.5;
             }
         });
+
+        videoPlayer.play();
+
         resolve();
     } );
 }

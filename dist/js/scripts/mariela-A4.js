@@ -43,6 +43,8 @@ function drawPoint(ctx, x, y) {
     ctx.fill();
 }
 
+
+
 function calculateScreenValues(canvas) {
     let canvasRect = canvas.getBoundingClientRect();
     let canvasWidth = canvasRect.width;
@@ -64,7 +66,30 @@ function calculateScreenValues(canvas) {
     return { objectWidth, objectHeight, canvasOffsetX, canvasOffsetY, letterboxX, letterboxY };
 }
 
+function drawOnMaskCanvas(e) {
+    //Scale coordinates from actual object width to intrinsic width for canvas drawing
+    let scaledX = map(e.clientX, objectWidth, canvasIntrinsicWidth);
+    let scaledY = map(e.clientY, objectHeight, canvasIntrinsicHeight);
+    //- Offsets -
+    let scaledXOffset = map(canvasOffsetX, objectWidth, canvasIntrinsicWidth);
+    let scaledYOffset = map(canvasOffsetY, objectHeight, canvasIntrinsicHeight);
+    //- Letterboxes -
+    let scaledLetterboxX = map(letterboxX, objectWidth, canvasIntrinsicWidth);
+    let scaledLetterboxY = map(letterboxY, objectHeight, canvasIntrinsicHeight);
 
+    //- End values for X and Y
+    let x = scaledX - scaledXOffset - scaledLetterboxX;
+    let y = scaledY - scaledYOffset - scaledLetterboxY;
+
+    console.log('drawing');
+
+    window.requestAnimationFrame(() => {
+        drawPoint(mctx, x, y);
+    });
+}
+
+
+// ----- Exported callbacks
 
 const afterInsert = () => {
     return new Promise( (resolve) => {
@@ -104,26 +129,9 @@ const afterInsert = () => {
             drawPoster(pctx);
         });
 
-        //2.2 - Set up mouse events for mask canvas
-        document.addEventListener('mousemove', (e) => {
-            //Scale coordinates from actual object width to intrinsic width for canvas drawing
-            let scaledX = map(e.clientX, objectWidth, canvasIntrinsicWidth);
-            let scaledY = map(e.clientY, objectHeight, canvasIntrinsicHeight);
-            //- Offsets -
-            let scaledXOffset = map(canvasOffsetX, objectWidth, canvasIntrinsicWidth);
-            let scaledYOffset = map(canvasOffsetY, objectHeight, canvasIntrinsicHeight);
-            //- Letterboxes -
-            let scaledLetterboxX = map(letterboxX, objectWidth, canvasIntrinsicWidth);
-            let scaledLetterboxY = map(letterboxY, objectHeight, canvasIntrinsicHeight);
-
-            //- End values for X and Y
-            let x = scaledX - scaledXOffset - scaledLetterboxX;
-            let y = scaledY - scaledYOffset - scaledLetterboxY;
-
-            window.requestAnimationFrame(()=> {
-                drawPoint(mctx, x, y);
-            })
-        })
+        //2.2 - Set up mouse and touch events for mask canvas
+        document.addEventListener('mousemove', drawOnMaskCanvas);
+        document.addEventListener('touchmove', drawOnMaskCanvas);
 
         //2.3 - Begin scene animation loop
         window.requestAnimationFrame(() => {
@@ -135,6 +143,16 @@ const afterInsert = () => {
     } );
 }
 
-export default { afterInsert };
+const beforeRemove = () => {
+    return new Promise((resolve) => {
+        document.removeEventListener('mousemove', drawOnMaskCanvas);
+        document.removeEventListener('touchmove', drawOnMaskCanvas);
+        resolve();
+    });
+}
+
+export default { afterInsert, beforeRemove };
+
+
 
 

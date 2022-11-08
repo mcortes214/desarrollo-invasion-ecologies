@@ -67,9 +67,14 @@ function calculateScreenValues(canvas) {
 }
 
 function drawOnMaskCanvas(e) {
+
+    //Check if e.touches exists - distinguish between mouse and touch events
+    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
     //Scale coordinates from actual object width to intrinsic width for canvas drawing
-    let scaledX = map(e.clientX, objectWidth, canvasIntrinsicWidth);
-    let scaledY = map(e.clientY, objectHeight, canvasIntrinsicHeight);
+    let scaledX = map(clientX, objectWidth, canvasIntrinsicWidth);
+    let scaledY = map(clientY, objectHeight, canvasIntrinsicHeight);
     //- Offsets -
     let scaledXOffset = map(canvasOffsetX, objectWidth, canvasIntrinsicWidth);
     let scaledYOffset = map(canvasOffsetY, objectHeight, canvasIntrinsicHeight);
@@ -81,7 +86,7 @@ function drawOnMaskCanvas(e) {
     let x = scaledX - scaledXOffset - scaledLetterboxX;
     let y = scaledY - scaledYOffset - scaledLetterboxY;
 
-    console.log('drawing');
+    console.log('drawing:', x, y);
 
     window.requestAnimationFrame(() => {
         drawPoint(mctx, x, y);

@@ -133,9 +133,11 @@ a-scene(vr-mode-ui="enabled: false"
         const botonesMarielaLoritos = [
             {
                 fileSuffix: 'B1',
+                scriptsUrl: '/js/scripts/audio-player.js'
             },
             {
                 fileSuffix: 'C1',
+                scriptsUrl: '/js/scripts/video-player.js'
             },
             {
                 fileSuffix: 'D1',
@@ -226,6 +228,8 @@ a-scene(vr-mode-ui="enabled: false"
 
     //- //- Figuras Ana
 
+    //- Incorporar de nuevo esta línea al contentLoader de esta figura:
+    //- script: `/js/scripts/draggable.js`,
     +partials_new-sea-figure({
         classes: ['icono-ana'],
         image: { src: '#ana-ojo', aspectRatio: 0.884 },

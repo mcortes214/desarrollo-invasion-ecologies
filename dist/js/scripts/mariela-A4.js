@@ -28,10 +28,7 @@ const drawScene = (ctx) => {
 }
 
 function map(value, rangeIn, rangeOut) {
-    // let rangeIn = maxIn - minIn;
-    // let rangeOut = maxOut - minOut;
     let multiplier = rangeOut / rangeIn;
-    // let output = value * multiplier + (minOut - minIn);
     let output = value * multiplier;
     return output;
 }
@@ -72,21 +69,19 @@ function drawOnMaskCanvas(e) {
     let clientX = e.touches ? e.touches[0].clientX : e.clientX;
     let clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    //Scale coordinates from actual object width to intrinsic width for canvas drawing
+    //Scale coordinates from actual object size on screen to intrinsic canvas size for drawing
     let scaledX = map(clientX, objectWidth, canvasIntrinsicWidth);
     let scaledY = map(clientY, objectHeight, canvasIntrinsicHeight);
-    //- Offsets -
+    //- and offsets,
     let scaledXOffset = map(canvasOffsetX, objectWidth, canvasIntrinsicWidth);
     let scaledYOffset = map(canvasOffsetY, objectHeight, canvasIntrinsicHeight);
-    //- Letterboxes -
+    //- and letterboxes
     let scaledLetterboxX = map(letterboxX, objectWidth, canvasIntrinsicWidth);
     let scaledLetterboxY = map(letterboxY, objectHeight, canvasIntrinsicHeight);
 
     //- End values for X and Y
     let x = scaledX - scaledXOffset - scaledLetterboxX;
     let y = scaledY - scaledYOffset - scaledLetterboxY;
-
-    console.log('drawing:', x, y);
 
     window.requestAnimationFrame(() => {
         drawPoint(mctx, x, y);

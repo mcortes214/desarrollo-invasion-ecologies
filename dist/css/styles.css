@@ -300,6 +300,10 @@ h1 {
   color: var(--color-primary);
 }
 
+.decoration-accent-outline {
+  outline: 1px solid var(--color-accent);
+}
+
 .l-flex {
   --j: center;
   --a: center;

@@ -39,7 +39,7 @@ const removeListener = (element, type, callback) => {
 const eventIsReleasingDrag = (event) => eventMap.release.includes(event.type);
 
 //Get target in both desktop and mobile
-const getTarget = (event) => event.touches ? event.touches[0].target : event.target;
+const getTarget = (event) => event.touches ? event.changedTouches[0].target : event.target;
 
 
 
@@ -54,6 +54,7 @@ const toggleDraggingState = (event) => {
     event.preventDefault();
     const target = getTarget(event);
     
+    console.log(event);
     if ( eventIsReleasingDrag(event) ) {
         target.classList.remove(draggingClass);
         return;
@@ -69,13 +70,19 @@ const abortAllDraggingMotion = () => {
     }
 }
 
-const initPosition = (element) => {
+const initializePosition = (element) => {
     if (!element.dataset.xPosition) { element.dataset.xPosition = 0; }
     if (!element.dataset.yPosition) { element.dataset.yPosition = 0; }
 }
 
+const setupInitialElementPosition = (element) => {
+    const rect = element.getBoundingClientRect();
+    element.dataset.initialPositionX = rect.x + rect.width/2;
+    element.dataset.initialPositionY = rect.y + rect.height/2;
+}
+
 const repositionElement = (element) => {
-    initPosition(element);
+    initializePosition(element);
     element.style.transform = `translate(${element.dataset.xPosition}px, ${element.dataset.yPosition}px)`;
 }
 
@@ -83,16 +90,20 @@ const drag = (event) => {
     event.preventDefault();
     const target = getTarget(event);
     //early returns
-    if (!elementIsDragging(target)) {
-        target.style.zIndex = 0;
-        return;
-    }
+    if (!elementIsDragging(target)) { return; }
     if (!mouseIsInsideDraggingContext(event)) { return; }
     //Drag
-    target.style.zIndex = 10000;
-    initPosition(target);
-    target.dataset.xPosition = parseInt(target.dataset.xPosition) + event.movementX;
-    target.dataset.yPosition = parseInt(target.dataset.yPosition) + event.movementY;
+    initializePosition(target);
+    let initialX = target.dataset.initialPositionX;
+    let initialY = target.dataset.initialPositionY;
+    let mouseX = event.touches ? event.touches[0].clientX : event.clientX;
+    let mouseY = event.touches ? event.touches[0].clientY : event.clientY;
+    let newX =  mouseX - initialX;
+    let newY = mouseY - initialY;
+    target.dataset.xPosition = newX;
+    target.dataset.yPosition = newY;
+    // target.dataset.xPosition = parseInt(target.dataset.xPosition) + event.movementX;
+    // target.dataset.yPosition = parseInt(target.dataset.yPosition) + event.movementY;
     repositionElement(target);
 }
 
@@ -122,6 +133,7 @@ const setupDraggingContext = () => {
 const setupDraggableItems = () => {
     draggableElements = document.querySelectorAll(`.${draggableClass}`);
     for (let element of draggableElements) {
+        setupInitialElementPosition(element);
         element.style.cursor = 'pointer';
         addDragEvents(element);
         repositionElement(element);
@@ -148,6 +160,12 @@ const afterInsert = () => {
     return new Promise((resolve) => {
         setupDraggingContext();
         setupDraggableItems();
+        //TODO: Refactor?
+        // window.addEventListener('resize', () => {
+        //     for (let element of draggableElements) {
+        //         setupInitialElementPosition(element);
+        //     }
+        // });
         resolve();
     });
 }

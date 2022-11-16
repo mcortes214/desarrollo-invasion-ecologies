@@ -167,6 +167,10 @@ h1 {
   width: 100%;
 }
 
+.u-width-25 {
+  width: 25%;
+}
+
 @media screen and (min-width: 800px) {
   .u-desktop-width-50 {
     width: 50%;

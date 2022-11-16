@@ -230,13 +230,13 @@ a-scene(vr-mode-ui="enabled: false"
     //- //- Figuras Ana
 
     //- Incorporar de nuevo esta línea al contentLoader de esta figura:
-    //- script: `/js/scripts/draggable.js`,
     +partials_new-sea-figure({
         classes: ['icono-ana'],
         image: { src: '#ana-ojo', aspectRatio: 0.884 },
         contentLoader: {
             link: `contents/ana-01.html`,
             modalName: `modal-ana-01`,
+            script: `/js/scripts/draggable.js`,
         },
         wandererAnimation: { direction: 'right' }
     })

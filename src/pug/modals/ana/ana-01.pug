@@ -2,12 +2,15 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal--grow({palette: 'fluid', name: 'modal-ana-01'})
-    h1 Especies cyborgs
-    //- PILOTO draggable.js
-    .div.u-width-100.u-height-100.dragging-context
-    img.img-contain.draggable.shape-popup.u-display-block.u-margin-auto(src="img/ana_ojo.png")
-    p [Rompecabezas]
++partials_modal--fixed({palette: 'fluid', name: 'modal-ana-01'})
+    div.u-height-100.u-width-100
+        h1 Especies cyborgs
+        //- PILOTO draggable.js
+        .div.u-width-100.u-height-100.dragging-context
+            img.draggable(src="img/ana-ojo-A.png")
+            img.draggable(src="img/ana-ojo-B.png")
+            img.draggable(src="img/ana-ojo-C.png")
+        p [Rompecabezas]
     //- include ../../../assets/ave.svg
 
 

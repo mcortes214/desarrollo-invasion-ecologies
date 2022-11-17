@@ -6,6 +6,7 @@
   --color-secondary: #f5e7d3;
   --color-secondary-tr: rgba(245,231,211,0.7);
   --color-accent: #bf5161;
+  --color-accent-900: rgba(191,81,97,0.15);
   --s1: 1em;
   --s2: 2em;
   --s3: 3em;
@@ -31,6 +32,10 @@ a:active {
   font-family: inherit;
   cursor: pointer;
   text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }
 
 h1 {
@@ -64,6 +69,14 @@ h1 {
 
 .u-background-color-black-tr {
   background-color: var(--color-black-tr);
+}
+
+.u-background-none {
+  background: none;
+}
+
+.u-border-none {
+  border: none;
 }
 
 .u-color-primary {
@@ -143,6 +156,10 @@ h1 {
   position: absolute;
 }
 
+.u-position-relative {
+  position: relative;
+}
+
 .u-pointer-events-none {
   pointer-events: none;
 }
@@ -183,6 +200,11 @@ h1 {
 
 .u-margin-auto {
   margin: auto;
+}
+
+.u-margin-top {
+  --m: 1em;
+  margin-top: var(--m);
 }
 
 .u-transform-origin-center {
@@ -300,8 +322,21 @@ h1 {
   color: var(--color-primary);
 }
 
+.color-interactive-background {
+  transition: 0.2s;
+  --b: var(--color-accent-900);
+}
+.color-interactive-background:hover {
+  background-color: var(--b);
+}
+
 .decoration-accent-outline {
   outline: 1px solid var(--color-accent);
+}
+
+.decoration-unstyled-list {
+  padding-left: 0;
+  list-style: none;
 }
 
 .l-flex {
@@ -328,6 +363,13 @@ h1 {
 }
 .l-abs > * {
   position: absolute;
+}
+
+.l-stack {
+  --s: 1em;
+}
+.l-stack > * + * {
+  margin-top: var(--s);
 }
 
 .l-spacer {

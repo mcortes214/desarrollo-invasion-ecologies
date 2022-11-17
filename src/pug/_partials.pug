@@ -204,3 +204,9 @@ mixin partials_video-player(videoUrl)
 
 mixin partials_left-floated-image(url)
     img.u-width-100.u-desktop-width-50.u-float-left.u-padding-2em(src=url)
+
+
+mixin partials_button-interface(options)
+    -
+        const {name, action} = options;
+    button.u-color-accent.u-background-none.decoration-accent-outline.u-border-none.u-padding-1em.u-display-block.u-width-100.color-interactive-background.u-cursor-pointer(data-action=action)=name

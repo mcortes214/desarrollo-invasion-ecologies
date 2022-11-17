@@ -1,0 +1,33 @@
+include ../../_templates
+include ../../_partials
+include ../../_content
+
++partials_modal--grow({palette: 'fluid', name: 'modal-gabriela-p5-ballenas-app'})
+    .l-stack.u-margin-top(style="--s: 1px")
+        +partials_button-interface({
+            name: 'Ballena n°1',
+            action: 'playBallena1'
+        })
+        +partials_button-interface({
+            name: 'Ballena n°2',
+            action: 'playBallena2'
+        })
+        +partials_button-interface({
+            name: 'Hélice',
+            action: 'playHelice'
+        })
+        +partials_button-interface({
+            name: 'Sonar',
+            action: 'playSonar'
+        })
+        +partials_button-interface({
+            name: 'Exploración Sísmica',
+            action: 'playExploracion'
+        })
+    .p5-container.u-height-100.u-width-100
+    style.
+        .p5-container > canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }

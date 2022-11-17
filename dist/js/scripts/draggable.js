@@ -70,20 +70,30 @@ const abortAllDraggingMotion = () => {
     }
 }
 
-const initializePosition = (element) => {
-    if (!element.dataset.xPosition) { element.dataset.xPosition = 0; }
-    if (!element.dataset.yPosition) { element.dataset.yPosition = 0; }
-}
+// const initializePosition = (element) => {
+//     if (!element.dataset.xPosition) { element.dataset.xPosition = 0; }
+//     if (!element.dataset.yPosition) { element.dataset.yPosition = 0; }
+// }
 
 const setupInitialElementPosition = (element) => {
+    const prevInitialX = parseInt(element.dataset.initialPositionX) ?? 0;
+    const prevInitialY = parseInt(element.dataset.initialPositionY) ?? 0;
+    console.log('previous:', prevInitialX, prevInitialY);
+    //Actualizar posición inicial
     const rect = element.getBoundingClientRect();
     element.dataset.initialPositionX = rect.x + rect.width/2;
     element.dataset.initialPositionY = rect.y + rect.height/2;
+    //TODO: Actualizar xposition e yposition con la diferencia entre initialposition previo y actual
+    //para prevenir saltos después de scroll/resize
+    element.dataset.xPosition += element.dataset.initialPositionX + prevInitialX;
+    element.dataset.yPosition += element.dataset.initialPositionX + prevInitialY;
 }
 
 const repositionElement = (element) => {
-    initializePosition(element);
-    element.style.transform = `translate(${element.dataset.xPosition}px, ${element.dataset.yPosition}px)`;
+    // initializePosition(element);
+    window.requestAnimationFrame(() => {
+        element.style.transform = `translate(${element.dataset.xPosition}px, ${element.dataset.yPosition}px)`;
+    })
 }
 
 const drag = (event) => {
@@ -93,17 +103,15 @@ const drag = (event) => {
     if (!elementIsDragging(target)) { return; }
     if (!mouseIsInsideDraggingContext(event)) { return; }
     //Drag
-    initializePosition(target);
+    // initializePosition(target);
     let initialX = target.dataset.initialPositionX;
     let initialY = target.dataset.initialPositionY;
-    let mouseX = event.touches ? event.touches[0].clientX : event.clientX;
-    let mouseY = event.touches ? event.touches[0].clientY : event.clientY;
+    let mouseX = event.touches ? event.touches[0].pageX : event.pageX;
+    let mouseY = event.touches ? event.touches[0].pageY : event.pageY;
     let newX =  mouseX - initialX;
     let newY = mouseY - initialY;
     target.dataset.xPosition = newX;
     target.dataset.yPosition = newY;
-    // target.dataset.xPosition = parseInt(target.dataset.xPosition) + event.movementX;
-    // target.dataset.yPosition = parseInt(target.dataset.yPosition) + event.movementY;
     repositionElement(target);
 }
 
@@ -160,12 +168,17 @@ const afterInsert = () => {
     return new Promise((resolve) => {
         setupDraggingContext();
         setupDraggableItems();
-        //TODO: Refactor?
-        // window.addEventListener('resize', () => {
-        //     for (let element of draggableElements) {
-        //         setupInitialElementPosition(element);
-        //     }
-        // });
+        //TODO: Revisar, no anda bien
+        window.addEventListener('resize', () => {
+            for (let element of draggableElements) {
+                setupInitialElementPosition(element);
+            }
+        });
+        document.addEventListener('scroll', () => {
+            for (let element of draggableElements) {
+                setupInitialElementPosition(element);
+            }
+        }, true);
         resolve();
     });
 }

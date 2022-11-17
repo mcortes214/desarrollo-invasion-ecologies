@@ -44,6 +44,7 @@ const modalFilenames = [
     {fileName: 'ana-05', folder: 'ana/'},
     {fileName: 'ana-06', folder: 'ana/'},
     {fileName: 'gabriela-01-A', folder: 'gabriela/'},
+    {fileName: 'gabriela-p5-ballenas-app', folder: 'gabriela/'},
     // {fileName: 'gabriela-01-B', folder: 'gabriela/'},
     // {fileName: 'gabriela-01-C', folder: 'gabriela/'},
     {fileName: 'gabriela-02-A', folder: 'gabriela/'},

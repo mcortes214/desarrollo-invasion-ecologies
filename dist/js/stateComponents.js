@@ -7,15 +7,15 @@ class StateComponents {
         }
     }
 
-    initializeAllComponentsOnDOM(){
+    initializeAllComponentsOnDOM(parent=document){
         for (let componentName of Object.keys(this.componentList)) {
-            this._setupInitialStateOnDOM(componentName);
+            this._setupInitialStateOnDOM(componentName, parent);
         }
     }
 
     //Assign base classes (default) and current state classes to all elements linked to this component
-    _setupInitialStateOnDOM(componentName) {
-        let elements = document.querySelectorAll(`.js-state-components[data-component-name=${componentName}]`);
+    _setupInitialStateOnDOM(componentName, parent=document) {
+        let elements = parent.querySelectorAll(`.js-state-components[data-component-name=${componentName}]`);
         for (let el of elements) {
             //Add defaults
             this._changeStateClassesOfElement(el, componentName, 'default', 'add');

@@ -2,11 +2,13 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal--fixed({palette: 'fluid', name: 'modal-gabriela-01-A'})
-    .p5-container.u-height-100.u-width-100
-    style.
-        .p5-container > canvas {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: contain;
-        }
++partials_modal--grow({palette: 'fluid', name: 'modal-gabriela-01-A'})
+    p A través del canto de ballenas, esta interfaz interactiva nos invita a hacer conciencia de la contaminación sonora global en los océanos a causa de la actividad humana y sus efectos en los ecosistemas marinos. 
+    p Apretando y manteniendo las teclas “1”, “2”, “3”, “4” y “5” puedes reproducir distintos sonidos subacuáticos y generar tu propia composición sonora con sonidos subacuáticos. 
+    ul.decoration-unstyled-list
+        li Tecla “1” - Sonido de canto de ballena 1.
+        li Tecla “2” - Sonido de canto de ballena 2.
+        li Tecla “3” - Sonido de una hélice de un barco.
+        li Tecla “4” - Sonido de un sonar submarino.
+        li Tecla “5” - Sonido de exploración sísmica de hidrocarburos.
+    a.js-load-content(data-modal-name="modal-gabriela-p5-ballenas-app" data-scripts="/js/scripts/gabriela-01-A.js" href="contents/gabriela-p5-ballenas-app.html") [ Continuar ]

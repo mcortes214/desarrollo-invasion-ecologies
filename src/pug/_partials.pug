@@ -39,16 +39,37 @@ mixin partials_modal--grow(options, block)
                 block
 
 //-ex partials_modal--ana
+mixin partials_modal--fixed-center(options, block)
+    +partials_modal--fixed(options)
+        +partials_modal--fixed_inner-content({isCentered: true})
+            - if(block)
+                block
+
+mixin partials_modal--fixed-grow(options, block)
+    +partials_modal--fixed(options)
+        +partials_modal--fixed_inner-content({isCentered: false})
+            - if(block)
+                block
+
 mixin partials_modal--fixed(options, block)
     -let modalName = options.name
     +partials_modal_outer-structure({palette: 'fluid', name: modalName})
         .popup-content-wrapper.l-flex.u-height-100.u-width-100
             .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
                 a.js-close-modal(data-modal-name=modalName style="grid-row: 1/2") [X Cerrar]
-                .l-flex.l-abs.u-height-100.u-width-100(style="grid-row: 2/3")
-                    - if(block)
-                        block
+                - if(block)
+                    block
 
+mixin partials_modal--fixed_inner-content(options)
+    -
+        let isCentered = options.isCentered ?? false;
+        let styleString = "grid-row: 2/3";
+        if (! isCentered) {
+            style += "; --a: 'start'";
+        }
+    .l-flex.l-abs.u-height-100.u-width-100(style=styleString)
+        - if(block)
+            block
 
 mixin partials_modal--first-text(options, block)
     - let modalName = options.name
@@ -195,10 +216,35 @@ mixin partials_audio-player(audioUrl)
         img.u-cursor-pointer.audio-control(src="img/icon-pause.svg", alt="Pause" data-audio-player=".voice-over" data-audio-player-behavior="pause")
         img.u-cursor-pointer.audio-control(src="img/icon-stop.svg", alt="Stop" data-audio-player=".voice-over" data-audio-player-behavior="stop")
 
+mixin partials_podcast-audio-player(audioUrl)
+    +partials_audio-player(audioUrl)
+    style.
+        .audio-control {
+            width: 2em;
+        }
+   
 mixin partials_video-player(videoUrl)
     //- video.video-player.u-pointer-events-none.u-max-width-100.u-height-100.u-object-position-center(src=videoUrl preload="metadata")
     video.video-player.u-cursor-pointer.u-max-width-100.u-height-100.u-object-position-center(src=videoUrl preload="metadata")
 
+
+mixin partials_full-size-video-player(videoUrl)
+    video.video-player.u-cursor-pointer.shape-object-cover(src=videoUrl preload="metadata" loop="true")
+
+
+mixin partials_podcast-player(options, block)
+    - const {videoUrl, audioUrl} = options;
+    //- Capa 1
+    +partials_full-size-video-player(videoUrl)
+    //- Capa 1.5: overlay de color
+    div.u-background-color.u-width-100.u-height-100(
+        style="--b: var(--color-secondary)"
+    )
+    //- Capa 2: Contenido scrolleable.
+    .u-overflow-y-scroll.u-max-height-100.u-width-100.u-padding-1em
+        - if(block)
+            block
+        +partials_podcast-audio-player(audioUrl)
 
 
 

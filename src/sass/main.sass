@@ -17,6 +17,7 @@
     //# Color components (.color-)
     //# Decoration components (.decoration-)
     //# Font components (.font-)
+    //# Text components (.text-)
     //# Layout components (.l-)
     //# SVG Overlay Components (.svgo-)
     //# Animation components (.anim-) & keyframes
@@ -164,6 +165,13 @@ h1
 .u-height-inherit
     height: inherit
 
+
+.u-max-height-100
+    max-height: 100%
+
+.u-overflow-hidden
+    overflow: hidden
+
 .u-overflow-y-scroll
     overflow-y: scroll
 
@@ -245,12 +253,12 @@ h1
 .u-transform-translate
     transform: translateX(var(--tx)) translateY(var(--ty))
 
+.u-text-overflow-ellipsis
+  text-overflow: ellipsis
+
 //# Tag-specific utilities (.[tag]-)
 
-.img-contain
-    width: 100%
-    height: 100%
-    object-fit: contain
+
 
 //## COMPONENTS
 //Use to group several properties, contexts, or to manage states and breakpoints of single elements
@@ -324,6 +332,16 @@ h1
     width: 100%
     height: 100vh
 
+.shape-object-contain
+    width: 100%
+    height: 100%
+    object-fit: contain
+
+.shape-object-cover
+    width: 100%
+    height: 100%
+    object-fit: cover
+
 //# Color components (.color-)
 
 .color-dark-bg
@@ -346,6 +364,11 @@ h1
   list-style: none
 
 //# Font components (.font-)
+
+//# Text components (.text-)
+
+.text-block-ellipsis::after
+  content: '...'
 
 //# Layout components (.l-)
 //Possible components: grid, stack

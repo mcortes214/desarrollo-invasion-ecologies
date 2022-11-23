@@ -4,6 +4,13 @@
 //Los nombres de las funciones tienen que ser exactamente estos!
 //Y siempre tienen que devolver promesas
 
+function activateButton(behavior) {
+    const activeButton = document.querySelector('.audio-control.active');
+    if (activeButton) { activeButton.classList.remove('active'); }
+    const newButton = document.querySelector(`.audio-control[data-audio-player-behavior="${behavior}"]`);
+    newButton.classList.add('active');
+}
+
 const afterInsert = () => {
     return new Promise( (resolve) => {
         
@@ -19,15 +26,18 @@ const afterInsert = () => {
 
         playButton.addEventListener('click', () => {
             audioPlayer.play();
+            activateButton('play');
         });
 
         pauseButton.addEventListener('click', () => {
             audioPlayer.pause();
+            activateButton('pause');
         });
 
         stopButton.addEventListener('click', () => {
             audioPlayer.pause();
             audioPlayer.currentTime = 0;
+            activateButton('stop');
         });
 
         seekBar.addEventListener('click', (e) => {

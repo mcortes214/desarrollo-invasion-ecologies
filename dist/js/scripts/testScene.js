@@ -12,6 +12,7 @@ const afterInsert = () => {
             name: 'testScene',
             containerElement: document.querySelector('#js-three-viewport'),
             format: 'obj',
+            // modelPath: 'models/rocket.obj',
             modelPath: 'models/rocket.obj',
             width: document.querySelector('#js-three-viewport').getBoundingClientRect().width,
             height: 600,
@@ -24,6 +25,7 @@ const afterInsert = () => {
 const afterRemove = () => {
     return new Promise((resolve) => {
         console.log('unloading test scene');
+        App.loadedModules.threeJsScenes.clearScenes('testScene');
         resolve();
     });
 }

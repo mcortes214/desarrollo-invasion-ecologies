@@ -33,6 +33,7 @@ class ThreeJsScene {
         this.scene = new THREE.Scene();
         this.light = new THREE.DirectionalLight( 0xffffff, 0.5 );
         this.light.position.z = 10;
+        this.light.intensity = 1.3;
         this.scene.add(this.light);
 
         //Renderer
@@ -50,32 +51,78 @@ class ThreeJsScene {
 
     animation(time) {
         if(this.model){
+            //Solo rotar horizontalmente
             this.model.rotation.y += 0.01;
-            this.model.rotation.x += 0.005;
+            // this.model.rotation.x += 0.005;
         }
         this.renderer.render( this.scene, this.camera );
     }
 
-    loadModelToScene(modelPath, scene) {
-        let objModel;
 
-        const loader = new OBJLoader();
-        const _this = this;
-        loader.load(
-            modelPath,
-            function (object) {
-                console.log('object added');
-                objModel = object;
-                objModel.scale.x = objModel.scale.y = objModel.scale.z = 0.1;
-                objModel.position.y = 0.1;
-                scene.add(object);
-                _this.model = object;
-            },
-            function (error) {
-                console.log(error);
-            }
-        );
-    }
+    //Función nueva (funcional, pero experimental - al final NO se usa)
+    // https://stackoverflow.com/questions/39850083/three-js-objloader-texture
+    // loadModelToScene(modelPath, scene) {
+    //     let objModel;
+    //     const _this = this;
+
+    //     let modelPathParts = modelPath.split('/');
+    //     let modelName = modelPathParts.pop().split('.')[0];
+    //     let resourcePath = modelPathParts.join('/');
+    //     let OBJFile = `${resourcePath}/${modelName}.obj`;
+    //     let MTLFile = `${resourcePath}/${modelName}.mtl`;
+    //     let JPGFile = `${resourcePath}/${modelName}.jpg`;
+
+    //     new THREE.MTLLoader()
+    //     .load(MTLFile, function (materials) {
+    //         materials.preload();
+    //         new THREE.OBJLoader()
+    //             .setMaterials(materials)
+    //             .load(OBJFile, function (object) {
+    //                 console.log('object added');
+    //                 objModel = object;
+    //                 objModel.scale.x = objModel.scale.y = objModel.scale.z = 0.3;
+    //                 objModel.position.y = 0.1;
+
+    //                 var texture = new THREE.TextureLoader().load(JPGFile);           
+    //                 object.traverse(function (child) {   // aka setTexture
+    //                     if (child instanceof THREE.Mesh) {
+    //                         child.material.map = texture;
+    //                     }
+    //                 });
+    //                 scene.add(object);
+    //                 _this.model = object;
+    //             },
+    //             function (error) {
+    //                 console.log(error);
+    //             });
+    //     });
+    // }
+
+
+
+// Función vieja (estable)
+loadModelToScene(modelPath, scene) {
+    let objModel;
+
+    const loader = new OBJLoader();
+    const _this = this;
+    loader.load(
+        modelPath,
+        function (object) {
+            console.log('object added');
+            objModel = object;
+            objModel.scale.x = objModel.scale.y = objModel.scale.z = 0.1;
+            objModel.position.y = 0.1;
+            scene.add(object);
+            _this.model = object;
+        },
+        function (error) {
+            console.log(error);
+        }
+    );
+}
+
+
 }
 
 
@@ -94,8 +141,10 @@ class ThreeJsScenes {
     }
 
     clearScenes(name) {
+        console.log(this.scenes);
         for(let registeredScene in this.scenes){
-            const scene = registeredScene.scene;
+            const scene = this.scenes[registeredScene].scene;
+            console.log('scene:', scene);
             //Remove all objects from scene
             while (scene.children.length > 0){
                 scene.remove(scene.children[scene.children.length - 1]);

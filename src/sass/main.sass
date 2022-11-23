@@ -51,6 +51,12 @@ $breakpoint: 800px //Always use MIN-width -- mobile first
     --s3: 3em
     --s4: 4em
 
+    --font-s1: 1em
+    --font-s2: 1.5em
+    --font-s3: 2em
+    --font-s4: 2.4em
+    --font-s5: 3em
+
 
 //# Reset/basic styles
 
@@ -77,10 +83,12 @@ button
 
 h1
     font-weight: normal
-    font-size: 3em
+    font-size: var(--font-s4)
     letter-spacing: -0.04em
     color: var(--color-accent)
     line-height: 1em
+    @media screen and (min-width: $breakpoint)
+      font-size: var(--font-s5)
 
 *::-webkit-scrollbar
     width: 8px
@@ -139,6 +147,9 @@ h1
 .u-opacity-0
     opacity: 0
 
+.u-opacity-025
+    opacity: 0.25
+
 /* Eliminar o refactorizar. Solo para fines de preview */
 .u-outline-primary
     outline: 1px solid var(--color-primary)
@@ -149,6 +160,14 @@ h1
 .u-padding-2em
     padding: 2em
 
+.u-font-size-s3
+  font-size: var(--font-s3)
+
+.u-font-size-s4
+  font-size: var(--font-s4)
+
+.u-font-size-s5
+  font-size: var(--font-s5)
 
 .u-cursor-pointer
     cursor: pointer
@@ -212,6 +231,9 @@ h1
 .u-max-width-100
     max-width: 100%
 
+.u-margin-1em
+    margin: 1em
+
 .u-margin-auto
   margin: auto
 
@@ -226,6 +248,9 @@ h1
 
 .u-height
     height: var(--h)
+
+.u-width
+    width: var(--w)
 
 .u-top
     top: var(--t)
@@ -365,10 +390,8 @@ h1
 
 //# Font components (.font-)
 
-//# Text components (.text-)
 
-.text-block-ellipsis::after
-  content: '...'
+//# Text components (.text-)
 
 //# Layout components (.l-)
 //Possible components: grid, stack

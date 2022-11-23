@@ -220,7 +220,11 @@ mixin partials_podcast-audio-player(audioUrl)
     +partials_audio-player(audioUrl)
     style.
         .audio-control {
-            width: 2em;
+            width: 2.5em;
+            opacity: 0.75;
+        }
+        .audio-control.active {
+            opacity: 1;
         }
    
 mixin partials_video-player(videoUrl)
@@ -231,15 +235,13 @@ mixin partials_video-player(videoUrl)
 mixin partials_full-size-video-player(videoUrl)
     video.video-player.u-cursor-pointer.shape-object-cover(src=videoUrl preload="metadata" loop="true")
 
+mixin partials_podcast-video-player(videoUrl)
+    video.video-player.u-opacity-025.shape-object-cover(src=videoUrl preload="metadata" loop="true")
 
 mixin partials_podcast-player(options, block)
     - const {videoUrl, audioUrl} = options;
     //- Capa 1
-    +partials_full-size-video-player(videoUrl)
-    //- Capa 1.5: overlay de color
-    div.u-background-color.u-width-100.u-height-100(
-        style="--b: var(--color-secondary)"
-    )
+    +partials_podcast-video-player(videoUrl)
     //- Capa 2: Contenido scrolleable.
     .u-overflow-y-scroll.u-max-height-100.u-width-100.u-padding-1em
         - if(block)
@@ -256,3 +258,12 @@ mixin partials_button-interface(options)
     -
         const {name, action} = options;
     button.u-color-accent.u-background-none.decoration-accent-outline.u-border-none.u-padding-1em.u-display-block.u-width-100.color-interactive-background.u-cursor-pointer(data-action=action)=name
+
+mixin partials_expandable-box(name, block)
+    .js-expandable-box.u-overflow-hidden.u-height.u-transition-04s.u-position-relative(style="--h: 6.6em" data-name=name)
+        .js-expandable-box_inner
+            if(block)
+                block
+    span.js-expandable-box_toggle.u-text-align-center.u-font-size-s3.u-display-block.u-margin-1em.u-cursor-pointer(data-name=name)
+            
+        

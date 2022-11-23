@@ -134,17 +134,21 @@ a-scene(vr-mode-ui="enabled: false"
         const botonesMarielaLoritos = [
             {
                 fileSuffix: 'B1',
-                scriptsUrl: '/js/scripts/audio-player.js'
+                scriptsUrl: '/js/scripts/audio-player.js',
+                image: '#mariela-lorita',
             },
             {
                 fileSuffix: 'C1',
-                scriptsUrl: '/js/scripts/video-player.js'
+                scriptsUrl: '/js/scripts/video-player.js',
+                image: '#mariela-lorita',
             },
             {
                 fileSuffix: 'D1',
+                image: '#mariela-lorita',
             },
             {
                 fileSuffix: 'E1',
+                image: '#mariela-lorita',
             }
         ];
 
@@ -152,7 +156,7 @@ a-scene(vr-mode-ui="enabled: false"
     - for (let boton of botonesMarielaLoritos)
         +partials_new-sea-figure({
             classes: ['icono-mariela'],
-            image: { src: '#mariela-lorita', aspectRatio: 1.786 },
+            image: { src: boton.image, aspectRatio: 1.786 },
             contentLoader: {
                 link: `contents/mariela-${boton.fileSuffix}.html`,
                 modalName: `modal-mariela-${boton.fileSuffix}`,
@@ -179,27 +183,32 @@ a-scene(vr-mode-ui="enabled: false"
         const botonesMarielaPlumitas = [
             {
                 fileSuffix: 'A2',
-                scriptsUrl: '/js/scripts/mariela-A2.js'
+                scriptsUrl: '/js/scripts/mariela-A2.js',
+                image: '#circulo-rojo',
             },
             {
                 fileSuffix: 'A4',
-                scriptsUrl: '/js/scripts/mariela-A4.js'
+                scriptsUrl: '/js/scripts/mariela-A4.js',
+                image: '#mariela-pluma',
             },
             {
                 fileSuffix: 'A5',
-                scriptsUrl: '/js/scripts/video-player.js'
+                scriptsUrl: '/js/scripts/video-player.js',
+                image: '#mariela-pluma',
             },
             {
                 fileSuffix: 'C2',
+                image: '#mariela-pluma',
             },
             {
                 fileSuffix: 'E2',
+                image: '#mariela-pluma',
             },
         ];
     - for (let boton of botonesMarielaPlumitas)
         +partials_new-sea-figure({
             classes: ['icono-mariela'],
-            image: { src: '#mariela-pluma', aspectRatio: 1.056 },
+            image: { src: boton.image, aspectRatio: 1.056 },
             contentLoader: {
                 link: `contents/mariela-${boton.fileSuffix}.html`,
                 modalName: `modal-mariela-${boton.fileSuffix}`,

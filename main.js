@@ -16,6 +16,7 @@ files.writeFile(__dirname + '/dist/css/styles.css', styleRules.css);
 //Renderizar páginas HTML
 const pageSrcPath = __dirname + '/src/pug/pages/';
 files.writeFile(__dirname + '/dist/index.html', pug.renderFile(pageSrcPath + 'index.pug'));
+files.writeFile(__dirname + '/dist/home.html', pug.renderFile(pageSrcPath + 'home.pug'));
 
 //Renderizar modales HTML
 const modalSrcPath = __dirname + '/src/pug/modals/';

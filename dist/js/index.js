@@ -129,30 +129,48 @@ App.StateComponents.add('overlay', {
     }
 });
 
+
+//----- Carga inicial, overlay y modales
+
+let appHasLoaded = false;
+
 App.aframeScene.addEventListener('loaded', () => {
-    console.log('a-frame loaded');
-    //Esperar 1 segundo más y liberar overlay
+    //Si tomó más de 5 segundos para cargar, ignorar
+    if(appHasLoaded) { return };
+    
+    //Si no, esperar 1 segundo más y liberar overlay
     setTimeout(() => {
         console.log('releasing overlay in 1 second');
-        App.StateComponents.changeState(App.preloader, 'overlay', 'default');
+        appHasLoaded = true;
+        initStartSequence();
     }, 1000);
 });
 
-//O, si no se dispara el evento "loaded", liberar overlay igual después de 5 segundos
+//Si nunca se dispara el evento "loaded", liberar overlay igual después de 5 segundos
 setTimeout(() => {
+    //Ignorar si aframe ya cargó
+    if(appHasLoaded) { return };
     console.log('a-frame not loaded after 5 seconds - bailing and releasing overlay');
-    App.StateComponents.changeState(App.preloader, 'overlay', 'default');
+    appHasLoaded = true;
+    initStartSequence();
 }, 5000);
 
 
+function initStartSequence() {
+    App.StateComponents.changeState(App.preloader, 'overlay', 'default');
+    setTimeout(() => {
+        loadIntroModal();
+    }, 3000);
+}
+
 //Crear y cargar primer modal de presentación
 
-const modalName = 'presentacion-01';
-//Crear modal, sin scripts (ya no usa spanify sino pre-baked spans)
-App.modalManager.createModal(modalName, { HTMLUrl: 'contents/presentacion-01.html' });
-App.modalManager.modals[modalName].loadContentAndFunctions()
-.then(() => {
-    App.modalManager.switchToModal(modalName);
-})
-
-
+function loadIntroModal(){
+    const modalName = 'presentacion-01';
+    //Crear modal, sin scripts (ya no usa spanify sino pre-baked spans)
+    App.modalManager.createModal(modalName, { HTMLUrl: 'contents/presentacion-01.html' });
+    App.modalManager.modals[modalName].loadContentAndFunctions()
+    .then(() => {
+        App.modalManager.switchToModal(modalName);
+    })
+}

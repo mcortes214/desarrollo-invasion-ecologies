@@ -240,7 +240,9 @@ mixin partials_podcast-video-player(videoUrl)
 
 mixin partials_podcast-player(options, block)
     - const {videoUrl, audioUrl} = options;
-    //- Capa 1
+    //- Capa 1 fondo sólido
+    .div.u-width-100.u-height-100.u-background-color(style="--b: var(--color-secondary)")
+    //- Capa 1.5 video
     +partials_podcast-video-player(videoUrl)
     //- Capa 2: Contenido scrolleable.
     .u-overflow-y-scroll.u-max-height-100.u-width-100.u-padding-1em

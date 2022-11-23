@@ -3,6 +3,65 @@ include ../_partials
 include ../_content
 
 +templates_index([])
-    .l-abs
-        img.u-width-100.u-height-100vh(src="img/maranimado.gif")
-        a(href="home.html") Entrar
+    img.u-position-fixed.u-width-100.u-height-100vh.u-z-index(src="img/maranimado.gif" style="--z: -1")
+    .u-padding.u-color-light-blue.l-desktop-equal-columns(style="--g: 2em; --p: 4em")
+        article.lang-es
+            h1.u-color-white On Seas, Parrots and Intruders
+            h2 (A Global South contribution to decolonizing the invasion ecologies approach)
+
+            p What are we talking about when we say "Mediterranean" from our Global South situation? How is the image of a spatially distant sea, but with concrete resonances at a geopolitical level throughout history?
+            p We like to see the Mediterranean in its liquid dimension: water-transport, water-exclusion, water-territory, water that distances and brings us closer. Water that connects with the Atlantic mass which, in turn, unveils and on which our south-globality becomes visible.
+            p South-global species (human and non-human) arrive on the shores of the Mediterranean. Among them is the Argentine parrot, a species brought by force and which soon becomes "invasive" in the eyes of the conservationist powers.
+            p The Argentine parrot is for us a metaphor and a pretext to reflect on what it is to be invasive, what is hidden under the conservationist purism, and how to think about new scenarios in which inter contamination, creolization, and dialogue challenge the occluded territories.
+
+            ul
+                li
+                    +partials_credits-item('Idea and Creation: ', 'Colectiva Ecoestéticas: Ana Laura Cantera, Gabriela Munguía, Mariela Yeregui')
+                li
+                    +partials_credits-item('Web design: ', 'Maximiliano Cortés')
+                li 
+                    +partials_credits-item('Image Editor: ', 'Guadalupe Chávez')
+                li
+                    +partials_credits-item('Video Recording and Edition: ', 'Mariana Lombard')
+                li
+                    +partials_credits-item('Testimonies (podcasts and interviews): ', 'Dr Daniel Feierstein, Dr Jeremy Fernando, Dr Avishek Ganguly, Dra. Maia Gattás Vargas, María Eugenia Borsani.')
+                li
+                    +partials_credits-item('Translation: ', 'UNTREF LINGUA')
+                li
+                    +partials_credits-item(
+                        'Quoted texts: ',
+                        'Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F. “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”. -//  Braudel, Fernand. Memorias del Mediterráneo  //  Caluya, Gilbert. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security” // Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P. “Don’t Judge Species on Their Origins”.  // Despret, Vinciane. Living as a Bird. // Escobar, Arturo. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”. // Santos, Boaventura de Sousa. “Introducción: las epistemologías del sur”.. // Spivak, Gayatri Chakravorty.. “Can the Subaltern Speak?” // Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson.  Arts of Living on a Damaged Planet: Ghosts and Monsters of the Anthropocene'
+                    )
+                    
+        article.lang-en
+            h1.u-color-white De Mares, Cotorras e Intrusos
+            h2 (Una contribución desde el Sur Global para decolonizar el enfoque de las ecologías invasivas)
+
+            p ¿De qué hablamos cuando decimos "Mediterráneo" desde nuestro Sur Global? ¿Cómo se configura una imagen de un mar distante espacialmente pero con resonancias concretas a nivel geopolítico a través de la historia?
+            p Nos gusta ver al Mediterráneo en su dimensión líquida: agua-transporte, agua-exclusión, agua-territorio, agua que aleja y que acerca. Agua que conecta con la masa Atlántica que, a su vez, devela y revela y sobre la que se hace visible nuestra sur-globalidad.
+            p A las costas del Mediterráneo llegan especies sur-globales (humanas y no-humanas). Entre ellas, la cotorra Argentina, especie llevada a la fuerza y que poco después se convierte en "invasora" a los ojos de los poderes conservacionistas.
+            p La cotorra Argentina es para nosotros una metáfora y un pretexto para reflexionar sobre qué es ser invasor, qué se esconde bajo el purismo conservacionista y cómo pensar nuevos escenarios en los que la intercontaminación, la creolización y el diálogo desafíen los territorios oclusos.
+
+            ul
+                li
+                    +partials_credits-item('Idea y Creación: ', 'Colectiva Ecoestéticas: Ana Laura Cantera, Gabriela Munguía, Mariela Yeregui')
+                li
+                    +partials_credits-item('Diseño Web: ', 'Maximiliano Cortés')
+                li
+                    +partials_credits-item('Edición de imágenes: ', 'Guadalupe Chávez')
+                li
+                    +partials_credits-item('Registro en video y edición: ', 'Mariana Lombard')
+                li
+                    +partials_credits-item('Testimonios (podcasts y entrevistas): ','Dr Daniel Feierstein, Dr Jeremy Fernando, Dr Avishek Ganguly, María Eugenia Borsani, Dra. Maia Gattás Vargas.')
+                li
+                    +partials_credits-item('Traducciones: ', 'UNTREF LINGUA')
+                li
+                    +partials_credits-item(
+                        'Textos citados: ',
+                        'Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F. “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”.  //  Braudel, Fernand. Memorias del Mediterráneo.  Caluya, Gilbert. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security”.  //  Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P. “Don’t Judge Species on Their Origins”.   //  Despret, Vinciane. Habitar como un pájaro. Modos de hacer y de pensar los territorios.   // Escobar, Arturo. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”.  // Santos, Boaventura de Sousa. “Introducción: las epistemologías del sur”  //  Spivak, Gayatri Chakravorty.. “Can the Subaltern Speak?” //  Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson.  Arts of Living on a Damaged Planet.(Introducción traducida por Mercedes Claus y  Pablo Méndez en el marco de Prácticas artísticas en un planeta en emergencia, Centro Cultural Kirchner)'
+                    )
+
+    a.u-text-align-center.u-display-block.u-width-100.u-color-white.u-font-size-s3.u-padding(
+        href="home.html"
+        style="--p: 0 0 5em 0"
+    ) Entrar/Enter

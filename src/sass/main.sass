@@ -46,6 +46,9 @@ $breakpoint: 800px //Always use MIN-width -- mobile first
     --color-accent: #bf5161
     --color-accent-900: rgba(191,81,97,0.15)
 
+    --color-light-blue: rgb(205, 215, 215)
+    --color-white: rgb(255, 255, 255)
+
     --s1: 1em
     --s2: 2em
     --s3: 3em
@@ -129,6 +132,12 @@ h1
 .u-color-accent
     color: var(--color-accent)
 
+.u-color-light-blue
+    color: var(--color-light-blue)
+
+.u-color-white
+    color: var(--color-white) !important
+
 .u-display-inline-block
   display: inline-block
 
@@ -159,6 +168,9 @@ h1
 
 .u-padding-2em
     padding: 2em
+
+.u-padding-3em
+    padding: 3em
 
 .u-font-size-s3
   font-size: var(--font-s3)
@@ -203,6 +215,9 @@ h1
 .u-position-relative
     position: relative
 
+.u-position-fixed
+    position: fixed
+
 .u-pointer-events-none
     pointer-events: none
 
@@ -233,6 +248,9 @@ h1
 
 .u-margin-1em
     margin: 1em
+
+.u-margin-3em
+    margin: 3em
 
 .u-margin-auto
   margin: auto
@@ -400,10 +418,28 @@ h1
     --j: center
     --a: center
     --d: row
+    --g: 0
     display: flex
     justify-content: var(--j)
     align-items: var(--a)
     flex-direction: var(--d)
+    gap: var(--g)
+
+.l-desktop-equal-columns
+    --j: center
+    --a: start
+    --d: row
+    --g: 0
+    display: flex
+    justify-content: var(--j)
+    align-items: var(--a)
+    flex-direction: var(--d)
+    gap: var(--g)
+    flex-wrap: wrap
+    & > *
+      width: 100%
+    @media screen and (min-width: $breakpoint)
+      flex-wrap: nowrap
 
 .l-grid
     --c: auto

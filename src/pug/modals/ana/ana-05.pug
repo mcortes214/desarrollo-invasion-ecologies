@@ -1,39 +1,27 @@
+//- include ../../_templates
+//- include ../../_partials
+//- include ../../_content
+
+//- //- En contenidos: Contenido B
+
+//- +partials_modal--grow({palette: 'fluid', name: 'modal-ana-05'})
+//-     h1 Sobre los territorios monstruosos
+//-     +partials_left-floated-image("img/ana_alga.png")
+//-     p [Podcast: Maia Gattás Vargas]
+//-     //- include ../../../assets/ave.svg
+
+
 include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal--grow({palette: 'fluid', name: 'modal-ana-05'})
-    h1 Sobre los territorios monstruosos
-    +partials_left-floated-image("img/ana_alga.png")
-    p [Podcast: Maia Gattás Vargas]
-    //- include ../../../assets/ave.svg
-
-
-
-        //- h1 Serie 5
-        //- .l-abs.l-flex.u-padding(style="--p: 30%").u-background-color-black-tr
-        //-     div.u-outline-primary.u-padding-1em.u-top.u-left(
-        //-         style="--t: 10%; --l: 15%"
-        //-     )
-        //-         a.js-load-content(href="ana-5A.html") Contenido 5A (animación partes autónomas)
-
-        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-left(
-        //-         style="--b: 20%; --l: 10%"
-        //-     )
-        //-         a.js-load-content(href="ana-5B.html") Contenido 5B (texto)
-
-        //-     div.u-outline-primary.u-padding-1em.u-top.u-right(
-        //-         style="--t: 20%; --r: 10%"
-        //-     )
-        //-         a.js-load-content(href="ana-5C.html") Contenido 5C (ilustraciones con mismas partes)
-
-        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-right(
-        //-         style="--b: 40%; --r: 10%"
-        //-     )                
-        //-         a.js-load-content(href="ana-5D.html") Contenido 5D (ilustraciones con mismas partes)
-
-        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-right(
-        //-         style="--b: 50%; --r: 50%"
-        //-     )                
-        //-         a.js-load-content(href="ana-5E.html") Contenido 5E (ilustraciones con mismas partes)
-
++partials_modal--fixed-center({palette: 'fluid', name: 'modal-ana-05'})
+    +partials_podcast-player({
+        audioUrl: "audio/podcast-maia.mp3",
+        videoUrl: "video/video5comprimido.mp4",
+    })
+        h1 Sobre los territorios monstruosos (podcast)
+        h2 Por #[a(href="https://cargocollective.com/maiagattasvargas" target="_blank") Maia Gattás Vargas]
+        +partials_expandable-box('desplegable-ana-05')
+            i
+                p Artista visual, investigadora y docente. Línea de formación en Arte Contemporáneo Latinoamericano de la Universidad Nacional de La Plata, y Licenciada en Ciencias de la Comunicación por la Universidad de Buenos Aires. Trabaja como becaria posdoctoral CONICET en el instituto CITECDE, Bariloche investigando sobre la construcción del paisaje de la región patagónica argentino-chilena. En 2022 editó su libro #[span.u-font-style-normal Diario de exploración al territorio del color] junto a la editorial Biblioteca Popular Astra y está finalizando su primer largometraje documental #[span.u-font-style-normal Viento del este] con un subsidio del INCAA.

@@ -134,9 +134,9 @@ a-scene(vr-mode-ui="enabled: false"
     -
         const botonesMarielaLoritos = [
             {
-                fileSuffix: 'B1',
-                scriptsUrl: '/js/scripts/audio-player.js',
-                image: '#mariela-lorita',
+                fileSuffix: 'B2',
+                scriptsUrl: '/js/scripts/podcast.js',
+                image: '#mariela-pluma',
             },
             {
                 fileSuffix: 'C1',
@@ -145,12 +145,14 @@ a-scene(vr-mode-ui="enabled: false"
             },
             {
                 fileSuffix: 'D1',
-                image: '#mariela-lorita',
+                scriptsUrl: '/js/scripts/video-player.js',
+                image: '#circulo-violeta',
             },
             {
                 fileSuffix: 'E1',
                 image: '#mariela-lorita',
-            }
+                scriptsUrl: '/js/scripts/mariela-E1.js',
+            },
         ];
 
 
@@ -184,7 +186,7 @@ a-scene(vr-mode-ui="enabled: false"
         const botonesMarielaPlumitas = [
             {
                 fileSuffix: 'A2',
-                scriptsUrl: '/js/scripts/mariela-A2.js',
+                scriptsUrl: '/js/scripts/podcast.js',
                 image: '#circulo-rojo',
             },
             {
@@ -202,8 +204,9 @@ a-scene(vr-mode-ui="enabled: false"
                 image: '#mariela-pluma',
             },
             {
-                fileSuffix: 'E2',
+                fileSuffix: 'E3',
                 image: '#mariela-pluma',
+                scriptsUrl: '/js/scripts/video-player.js',
             },
         ];
     - for (let boton of botonesMarielaPlumitas)
@@ -277,6 +280,7 @@ a-scene(vr-mode-ui="enabled: false"
         contentLoader: {
             link: `contents/ana-04.html`,
             modalName: `modal-ana-04`,
+            script: `/js/scripts/audio-player.js`,
         },
         wandererAnimation: { direction: 'left' }
     })
@@ -287,6 +291,7 @@ a-scene(vr-mode-ui="enabled: false"
         contentLoader: {
             link: `contents/ana-05.html`,
             modalName: `modal-ana-05`,
+            script: `/js/scripts/podcast.js`,
         },
         wandererAnimation: { direction: 'right' }
     })

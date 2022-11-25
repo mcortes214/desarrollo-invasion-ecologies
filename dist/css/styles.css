@@ -697,3 +697,9 @@ h1 {
   white-space: nowrap;
   border-width: 0;
 }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

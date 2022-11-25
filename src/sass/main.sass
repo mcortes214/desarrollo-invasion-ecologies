@@ -603,8 +603,6 @@ h1
   &:hover
     animation-name: none
 
-
-
 //Preloader SVG animation
 
 #preloader-icon
@@ -634,3 +632,9 @@ h1
   clip: rect(0, 0, 0, 0)
   white-space: nowrap
   border-width: 0
+
+
+.clearfix::after
+  content: ""
+  clear: both
+  display: table

@@ -229,6 +229,15 @@ const afterInsert = () => {
 
 const beforeRemove = () => {
     return new Promise( (resolve) => {
+          //Forzar a p5 a eliminar los eventos que haya creado
+          p5Sketch.preload = undefined;
+          p5Sketch.setup = undefined;
+          p5Sketch.draw = undefined;
+          p5Sketch.keyPressed = undefined;
+
+          //Y después eliminarlo
+          p5Sketch = undefined;
+          
         resolve();
     } );
 }

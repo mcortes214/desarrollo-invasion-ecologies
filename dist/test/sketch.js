@@ -3,6 +3,27 @@ import p5 from '/js/lib/p5.sound-module.js';
 const multimediaPath = '/sketches/gabriela/poema/';
 
 
+// let createCanvas;
+// let cursor;
+// let loadFont;
+// let mouseX;
+// let mouseY;
+// let width;
+// let height;
+// let background;
+// let fill;
+// let stroke;
+// let line;
+// let noStroke;
+// let dist;
+// let map;
+// let constrain;
+// let translate;
+// let sketch.abs;
+// let sketch.ellipse;
+// let sketch.randomGaussian;
+// let CROSS;
+
 //--------------- 1: Definición del sketch
 
 const s = ( sketch ) => {
@@ -28,6 +49,27 @@ const s = ( sketch ) => {
     let bounds8;
 
     let numeroTexto=0;
+
+    // loadFont = sketch.loadFont.bind(sketch);
+    // mouseX = sketch.mouseX;
+    // mouseY = sketch.mouseY;
+    // width = sketch.width;
+    // height = sketch.height;
+    // CROSS = sketch.CROSS;
+    // createCanvas = sketch.createCanvas.bind(sketch);
+    // cursor = sketch.cursor.bind(sketch);
+    // background = sketch.background.bind(sketch);
+    // fill = sketch.fill.bind(sketch);
+    // stroke = sketch.stroke.bind(sketch);
+    // line = sketch.line.bind(sketch);
+    // noStroke = sketch.noStroke.bind(sketch);
+    // dist = sketch.dist.bind(sketch);
+    // map = sketch.map.bind(sketch);
+    // constrain = sketch.constrain.bind(sketch);
+    // translate = sketch.translate.bind(sketch);
+    // sketch.abs = sketch.sketch.abs.bind(sketch);
+    // sketch.ellipse = sketch.sketch.ellipse.bind(sketch);
+    // sketch.randomGaussian = sketch.sketch.randomGaussian.bind(sketch);
 
     sketch.preload = () => {
       font = sketch.loadFont(multimediaPath + 'assets/Avenir.otf');

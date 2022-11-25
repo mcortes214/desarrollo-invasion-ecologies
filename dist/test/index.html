@@ -1,63 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-</head>
-<body>
+<html>
+  <head>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
 
-    <!-- Test pointer -->
-
-    <!-- <div class="test-pointer"></div> -->
-
-    <!-- Markup -->
-
-    <div class="main-container">
-        <div class="canvas-container">
-            <canvas class="test-canvas" width="1024" height="576"></canvas>
-        </div>
-    </div>
-
-    <!-- Styles -->
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-        .main-container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .canvas-container {
-            width: 70%;
-            height: 70vh;
-            outline: 1px solid red;
-        }
-        .test-canvas {
-            width: 100%;
-            height: 100%;
-            outline: 1px solid purple;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        /* .test-pointer {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: brown;
-        } */
-    </style>
-
-    <!-- Scripts -->
-    <script src="index.js"></script>
-    <script src="scripts.js"></script>
-</body>
+  </head>
+  <body>
+    <div class="p5-container"></div>
+    <script type="module" src="sketch.js"></script>
+  </body>
 </html>

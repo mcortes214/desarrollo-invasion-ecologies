@@ -57,6 +57,7 @@ const App = {
                 popup.addEventListener('transitionend', function removeModal() {
                     //Event listener de un solo uso
                     popup.removeEventListener('transitionend', removeModal);
+                    console.log('removing modal wrapper:', modalWrapper);
                     document.querySelector('body').removeChild(modalWrapper);
                     resolve();
                 })

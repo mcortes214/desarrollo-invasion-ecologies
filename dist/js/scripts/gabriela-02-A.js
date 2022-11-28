@@ -113,19 +113,26 @@ const afterInsert = () => {
 
 const beforeRemove = () => {
     return new Promise( (resolve) => {
-
-        song1.stop();
-        song2.stop();
-        song3.stop();
-        song4.stop();
-        song5.stop();
-        song6.stop();
+        console.log('before remove');
+        const songs = [song1, song2, song3, song4, song5, song6];
+        console.log(songs);
+        songs.forEach((song) => {
+            if(song?.stop) {song.stop()}
+        });
+        // song1.stop();
+        // song2.stop();
+        // song3.stop();
+        // song4.stop();
+        // song5.stop();
+        // song6.stop();
 
         //Forzar a p5 a eliminar los eventos que haya creado
-        p5Sketch.preload = undefined;
-        p5Sketch.setup = undefined;
-        p5Sketch.draw = undefined;
-        p5Sketch.keyPressed = undefined;
+        if (typeof p5Sketch === 'object') {
+            p5Sketch.preload = undefined;
+            p5Sketch.setup = undefined;
+            p5Sketch.draw = undefined;
+            p5Sketch.keyPressed = undefined;
+        }
 
         //Y después eliminarlo
         p5Sketch = undefined;

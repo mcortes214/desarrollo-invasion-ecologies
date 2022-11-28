@@ -32,6 +32,8 @@ const afterInsert = () => {
             }
         });
 
+        console.log(videoPlayer);
+        window.gabvp = videoPlayer;
         videoPlayer.play();
 
         resolve();

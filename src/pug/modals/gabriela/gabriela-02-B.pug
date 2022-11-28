@@ -2,11 +2,23 @@ include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal({palette: 'fluid', name: 'modal-gabriela-02-B'})
-    a.js-close-modal(data-modal-name='modal-gabriela-02-B') [X Cerrar]
-    article.content
-        h1 Serie 02 B
-        p Serie 02 B - Sonificación de datos (PD)
-        ul
-            li
-                a.js-load-content(data-modal-name="modal-gabriela-02" href="contents/gabriela-02.html") Volver a nodo principal (serie 02)
++partials_modal--grow({palette: 'fluid', name: 'modal-gabriela-02-B'})
+    p Las ballenas hallan su camino a través del profundo océano por medio de su canto. Se comunican constantemente entre pares, evitan obstáculos y detectan presas a muy largas distancias por medio de los ecos que emiten y detectan. Algunas especies de cetáceos, delfines y marsopas no tienen un oído tan desarrollado, pero tienen la capacidad de sentir las vibraciones de los sonidos debajo del agua en todo su cuerpo. 
+    +partials_audio-player('audio/ballena-agudo.mp3', 'player-ballena-agudo')
+    
+    p Este método de comunicación se llama ecolocalización y consiste en la emisión de sonidos que van expandiéndose por toda el agua hasta llegar al receptor. En el agua, los sonidos se propagan con mayor rapidez y con menor pérdida de energía que en el aire. Las ondas sonoras y ultrasonoras se transmiten en el mar a una velocidad de entre 1400 y 1600 metros por segundo, mientras que en la atmósfera la velocidad de propagación es de 340 metros por segundo. 
+    +partials_audio-player('audio/ballena-grave.mp3', 'player-ballena-grave')
+
+    p Estos grandes mamíferos son capaces de comprenderse a la perfección, encontrándose a decenas de kilómetros de distancia, e incluso pueden distinguir de qué miembro del grupo se trata, tan solo por sus sonidos y cantos. 
+    p En la actualidad, el ruido submarino interfiere y degrada cada vez más en el mundo acústico de los cetáceos afectando su comunicación, hábitos de vida y por tanto su supervivencia. Debido a las distintas actividades humanas en los océanos los niveles de ruido se han duplicado cada década durante los últimos 60 años. Más del 90% del comercio mundial se transporta en barcos donde sus hélices generan un ruido intenso. 
+    +partials_audio-player('audio/helice.mp3', 'player-helice')
+
+    p Los cetáceos están expuestos a un ruido permanente en las principales rutas comerciales. El ruido crónico causa un estrés que afecta a la salud de los cetáceos y otras especies submarinas y puede reducir el éxito de su reproducción. 
+    p Por otra parte, las ballenas están gravemente amenazadas durante los ejercicios militares. Cuando los barcos de guerra encienden sus sonares los sonidos extremadamente fuertes de estos dispositivos se transmiten por decenas o cientos de millas en todas las direcciones para detectar submarinos u otros obstáculos. Recientes estudios muestran cómo los sonares afectan la salud y el comportamiento natatorio de las ballenas. Hasta la década de los 60´s la frecuencia utilizada por los barcos para detectar submarinos era de 8 KHz o superior. Sin embargo, en las recientes décadas se empezaron a usar rangos más bajos, de entre 4.5 y 5.5 KHz, provocando el varamiento en masa de cetáceos en todo el mundo.
+    +partials_audio-player('audio/sonar.mp3', 'player-sonar')
+
+    p Así mismo, el ruido causado por la exploración sísmica para la detección de petróleo o gas en el lecho marino pone en riesgo la vida de las comunidades cetáceas. Durante estas exploraciones navales, los cañones neumáticos que se usan producen un intenso ruido que pulsa cada pocos segundos y los cuales pueden durar durante semanas o incluso meses. Estos pulsos de detonaciones de aire son tan fuertes que pueden viajar a través de miles de metros en el agua y penetrar desde decenas hasta cientos de kilómetros en la corteza terrestre. El eco rebota en los depósitos de petróleo y gas y retorna hasta los instrumentos de medición que están en la superficie. 
+    +partials_audio-player('audio/exploracion.mp3', 'player-exploracion')
+
+    p Estos estruendos pueden causar que el medio marino sea degradado fuertemente a lo largo de grandes áreas. Sin lugar a dudas la contaminación sonora submarina es una seria amenaza para la vida marina y para la salud de los océanos. 
+    p Actualmente hay gran preocupación entre los ambientalistas por el aumento del ruido en los océanos debido a las actividades humanas submarinas. Los humanos podemos estar acabando con el silencio característico del hábitat marino. Por ello se vuelve fundamental comprender los impactos de la contaminación acústica en los océanos e impulsar políticas urgentes que mitiguen su impacto en los ecosistemas y sus comunidades.

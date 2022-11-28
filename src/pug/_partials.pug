@@ -202,26 +202,28 @@ mixin partials_sea-figure(options)
 //- Media Players
 
 
-mixin partials_audio-player(audioUrl)
-    audio.u-display-none.audio-player.voice-over(src=audioUrl preload="metadata" controls="false")
-    .player-progress.u-cursor-pointer.l-abs.u-width-100.u-height.u-background-color(
-        style="--h: 5px; --b: var(--color-primary)"
-        data-audio-player=".voice-over" data-audio-player-behavior="progress"
-    )
-        .player-progress__ellapsed.u-height-100.u-background-color(
-            style="--b: var(--color-accent)"
+mixin partials_audio-player(audioUrl, playerName="audio-player")
+    .audio-player(data-player-name=playerName)
+        audio.u-display-none(src=audioUrl preload="metadata" controls="false")
+        .player-progress.u-cursor-pointer.l-abs.u-width-100.u-height.u-background-color(
+            style="--h: 5px; --b: var(--color-primary)"
         )
-    .l-flex(style="--j: center")
-        img.u-cursor-pointer.audio-control(src="img/icon-play.svg", alt="Play" data-audio-player=".voice-over" data-audio-player-behavior="play")
-        img.u-cursor-pointer.audio-control(src="img/icon-pause.svg", alt="Pause" data-audio-player=".voice-over" data-audio-player-behavior="pause")
-        img.u-cursor-pointer.audio-control(src="img/icon-stop.svg", alt="Stop" data-audio-player=".voice-over" data-audio-player-behavior="stop")
-    style.
-        .audio-control {
-            opacity: 0.5;
-        }
-        .audio-control.active {
-            opacity: 1;
-        }
+            .player-progress__ellapsed.u-height-100.u-background-color(
+                style="--b: var(--color-accent)"
+            )
+        .l-flex(style="--j: center")
+            img.u-cursor-pointer.audio-control(src="img/icon-play.svg", alt="Play" data-audio-player-behavior="play")
+            img.u-cursor-pointer.audio-control(src="img/icon-pause.svg", alt="Pause" data-audio-player-behavior="pause")
+            img.u-cursor-pointer.audio-control(src="img/icon-stop.svg", alt="Stop" data-audio-player-behavior="stop")
+        style.
+            .audio-control {
+                opacity: 0.5;
+            }
+            .audio-control.active {
+                opacity: 1;
+            }
+
+
 
 mixin partials_podcast-audio-player(audioUrl)
     +partials_audio-player(audioUrl)

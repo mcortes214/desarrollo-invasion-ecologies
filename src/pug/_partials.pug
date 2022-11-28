@@ -24,19 +24,38 @@ mixin partials_modal_outer-structure(options, block)
             .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal(
                 data-modal-name=modalName
             )
-                div.shape-popup.u-color-primary.u-background-color-secondary-tr.l-responsive-padding(style="--m: 2em; --d: 4em").u-cursor-auto.u-overflow-y-scroll
+                div.shape-popup.u-color-primary.u-background-color-secondary-tr.l-responsive-padding(style="--m: 2em 0; --d: 4em 0").u-cursor-auto
                     -if(block)
                         block
 
 
 //-ex partials_modal--mariela
+//- mixin partials_modal--grow(options, block)
+//-     -let modalName = options.name
+//-     +partials_modal_outer-structure({palette: 'fluid', name: modalName})
+//-         .popup-content-wrapper.u-height-100.u-width-100
+//-             a.js-close-modal(data-modal-name=modalName).l-responsive-padding(style="--m: 0 2em; --d: 0 4em") [X]
+//-             //- article.content
+//-             article.content.u-height-100.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+//-                 - if (block)
+//-                     block
+
+
 mixin partials_modal--grow(options, block)
     -let modalName = options.name
     +partials_modal_outer-structure({palette: 'fluid', name: modalName})
-        a.js-close-modal(data-modal-name=modalName).u-padding-05em [X]
-        article.content
-            - if (block)
-                block
+        .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
+            a.js-close-modal.l-responsive-padding(data-modal-name=modalName style="grid-row: 1/2; --m: 0 2em; --d: 0 4em") [X]
+            .popup-content-wrapper.u-height-100.u-width-100.u-overflow-y-scroll.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+                - if(block)
+                    block
+
+        //- .popup-content-wrapper.u-height-100.u-width-100
+        //-     a.js-close-modal(data-modal-name=modalName).l-responsive-padding(style="--m: 0 2em; --d: 0 4em") [X]
+        //-     //- article.content
+        //-     article.content.u-height-100.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+        //-         - if (block)
+        //-             block
 
 //-ex partials_modal--ana
 mixin partials_modal--fixed-center(options, block)
@@ -54,7 +73,7 @@ mixin partials_modal--fixed-grow(options, block)
 mixin partials_modal--fixed(options, block)
     -let modalName = options.name
     +partials_modal_outer-structure({palette: 'fluid', name: modalName})
-        .popup-content-wrapper.l-flex.u-height-100.u-width-100
+        .popup-content-wrapper.l-flex.u-height-100.u-width-100.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
             .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
                 a.js-close-modal.u-padding(data-modal-name=modalName style="grid-row: 1/2; --p: 0 0 1em 0") [X]
                 - if(block)
@@ -72,16 +91,23 @@ mixin partials_modal--fixed_inner-content(options)
             block
 
 mixin partials_modal--first-text(options, block)
-    - let modalName = options.name
+    -let modalName = options.name
     +partials_modal_outer-structure({palette: 'fluid', name: modalName})
-        +partials_first-text-wrapper(modalName)
-            - if (block)
-                block
+        .l-grid.u-height-100.u-width-100.u-text-align-center(style="--r: min-content auto")
+            a.u-color-accent.u-cursor-pointer.js-close-modal.l-responsive-padding(data-modal-name=modalName style="--m: 0 2em; --d: 0 4em") [ X ]
+            .popup-content-wrapper.u-height-100.u-width-100.u-overflow-y-scroll.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+                - if(block)
+                    block
+    //- - let modalName = options.name
+    //- +partials_modal_outer-structure({palette: 'fluid', name: modalName})
+    //-     +partials_first-text-wrapper(modalName)
+    //-         - if (block)
+    //-             block
 
 mixin partials_first-text-wrapper(name, block)
     .l-flex.u-min-height-100
         article.content.u-text-align-center
-            a.u-color-accent.u-cursor-pointer.js-close-modal(data-modal-name=name) [ Salir ]
+            a.u-color-accent.u-cursor-pointer.js-close-modal(data-modal-name=name) [ X ]
             - if (block)
                 block
 
@@ -234,7 +260,7 @@ mixin partials_podcast-audio-player(audioUrl)
    
 mixin partials_video-player(videoUrl)
     //- video.video-player.u-pointer-events-none.u-max-width-100.u-height-100.u-object-position-center(src=videoUrl preload="metadata")
-    video.video-player.u-cursor-pointer.u-max-width-100.u-height-100.u-object-position-center(src=videoUrl preload="metadata")
+    video.video-player.u-cursor-pointer.u-width-100.u-height-100.u-object-position-center(src=videoUrl preload="metadata")
 
 
 mixin partials_full-size-video-player(videoUrl)

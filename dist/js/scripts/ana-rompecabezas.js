@@ -1,6 +1,11 @@
 import p5 from '/js/lib/p5.sound-module.js';
 
 const multimediaDirPath = '/sketches/ana/rompecabezas/50/';
+let isDragging;
+let collidedPiece;
+
+let p5Width, p5Height;
+
 
 
 //--------------- 1: Definición del sketch
@@ -17,6 +22,16 @@ const piecesPaths = [
     'tibu1.png',
 ];
 let pieces;
+
+const definep5Size = () => {
+    const p5Container = document.querySelector('.p5-container');
+    const canvasOffset = p5Container.offsetTop;
+    const p5ContainerRect = p5Container.getBoundingClientRect();
+    p5Container.style.height = p5ContainerRect.height - canvasOffset - 1 + 'px';
+    const newP5ContainerRect = p5Container.getBoundingClientRect();
+    p5Height = 1000 * newP5ContainerRect.height / newP5ContainerRect.width;
+    p5Width = 1000;
+}
 
 const mouseIsCollidingPiece = (sketch) => {
         for (let piece of pieces){
@@ -52,20 +67,21 @@ const s = ( sketch ) => {
     }
 
     sketch.setup = () => {
-        sketch.createCanvas(1000, 1000);
+        definep5Size();
+        sketch.createCanvas(p5Width, p5Height);
         //Inicializar posiciones aleatorias
         sketch.imageMode(sketch.CENTER);
         for (let piece of pieces) {
-            piece.x = sketch.random(sketch.width*0.25, sketch.width*0.75);
+            piece.x = sketch.random(sketch.width*0.80, sketch.width - hitboxRadio);
             piece.y = sketch.random(sketch.height*0.25, sketch.height*0.75);
         }
         updateImages(sketch);
+        isDragging = false;
         //Ubicar piezas en sus posiciones originales(for... placePiece(x, y))
     };
 
     sketch.draw = () => {
         let collidedPiece = mouseIsCollidingPiece(sketch);
-        console.log(collidedPiece);
 
         // let collidedPiece = mouseIsCollidingPiece(sketch);
         // if (collidedPiece) {
@@ -75,9 +91,21 @@ const s = ( sketch ) => {
         //     sketch.cursor(sketch.ARROW);
         // }
     };
+    
+    // sketch.mousePressed = () => {
+    // }
+
+    sketch.mouseReleased = () => {
+        isDragging = false;
+        console.log('finished dragging');
+    }
+
 
     sketch.mouseDragged = () => {
-        let collidedPiece = mouseIsCollidingPiece(sketch);
+        if (! isDragging) {
+            collidedPiece = mouseIsCollidingPiece(sketch);
+            isDragging = true;
+        }
         if (collidedPiece) {
             collidedPiece.x = sketch.constrain(sketch.mouseX, 0, sketch.width);
             collidedPiece.y = sketch.constrain(sketch.mouseY, 0, sketch.height);
@@ -93,6 +121,11 @@ let p5Sketch;
 const afterInsert = () => {
     return new Promise( (resolve) => {
         p5Sketch = new p5(s, document.querySelector('.p5-container'));
+
+
+
+        //Keep width at 1000px, adjust height
+
         resolve();
     } );
 }

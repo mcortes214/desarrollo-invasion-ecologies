@@ -46,7 +46,8 @@ mixin partials_modal--grow(options, block)
     +partials_modal_outer-structure({palette: 'fluid', name: modalName})
         .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
             a.js-close-modal.l-responsive-padding(data-modal-name=modalName style="grid-row: 1/2; --m: 0 2em; --d: 0 4em") [X]
-            .popup-content-wrapper.u-height-100.u-width-100.u-overflow-y-scroll.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+            //- MODIFICADO POR ROMPECABEZAS ANA .popup-content-wrapper.u-height-100.u-width-100.u-overflow-y-scroll.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+            .popup-content-wrapper.u-position-relative.u-height-100.u-width-100.u-overflow-y-scroll.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
                 - if(block)
                     block
 

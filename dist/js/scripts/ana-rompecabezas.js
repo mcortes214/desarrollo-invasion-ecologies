@@ -1,6 +1,6 @@
 import p5 from '/js/lib/p5.sound-module.js';
 
-const multimediaDirPath = '/sketches/ana/rompecabezas/';
+const multimediaDirPath = '/sketches/ana/rompecabezas/50/';
 
 
 //--------------- 1: Definición del sketch
@@ -56,8 +56,8 @@ const s = ( sketch ) => {
         //Inicializar posiciones aleatorias
         sketch.imageMode(sketch.CENTER);
         for (let piece of pieces) {
-            piece.x = sketch.random(0 + hitboxRadio, sketch.width - hitboxRadio);
-            piece.y = sketch.random(0 + hitboxRadio, sketch.width - hitboxRadio);
+            piece.x = sketch.random(sketch.width*0.25 + hitboxRadio, sketch.width*0.75 - hitboxRadio);
+            piece.y = sketch.random(sketch.height*0.25 + hitboxRadio, sketch.height*0.75 - hitboxRadio);
         }
         updateImages(sketch);
         //Ubicar piezas en sus posiciones originales(for... placePiece(x, y))

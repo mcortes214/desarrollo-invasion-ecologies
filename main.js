@@ -17,6 +17,8 @@ files.writeFile(__dirname + '/dist/css/styles.css', styleRules.css);
 const pageSrcPath = __dirname + '/src/pug/pages/';
 files.writeFile(__dirname + '/dist/index.html', pug.renderFile(pageSrcPath + 'index.pug'));
 files.writeFile(__dirname + '/dist/home.html', pug.renderFile(pageSrcPath + 'home.pug'));
+//Versión del home en inglés:
+// files.writeFile(__dirname + '/dist/home.html', pug.renderFile(pageSrcPath + 'home-EN.pug'));
 
 //Renderizar modales HTML
 const modalSrcPath = __dirname + '/src/pug/modals/';
@@ -62,5 +64,8 @@ const modalFilenames = [
 ];
 
 for ( let file of modalFilenames ) {
+    //Archivo en español:
     files.writeFile(outputPath + file.fileName + '.html', pug.renderFile(modalSrcPath + file.folder + file.fileName + '.pug'));
+    //Archivo en inglés:
+    // files.writeFile(outputPath + file.fileName + '-EN.html', pug.renderFile(modalSrcPath + file.folder + file.fileName + '-EN.pug'));
 }

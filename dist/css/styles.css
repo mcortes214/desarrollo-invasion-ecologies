@@ -322,6 +322,10 @@ h1 {
   margin: var(--m) !important;
 }
 
+.u-margin-bottom {
+  margin-bottom: var(--mb) !important;
+}
+
 .u-max-width {
   max-width: var(--mw);
 }

@@ -4,39 +4,43 @@ include ../../_content
 
 //- En contenidos: Contenido E
 
-+partials_modal--fixed-center({palette: 'fluid', name: 'modal-ana-01'})
++partials_modal--grow({palette: 'fluid', name: 'modal-ana-01'})
     div.u-height-100.u-width-100
         h1 Especies cyborgs
-        //- PILOTO draggable.js
-        #puzzle.div.u-width-100.u-height-100.dragging-context.decoration-accent-outline.l-flex.u-flex-wrap-wrap
-            img.draggable(src="img/rompecabezas-coto1.png")
-            img.draggable(src="img/rompecabezas-coto2.png")
-            img.draggable(src="img/rompecabezas-coto3.png")
-            img.draggable(src="img/rompecabezas-cot4.png")
-            img.draggable(src="img/rompecabezas-tibu1.png")
-            img.draggable(src="img/rompecabezas-pico.png")
-            img.draggable(src="img/rompecabezas-cuerpo.png")
-    //- include ../../../assets/ave.svg
+        p.u-text-align-center Crea tu propio monstruo invasor. Mezclá cotorras y animales marinos para hacer tu propio cyborg monstruoso.
+        .p5-container
+        style.
+            .p5-container {
+                padding-bottom: 5em;
+            }
+            .p5-container > canvas {
+                width: 75% !important;
+                height: auto !important;
+                outline: 1px solid var(--color-accent);
+                display: block;
+                margin: auto;
+                /*height: 75% !important;*/
+            }
+            @media screen and (max-width: 800px){
+            .p5-container > canvas {
+                width: 100% !important;
+            }
+            }
+        //- style.
+        //-     .p5-container > canvas {
+        //-         width: 100% !important;
+        //-         height: 100% !important;
+        //-         object-fit: contain;
+        //-     }
 
 
-        //- h1 Serie 1
-        //- .l-abs.l-flex.u-padding(style="--p: 30%").u-background-color-black-tr
-        //-     div.u-outline-primary.u-padding-1em.u-top.u-left(
-        //-         style="--t: 10%; --l: 15%"
-        //-     )
-        //-         a.js-load-content(href="ana-02.html") Contenido 1A (texto)
 
-        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-left(
-        //-         style="--b: 20%; --l: 10%"
-        //-     )
-        //-         a.js-load-content(href="ana-1B.html") Contenido 1B (audio)
 
-        //-     div.u-outline-primary.u-padding-1em.u-top.u-right(
-        //-         style="--t: 20%; --r: 10%"
-        //-     )
-        //-         a.js-load-content(href="ana-1C.html") Contenido 1C (podcast)
-
-        //-     div.u-outline-primary.u-padding-1em.u-bottom.u-right(
-        //-         style="--b: 40%; --r: 10%"
-        //-     )                
-        //-         a.js-load-content(href="ana-1D.html") Contenido 1D (animación Processing)
+        //- #puzzle.div.u-width-100.u-height-100.dragging-context.decoration-accent-outline.l-flex.u-flex-wrap-wrap
+        //-     img.draggable(src="img/rompecabezas-coto1.png")
+        //-     img.draggable(src="img/rompecabezas-coto2.png")
+        //-     img.draggable(src="img/rompecabezas-coto3.png")
+        //-     img.draggable(src="img/rompecabezas-cot4.png")
+        //-     img.draggable(src="img/rompecabezas-tibu1.png")
+        //-     img.draggable(src="img/rompecabezas-pico.png")
+        //-     img.draggable(src="img/rompecabezas-cuerpo.png")

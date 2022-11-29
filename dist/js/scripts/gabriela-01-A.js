@@ -233,7 +233,7 @@ const beforeRemove = () => {
           p5Sketch.preload = undefined;
           p5Sketch.setup = undefined;
           p5Sketch.draw = undefined;
-          p5Sketch.keyPressed = undefined;
+          p5Sketch.mousePressed = undefined;
 
           //Y después eliminarlo
           p5Sketch = undefined;

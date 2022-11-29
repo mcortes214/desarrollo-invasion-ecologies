@@ -28,9 +28,9 @@ a-scene(vr-mode-ui="enabled: false"
         img(id="gabriela-botella" src="img/gabriela_botella.png")
         img(id="gabriela-plastiaglomerados" src="img/gabriela_plastiaglomerados.png")
         img(id="gabriela-bolsa" src="img/gabriela_bolsa.png")
-        img(id="gabriela-zooplankton" src="img/gabriela_zooplankton.png")
+        img(id="gabriela-zooplankton" src="img/zooplancton.png")
         img(id="gabriela-ballena" src="img/ballena.png")
-        img(id="gabriela-barnacle" src="img/barnacles2.png")
+        img(id="gabriela-barnacle" src="img/bernacles-margenes.png")
 
         img(id="circulo-violeta" src="img/circulo-violeta.png")
         img(id="circulo-rojo" src="img/circulo-rojo.png")
@@ -68,13 +68,13 @@ a-scene(vr-mode-ui="enabled: false"
             },
             {
                 id: 'gabriela-barnacle',
-                aspectRatio: 0.896,
+                aspectRatio: 1.4005,
                 direction: 'right',
             },
             {
                 id: 'gabriela-zooplankton',
-                aspectRatio: 1.368,
-                direction: 'left',
+                aspectRatio: 1.405,
+                direction: 'right',
             },
         ];
     - for (let i=0; i < imagenesGabi.length; i++)
@@ -203,10 +203,10 @@ a-scene(vr-mode-ui="enabled: false"
                 scriptsUrl: '/js/scripts/video-player.js',
                 image: '#mariela-pluma',
             },
-            {
-                fileSuffix: 'C2',
-                image: '#mariela-pluma',
-            },
+            //- {
+            //-     fileSuffix: 'C2',
+            //-     image: '#mariela-pluma',
+            //- },
             {
                 fileSuffix: 'E3',
                 image: '#mariela-pluma',
@@ -253,7 +253,7 @@ a-scene(vr-mode-ui="enabled: false"
         contentLoader: {
             link: `contents/ana-01.html`,
             modalName: `modal-ana-01`,
-            script: `/js/scripts/draggable.js`,
+            script: `/js/scripts/ana-rompecabezas.js`,
         },
         wandererAnimation: { direction: 'right' }
     })

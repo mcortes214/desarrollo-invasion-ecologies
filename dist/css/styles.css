@@ -319,7 +319,7 @@ h1 {
 }
 
 .u-margin {
-  margin: var(--m);
+  margin: var(--m) !important;
 }
 
 .u-max-width {

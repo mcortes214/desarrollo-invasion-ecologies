@@ -56,8 +56,8 @@ const s = ( sketch ) => {
         //Inicializar posiciones aleatorias
         sketch.imageMode(sketch.CENTER);
         for (let piece of pieces) {
-            piece.x = sketch.random(sketch.width*0.25 + hitboxRadio, sketch.width*0.75 - hitboxRadio);
-            piece.y = sketch.random(sketch.height*0.25 + hitboxRadio, sketch.height*0.75 - hitboxRadio);
+            piece.x = sketch.random(sketch.width*0.25, sketch.width*0.75);
+            piece.y = sketch.random(sketch.height*0.25, sketch.height*0.75);
         }
         updateImages(sketch);
         //Ubicar piezas en sus posiciones originales(for... placePiece(x, y))

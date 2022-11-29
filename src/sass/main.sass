@@ -46,7 +46,8 @@ $breakpoint: 800px //Always use MIN-width -- mobile first
     --color-accent: #bf5161
     --color-accent-900: rgba(191,81,97,0.15)
 
-    --color-light-blue: rgb(205, 215, 215)
+    --color-deep-blue: #2e3f5c
+    --color-light-blue: rgb(221, 231, 231)
     --color-white: rgb(255, 255, 255)
 
     --s1: 1em
@@ -59,6 +60,8 @@ $breakpoint: 800px //Always use MIN-width -- mobile first
     --font-s3: 2em
     --font-s4: 2.4em
     --font-s5: 3em
+    --font-s6: 3.5em
+    --font-s7: 5em
 
 
 //# Reset/basic styles
@@ -99,6 +102,9 @@ h1
 
 *::-webkit-scrollbar-thumb
     background: var(--color-accent)
+
+.blue-scrollbar::-webkit-scrollbar-thumb
+    background: var(--color-deep-blue)
 
 *::-webkit-scrollbar-track
     opacity: 0
@@ -162,6 +168,9 @@ h1
 .u-opacity-025
     opacity: 0.25
 
+.u-opacity-05
+    opacity: 0.5
+
 /* Eliminar o refactorizar. Solo para fines de preview */
 .u-outline-primary
     outline: 1px solid var(--color-primary)
@@ -178,6 +187,12 @@ h1
 .u-padding-3em
     padding: 3em
 
+.u-font-size-s1
+  font-size: var(--font-s1)
+
+.u-font-size-s2
+  font-size: var(--font-s2)
+
 .u-font-size-s3
   font-size: var(--font-s3)
 
@@ -186,6 +201,12 @@ h1
 
 .u-font-size-s5
   font-size: var(--font-s5)
+
+.u-font-size-s6
+  font-size: var(--font-s6)
+
+.u-font-size-s7
+  font-size: var(--font-s7)
 
 .u-font-style-normal
   font-style: normal
@@ -211,6 +232,9 @@ h1
 
 .u-max-width-100
     max-width: 100%
+
+.u-overflow-auto
+    overflow: auto
 
 .u-overflow-hidden
     overflow: hidden
@@ -258,9 +282,6 @@ h1
   @media screen and (min-width: $breakpoint)
     width: 50%
 
-.u-max-width-100
-    max-width: 100%
-
 .u-margin-1em
     margin: 1em
 
@@ -278,6 +299,12 @@ h1
     transform-origin: center
 
 //Unscaled (use with parameters)
+
+.u-margin
+  margin: var(--m)
+
+.u-max-width
+    max-width: var(--mw)
 
 .u-height
     height: var(--h)
@@ -423,8 +450,9 @@ h1
 
 //# Font components (.font-)
 
-
 //# Text components (.text-)
+
+
 
 //# Layout components (.l-)
 //Possible components: grid, stack
@@ -485,6 +513,12 @@ h1
     @media screen and (min-width: $breakpoint)
       padding: var(--d)
 
+.l-container
+    --w: 90%
+    --mw: 90%
+    width: var(--w)
+    max-width: var(--mw)
+    margin: auto
 
 //# SVG Overlay Components (#svgo-)
 

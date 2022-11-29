@@ -16,25 +16,27 @@
 const afterInsert = () => {
     return new Promise( (resolve) => {
         
-        const videoPlayer = document.querySelector('.video-player');
+        const videoPlayers = document.querySelectorAll('.video-player');
+
+        for (let videoPlayer of videoPlayers) {
+            videoPlayer.style.transition = '0.4s';
+
+            videoPlayer.addEventListener('click', () => {
+                if (videoPlayer.paused) {
+                    videoPlayer.style.opacity = 1;
+                    videoPlayer.play();
+                }
+                else {
+                    videoPlayer.pause();
+                    videoPlayer.style.opacity = 0.5;
+                }
+            });
+            // console.log(videoPlayer);
+            // window.gabvp = videoPlayer;
+            videoPlayer.play();
+        }
+        // const videoPlayer = document.querySelector('.video-player');
         // const playPauseOverlay = document.querySelector('.video-control[data-video-player-behavior="play-pause"]');
-
-        videoPlayer.style.transition = '0.4s';
-
-        videoPlayer.addEventListener('click', () => {
-            if (videoPlayer.paused) {
-                videoPlayer.style.opacity = 1;
-                videoPlayer.play();
-            }
-            else {
-                videoPlayer.pause();
-                videoPlayer.style.opacity = 0.5;
-            }
-        });
-
-        console.log(videoPlayer);
-        window.gabvp = videoPlayer;
-        videoPlayer.play();
 
         resolve();
     } );

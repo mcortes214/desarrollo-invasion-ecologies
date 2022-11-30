@@ -70,6 +70,7 @@ a-scene(vr-mode-ui="enabled: false"
                 id: 'gabriela-barnacle',
                 aspectRatio: 1.4005,
                 direction: 'right',
+                script: '/js/scripts/video-player.js',
             },
             {
                 id: 'gabriela-zooplankton',
@@ -86,8 +87,8 @@ a-scene(vr-mode-ui="enabled: false"
                 aspectRatio: `${imagenesGabi[i].aspectRatio}`
                 },
             contentLoader: {
-                link: `contents/gabriela-0${i+1}-A.html`,
-                modalName: `modal-gabriela-0${i+1}-A`,
+                link: `contents/gabriela-0${i+1}-A-en.html`,
+                modalName: `modal-gabriela-0${i+1}-A-en`,
                 script: imagenesGabi[i].script,
             },
             wandererAnimation: { direction: imagenesGabi[i].direction }

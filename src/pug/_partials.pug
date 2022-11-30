@@ -29,6 +29,27 @@ mixin partials_modal_outer-structure(options, block)
                         block
 
 
+mixin partials_modal_index-outer-structure(options, block)
+    - let modalName = options.name;
+    .u-transition-04s.modal-container.u-position-fixed.u-left.u-top.u-width-100.u-height-100vw(data-modal-name=modalName style="--l: 0; --t: 0")
+        div.props-palette-fluid
+            .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal(
+                data-modal-name=modalName
+            )
+                div.shape-popup.u-color-primary.u-background-color-secondary-tr.l-responsive-padding(style="--m: 2em 0; --d: 4em 0").u-cursor-auto
+                    -if(block)
+                        block
+
+mixin partials_modal--index-grow(options, block)
+    -let modalName = options.name
+    +partials_modal_index-outer-structure({palette: 'fluid', name: modalName})
+        .l-grid.u-height-100.u-width-100(style="--r: min-content auto")
+            a.js-close-modal.l-responsive-padding(data-modal-name=modalName style="grid-row: 1/2; --m: 0 2em; --d: 0 4em") [X]
+            //- MODIFICADO POR ROMPECABEZAS ANA .popup-content-wrapper.u-height-100.u-width-100.u-overflow-y-scroll.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+            .popup-content-wrapper.u-position-relative.u-height-100.u-width-100.u-overflow-y-scroll.l-responsive-padding(style="--m: 0 2em; --d: 0 4em")
+                - if(block)
+                    block
+
 //-ex partials_modal--mariela
 //- mixin partials_modal--grow(options, block)
 //-     -let modalName = options.name
@@ -305,5 +326,6 @@ mixin partials_expandable-box(name, block)
     span.js-expandable-box_toggle.u-text-align-center.u-font-size-s3.u-display-block.u-margin-1em.u-cursor-pointer(data-name=name)
             
 mixin partials_credits-item(title, text)
-    span.u-color-white=title
+    span
+        b=title
     span=text

@@ -14,6 +14,7 @@
   --s2: 2em;
   --s3: 3em;
   --s4: 4em;
+  --font-s09: 0.9em;
   --font-s1: 1em;
   --font-s2: 1.5em;
   --font-s3: 2em;
@@ -171,6 +172,10 @@ h1 {
   padding: 3em;
 }
 
+.u-font-size-s09 {
+  font-size: var(--font-s09);
+}
+
 .u-font-size-s1 {
   font-size: var(--font-s1);
 }
@@ -256,7 +261,7 @@ h1 {
 }
 
 .u-position-fixed {
-  position: fixed;
+  position: fixed !important;
 }
 
 .u-pointer-events-none {

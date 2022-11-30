@@ -166,12 +166,37 @@ function initStartSequence() {
 
 //Crear y cargar primer modal de presentación
 
+//HACK:FIXME#1 Deshabilitar clicks en figuras hasta que el modal de presentación esté cargado.
+//Razón:
+//Si alguien abre el rompecabezas antes de que se abra el modal de presentación,
+//el rompecabezas deja de funcionar hasta recargar la página.
+//No sé si también pasa con otros contenidos.
+//No pude revisar qué provoca el problema (30/11/22); revisar con más tiempo después
+document.querySelector('a-scene').style.pointerEvents = 'none';
+
+//DEBUG: Exponer función a consola para probar modales
+window.loadIntroModal = loadIntroModal;
+
 function loadIntroModal(){
-    const modalName = 'presentacion-01';
+    let modalName = '';
+    let url = '';
     //Crear modal, sin scripts (ya no usa spanify sino pre-baked spans)
-    App.modalManager.createModal(modalName, { HTMLUrl: 'contents/presentacion-01.html' });
+    //Seleccionar idioma
+    if (document.querySelector('html').classList.contains('english')) {
+        modalName = 'presentacion-01-en';
+        url = 'contents/presentacion-01-en.html';
+    }
+    else if (document.querySelector('html').classList.contains('espanol')) {
+        modalName = 'presentacion-01';
+        url = 'contents/presentacion-01.html';
+    }
+    App.modalManager.createModal(modalName, { HTMLUrl: url });
     App.modalManager.modals[modalName].loadContentAndFunctions()
     .then(() => {
+
+        //HACK:FIXME#1: Rehabilitar clicks en figuras
+        document.querySelector('a-scene').style.pointerEvents = 'all';
+
         App.modalManager.switchToModal(modalName);
     })
 }

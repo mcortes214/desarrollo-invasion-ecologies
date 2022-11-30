@@ -1,0 +1,325 @@
+a-scene(vr-mode-ui="enabled: false"
+    cursor="rayOrigin: mouse; fuse: false"
+    raycaster="objects: .clickable"
+    )
+    //-en a-scene: fog="type: linear; color: #AAC; far: 20"
+
+    a-assets
+        //- img(id="ocean-background" src="img/mar-continental-sin-grilla.jpg")
+        //- img(id="ocean-background" src="img/marcontinente-baja.jpg")
+        img(id="ocean-background" src="img/mar-continente.jpg")
+        //-Ana
+        img(id="ana-ojo" src="img/ana_ojo.png")
+        img(id="ana-ave" src="img/ana_ave.png")
+        img(id="ana-tibu" src="img/ana_tibu.png")
+        img(id="ana-medusa" src="img/ana_medusa.png")
+        img(id="ana-alga" src="img/ana_alga.png")
+        img(id="ana-cotorra" src="img/ana_cotorra.png")
+        img(id="ana-alga-chiquito" src="img/ana_alga-reves.png")
+        img(id="ana-ave-chiquito" src="img/ana_ave-reves.png")
+        //-Mariela
+        //- img(id="mariela-loro-2" src="img/mariela_loro2.png")
+        img(id="mariela-lorita" src="img/mariela_lorita.png")
+        img(id="mariela-pluma" src="img/mariela_pluma.png")
+        img(id="circulo-amarillo" src="img/circulo-amarillo.png")
+        img(id="circulo-verde-chico" src="img/circulo-verde-chico.png")
+    
+        img(id="gabriela-red" src="img/gabriela_red.png")
+        img(id="gabriela-botella" src="img/gabriela_botella.png")
+        img(id="gabriela-plastiaglomerados" src="img/gabriela_plastiaglomerados.png")
+        img(id="gabriela-bolsa" src="img/gabriela_bolsa.png")
+        img(id="gabriela-zooplankton" src="img/zooplancton.png")
+        img(id="gabriela-ballena" src="img/ballena.png")
+        img(id="gabriela-barnacle" src="img/bernacles-margenes.png")
+
+        img(id="circulo-violeta" src="img/circulo-violeta.png")
+        img(id="circulo-rojo" src="img/circulo-rojo.png")
+
+
+    a-camera(look-controls="enabled: true; reverseMouseDrag: true; magicWindowTrackingEnabled: false"
+        wasd-controls="enabled: false" fov="60" position="0 0 0")
+
+    //- a-sky(material="src: #ocean-background; fog:false")
+    a-sky(material="src: #ocean-background")
+
+    //- a-light(type="point" intensity="1" distance="50" decay="3" position="0 0 0")
+
+
+    //- Figuras Gabriela
+    -
+        let imagenesGabi = [
+            {
+                id: 'gabriela-bolsa',
+                aspectRatio: 0.988,
+                direction: 'left',
+                script: '/js/scripts/gabriela-01-A.js',
+            },
+            {
+                id: 'gabriela-ballena',
+                aspectRatio: 3.226,
+                direction: 'left',
+                script: '/js/scripts/gabriela-02-A.js',
+            },
+            {
+                id: 'gabriela-botella',
+                aspectRatio: 2.495,
+                direction: 'right',
+                script: '/js/scripts/video-player.js',
+            },
+            {
+                id: 'gabriela-barnacle',
+                aspectRatio: 1.4005,
+                direction: 'right',
+            },
+            {
+                id: 'gabriela-zooplankton',
+                aspectRatio: 1.405,
+                direction: 'right',
+                script: '/js/scripts/video-player.js',
+            },
+        ];
+    - for (let i=0; i < imagenesGabi.length; i++)
+        +partials_new-sea-figure({
+            classes: ['icono-gabriela'],
+            image: {
+                src: `#${imagenesGabi[i].id}`,
+                aspectRatio: `${imagenesGabi[i].aspectRatio}`
+                },
+            contentLoader: {
+                link: `contents/gabriela-0${i+1}-A-en.html`,
+                modalName: `modal-gabriela-0${i+1}-A`,
+                script: imagenesGabi[i].script,
+            },
+            wandererAnimation: { direction: imagenesGabi[i].direction }
+        })
+
+    //- //- Test 3D
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-gabriela'],
+    //-     image: { src: '#circulo-rojo' },
+    //-     contentLoader: {
+    //-         link: `contents/gabriela-05.html`,
+    //-         modalName: `modal-gabriela-05`,
+    //-         script: '/js/scripts/testScene.js',
+    //-     },
+    //-     wandererAnimation: { direction: 'left' }
+    //- })
+
+
+    //- Figuras Mariela
+
+    //- - const sufijosLinksGrandesMariela = ['A', 'B', 'C', 'D'];
+    //- - const sufijosLinksChicosMariela = ['A1', 'A2', 'A3', 'A4', 'B1', 'C1', 'C2', 'D1', 'E1', 'E2'];
+
+
+    //- A1, A3 - presentación
+    //-A1
+    +partials_new-sea-figure({
+        classes: ['icono-mariela'],
+        image: { src: '#mariela-lorita', aspectRatio: 1.786 },
+        contentLoader: {
+            link: `contents/presentacion-01-en.html`,
+            modalName: `presentacion-01`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    //-A3
+    +partials_new-sea-figure({
+        classes: ['icono-mariela'],
+        image: { src: '#mariela-pluma', aspectRatio: 1.056 },
+        contentLoader: {
+            link: `contents/presentacion-04-en.html`,
+            modalName: `presentacion-04`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    //- No hay punto de entrada general, los X1 son los puntos de entrada
+    -
+        const botonesMarielaLoritos = [
+            {
+                fileSuffix: 'B2',
+                scriptsUrl: '/js/scripts/podcast.js',
+                image: '#mariela-pluma',
+            },
+            {
+                fileSuffix: 'C1',
+                scriptsUrl: '/js/scripts/video-player.js',
+                image: '#mariela-lorita',
+            },
+            {
+                fileSuffix: 'D1',
+                scriptsUrl: '/js/scripts/video-player.js',
+                image: '#mariela-lorita',
+            },
+            {
+                fileSuffix: 'E1',
+                image: '#mariela-lorita',
+                scriptsUrl: '/js/scripts/mariela-E1.js',
+            },
+        ];
+
+
+    - for (let boton of botonesMarielaLoritos)
+        +partials_new-sea-figure({
+            classes: ['icono-mariela'],
+            image: { src: boton.image, aspectRatio: 1.786 },
+            contentLoader: {
+                link: `contents/mariela-${boton.fileSuffix}-en.html`,
+                modalName: `modal-mariela-${boton.fileSuffix}`,
+                script: boton.scriptsUrl,
+            },
+            wandererAnimation: { direction: 'right' }
+        })
+
+    //- Plumitas
+
+
+    //-B2 - Presentación
+    +partials_new-sea-figure({
+        classes: ['icono-mariela'],
+        image: { src: '#mariela-pluma', aspectRatio: 1.056 },
+        contentLoader: {
+            link: `contents/presentacion-07-en.html`,
+            modalName: `presentacion-07`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    -
+        const botonesMarielaPlumitas = [
+            {
+                fileSuffix: 'A2',
+                scriptsUrl: '/js/scripts/podcast.js',
+                image: '#mariela-pluma',
+            },
+            {
+                fileSuffix: 'A4',
+                scriptsUrl: '/js/scripts/mariela-A4.js',
+                image: '#mariela-pluma',
+            },
+            {
+                fileSuffix: 'A5',
+                scriptsUrl: '/js/scripts/video-player.js',
+                image: '#mariela-pluma',
+            },
+            //- {
+            //-     fileSuffix: 'C2',
+            //-     image: '#mariela-pluma',
+            //- },
+            {
+                fileSuffix: 'E3',
+                image: '#mariela-pluma',
+                scriptsUrl: '/js/scripts/video-player.js',
+            },
+        ];
+    - for (let boton of botonesMarielaPlumitas)
+        +partials_new-sea-figure({
+            classes: ['icono-mariela'],
+            image: { src: boton.image, aspectRatio: 1.056 },
+            contentLoader: {
+                link: `contents/mariela-${boton.fileSuffix}-en.html`,
+                modalName: `modal-mariela-${boton.fileSuffix}`,
+                script: boton.scriptsUrl,
+            },
+            wandererAnimation: { direction: 'right' }
+        })
+
+    //- - for (let sufijo of sufijosLinksChicosMariela)
+    //-     +partials_new-sea-figure({
+    //-         classes: ['icono-mariela'],
+    //-         image: { src: '#mariela-pluma', aspectRatio: 1.056 },
+    //-         contentLoader: {
+    //-             link: `contents/mariela-${sufijo}.html`,
+    //-             modalName: `modal-mariela-${sufijo}`,
+    //-             },
+    //-         wandererAnimation: { direction: 'right' }
+    //-     })
+
+    //- //- Test texto animado
+    //- +partials_new-sea-figure({
+    //-     classes: ['icono-mariela'],
+    //-     image: { src: '#circulo-amarillo' },
+    //-     contentLoader: { link: `mariela-E.html`, scripts: ['js/scripts/mouseoverText.js'], dependencies: ['js/lib/spanify.js'] },
+    //-     wandererAnimation: { direction: 'right' }
+    //- })
+
+    //- //- Figuras Ana
+
+    //- Incorporar de nuevo esta línea al contentLoader de esta figura:
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-ojo', aspectRatio: 0.884 },
+        contentLoader: {
+            link: `contents/ana-01-en.html`,
+            modalName: `modal-ana-01`,
+            script: `/js/scripts/ana-rompecabezas.js`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-ave', aspectRatio: 1.321 },
+        contentLoader: {
+            link: `contents/ana-02-en.html`,
+            modalName: `modal-ana-02`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-tibu', aspectRatio: 2.469 },
+        contentLoader: {
+            link: `contents/ana-03-en.html`,
+            modalName: `modal-ana-03`,
+        },
+        wandererAnimation: { direction: 'left' }
+    })
+
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-medusa', aspectRatio: 1.089 },
+        contentLoader: {
+            link: `contents/ana-04-en.html`,
+            modalName: `modal-ana-04`,
+            script: `/js/scripts/audio-player.js`,
+        },
+        wandererAnimation: { direction: 'left' }
+    })
+
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-alga', aspectRatio: 1.433 },
+        contentLoader: {
+            link: `contents/ana-05-en.html`,
+            modalName: `modal-ana-05`,
+            script: `/js/scripts/podcast.js`,
+        },
+        wandererAnimation: { direction: 'right' }
+    })
+
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-cotorra', aspectRatio: 1.506 },
+        contentLoader: {
+            link: `contents/ana-06-en.html`,
+            modalName: `modal-ana-06`,
+        },
+        wandererAnimation: { direction: 'left' }
+    })
+
+
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-ave-chiquito', aspectRatio: 1.321 },
+        wandererAnimation: { direction: 'left' }
+    })
+
+    +partials_new-sea-figure({
+        classes: ['icono-ana'],
+        image: { src: '#ana-alga-chiquito', aspectRatio: 1.433 },
+        wandererAnimation: { direction: 'left' }
+    })

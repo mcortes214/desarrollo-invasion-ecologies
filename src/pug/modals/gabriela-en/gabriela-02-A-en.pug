@@ -1,0 +1,49 @@
+include ../../_templates
+include ../../_partials
+include ../../_content
+
++partials_modal--grow({palette: 'fluid', name: 'modal-gabriela-02-A'})
+    h1 Ecologías de lo inhumano: El canto de las ballenas
+    p Si los océanos son un gran cuerpo acuoso que no carece de vida, significa que podemos sumergirnos en este cuerpo íntimo que está más allá de la razón antrópica, donde “el mundo también teoriza y experimenta consigo mismo.” 
+    p ¿Cómo suenan los océanos y cómo sonarán en el futuro?
+    p Los paisajes sonoros de los océanos se están convirtiendo cada vez más en una cacofonía estridente debido al ruido generado por la actividad humana. Proteger a las ballenas es importante para poder mantener océanos saludables para todos. Estos animales fertilizan los ecosistemas marinos e incluso nos ayudan a combatir la crisis climática; en promedio, a lo largo de su vida, una ballena confina la misma cantidad de carbono que el equivalente a 1,000 árboles.
+    p Las ballenas se encuentran por todos los océanos del mundo, comunicándose con sonidos complejos y misteriosos. La salud de estos mamíferos marinos está ligada y es a la vez un indicador clave de la salud de los océanos. 
+    p A través del canto de ballenas, esta interfaz interactiva nos invita a hacer conciencia de la contaminación sonora global en los océanos a causa de la actividad humana y sus efectos en los ecosistemas marinos. 
+    p Apretando y manteniendo las teclas “1”, “2”, “3”, “4” y “5” puedes reproducir distintos sonidos subacuáticos y generar tu propia composición sonora con sonidos subacuáticos. 
+    ul.decoration-unstyled-list
+        li Tecla “1” - Sonido de canto de ballena 1.
+        li Tecla “2” - Sonido de canto de ballena 2.
+        li Tecla “3” - Sonido de una hélice de un barco.
+        li Tecla “4” - Sonido de un sonar submarino.
+        li Tecla “5” - Sonido de exploración sísmica de hidrocarburos.
+    p Te invitamos a seguir leyendo más sobre el canto de las ballenas y la contaminación acústica de los océanos…
+    .l-stack.u-margin-top(style="--s: 1px")
+        +partials_button-interface({
+            name: 'Ballena n°1',
+            action: 'playBallena1'
+        })
+        +partials_button-interface({
+            name: 'Ballena n°2',
+            action: 'playBallena2'
+        })
+        +partials_button-interface({
+            name: 'Hélice',
+            action: 'playHelice'
+        })
+        +partials_button-interface({
+            name: 'Sonar',
+            action: 'playSonar'
+        })
+        +partials_button-interface({
+            name: 'Exploración Sísmica',
+            action: 'playExploracion'
+        })
+    .p5-container.u-height-100.u-width-100
+    style.
+        .p5-container > canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+        }
+    a.u-display-block.u-text-align-center.js-load-content(data-modal-name="modal-gabriela-02-B" data-scripts="/js/scripts/audio-player.js" href="contents/gabriela-02-B.html") [ Continuar ]
+    

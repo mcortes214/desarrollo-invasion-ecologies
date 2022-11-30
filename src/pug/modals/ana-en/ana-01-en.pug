@@ -1,0 +1,46 @@
+include ../../_templates
+include ../../_partials
+include ../../_content
+
+//- En contenidos: Contenido E
+
++partials_modal--grow({palette: 'fluid', name: 'modal-ana-01'})
+    //- div.u-height-100.u-width-100
+    h1 Especies cyborgs
+    p.u-text-align-center Crea tu propio monstruo invasor. Mezclá cotorras y animales marinos para hacer tu propio cyborg monstruoso.
+    .p5-container.u-height-100
+    style.
+        .p5-container {
+            padding-bottom: 5em;
+        }
+        .p5-container > canvas {
+            width: 100% !important;
+            height: auto !important;
+            outline: 1px solid var(--color-accent);
+            display: block;
+            margin: auto;
+            /*height: 75% !important;*/
+        }
+        @media screen and (max-width: 800px){
+        .p5-container > canvas {
+            width: 100% !important;
+        }
+        }
+    //- style.
+    //-     .p5-container > canvas {
+    //-         width: 100% !important;
+    //-         height: 100% !important;
+    //-         object-fit: contain;
+    //-     }
+
+
+
+
+        //- #puzzle.div.u-width-100.u-height-100.dragging-context.decoration-accent-outline.l-flex.u-flex-wrap-wrap
+        //-     img.draggable(src="img/rompecabezas-coto1.png")
+        //-     img.draggable(src="img/rompecabezas-coto2.png")
+        //-     img.draggable(src="img/rompecabezas-coto3.png")
+        //-     img.draggable(src="img/rompecabezas-cot4.png")
+        //-     img.draggable(src="img/rompecabezas-tibu1.png")
+        //-     img.draggable(src="img/rompecabezas-pico.png")
+        //-     img.draggable(src="img/rompecabezas-cuerpo.png")

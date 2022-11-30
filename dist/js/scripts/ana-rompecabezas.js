@@ -6,7 +6,25 @@ let collidedPiece;
 
 let p5Width, p5Height;
 
+//FIXME: Si abro y cierro este popup muchas veces rápido, se rompe sin errores.
+//Advertencia de p5 (para tercer y cuarto parámetro de dist()):
+/*p5.js dice: [ana-rompecabezas.js, line 38] dist() was expecting Number 
+for the fourth parameter, received an empty variable instead. If not intentional, 
+this is often a problem with scope.*/
 
+// Otros errores posibles en estos casos:
+
+/*Uncaught TypeError: Cannot read properties of null (reading 'offsetTop') [...]*/
+
+/*
+Uncaught TypeError: Cannot read properties of null (reading 'elt')
+    at _main.default.cursor (p5-module.js:59019:43)
+    at mouseIsCollidingPiece (ana-rompecabezas.js:52:16)
+    at sketch.mouseDragged (ana-rompecabezas.js:115:29)
+    at _main.default._onmousemove (p5-module.js:79582:42)
+*/
+
+//Por alguna razón los errores son persistentes.
 
 //--------------- 1: Definición del sketch
 
@@ -81,7 +99,7 @@ const s = ( sketch ) => {
     };
 
     sketch.draw = () => {
-        let collidedPiece = mouseIsCollidingPiece(sketch);
+        // let collidedPiece = mouseIsCollidingPiece(sketch);
 
         // let collidedPiece = mouseIsCollidingPiece(sketch);
         // if (collidedPiece) {
@@ -133,10 +151,12 @@ const afterInsert = () => {
 const beforeRemove = () => {
     return new Promise( (resolve) => {
           //Forzar a p5 a eliminar los eventos que haya creado
-          p5Sketch.preload = undefined;
-          p5Sketch.setup = undefined;
-          p5Sketch.draw = undefined;
-          p5Sketch.mouseDragged = undefined;
+          if (typeof p5Sketch === 'object'){
+              p5Sketch.preload = undefined;
+              p5Sketch.setup = undefined;
+              p5Sketch.draw = undefined;
+              p5Sketch.mouseDragged = undefined;
+          }
 
           //Y después eliminarlo
           p5Sketch = undefined;

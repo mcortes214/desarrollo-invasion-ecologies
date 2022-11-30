@@ -34,9 +34,9 @@ include ../_content
                 br
                 a(href="mailto:colectivoecoesteticas@gmail.com") colectivoecoesteticas@gmail.com
                 p
-                    a(href="https://www.instagram.com/colectiva_ecoesteticas/")
+                    a(target="_blank" href="https://www.instagram.com/colectiva_ecoesteticas/?hl=en")
                         img.index-icon(src="img/instagram.svg")
-                    a(href="https://www.facebook.com/ecoesteticas.colectivo.1")
+                    a(target="_blank" href="https://www.facebook.com/ecoesteticas.colectivo.1")
                         img.index-icon(src="img/facebook.svg")
                 a.js-load-content(href="" data-modal-name="modal-creditos-index").u-padding-2em.u-font-size-s2.u-display-block [Credits/Créditos]
         p.u-text-align-center.u-color-white.u-font-size-s3.u-margin-bottom(style="--mb: 5em")
@@ -56,12 +56,16 @@ include ../_content
             li
                 +partials_credits-item('Video Recording and Edition: ', 'Mariana Lombard')
             li
-                +partials_credits-item('Testimonies (podcasts and interviews): ', 'Dr Daniel Feierstein, Dr Jeremy Fernando, Dr Avishek Ganguly, Dra. Maia Gattás Vargas, María Eugenia Borsani.')
+                +partials_credits-item('Tale\'s Illustration: ', 'Julia Pagani')
+            li
+                +partials_credits-item('Podcast transcription voices: ', 'Ana Laura Cantera, Alejandra Mulinari, Norberto Pagani, Richard Shpuntoff, Mariela Yeregui')
+            li
+                +partials_credits-item('Testimonies (podcasts and interviews): ', 'Dr Daniel Feierstein, Dr Jeremy Fernando, Dra. Maia Gattás Vargas, María Eugenia Borsani.')
             li
                 +partials_credits-item('Translation: ', 'UNTREF LINGUA')
             br
             b Quoted texts: 
-            span.u-font-size-s09 Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F. “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”.  //  Braudel, Fernand. Memorias del Mediterráneo.  Caluya, Gilbert. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security”.  //  Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P. “Don’t Judge Species on Their Origins”.   //  Despret, Vinciane. Habitar como un pájaro. Modos de hacer y de pensar los territorios.   // Escobar, Arturo. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”.  // Santos, Boaventura de Sousa. “Introducción: las epistemologías del sur”  //  Spivak, Gayatri Chakravorty.. “Can the Subaltern Speak?” //  Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson.  Arts of Living on a Damaged Planet.(Introducción traducida por Mercedes Claus y Pablo Méndez en el marco de Prácticas artísticas en un planeta en emergencia, Centro Cultural Kirchner)
+            span.u-font-size-s09 #[b Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F.] “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”. -//  #[b Braudel, Fernand]. #[i Memorias del Mediterráneo]  //  #[b Caluya, Gilbert]. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security” // #[b Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P.] “Don’t Judge Species on Their Origins”.  // #[b Despret, Vinciane]. #[i Living as a Bird]. // #[b Escobar, Arturo]. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”. // #[b Santos, Boaventura de Sousa]. “Introducción: las epistemologías del sur”.. // #[b Spivak, Gayatri Chakravorty].. “Can the Subaltern Speak?” // #[b Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson]. #[i Arts of Living on a Damaged Planet: Ghosts and Monsters of the Anthropocene].
         hr.u-margin(style="--m: 7em")
         ul.decoration-unstyled-list
             li
@@ -73,14 +77,23 @@ include ../_content
             li
                 +partials_credits-item('Registro en video y edición: ', 'Mariana Lombard')
             li
-                +partials_credits-item('Testimonios (podcasts y entrevistas): ','Dr Daniel Feierstein, Dr Jeremy Fernando, Dr Avishek Ganguly, María Eugenia Borsani, Dra. Maia Gattás Vargas.')
+                +partials_credits-item('Ilustración de cuento: ', 'Julia Pagani')
+            li
+                +partials_credits-item('Voces de transcripción de podcasts: ', 'Ana Laura Cantera, Alejandra Mulinari, Norberto Pagani, Richard Shpuntoff, Mariela Yeregui')
+            li
+                +partials_credits-item('Testimonios (podcasts y entrevistas): ','Dr Daniel Feierstein, Dr Jeremy Fernando, María Eugenia Borsani, Dra. Maia Gattás Vargas.')
             li
                 +partials_credits-item('Traducciones: ', 'UNTREF LINGUA')
             br
             b Textos citados: 
-            span.u-font-size-s09 Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F. “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”.  //  Braudel, Fernand. Memorias del Mediterráneo.  Caluya, Gilbert. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security”.  //  Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P. “Don’t Judge Species on Their Origins”.   //  Despret, Vinciane. Habitar como un pájaro. Modos de hacer y de pensar los territorios.   // Escobar, Arturo. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”.  // Santos, Boaventura de Sousa. “Introducción: las epistemologías del sur”  //  Spivak, Gayatri Chakravorty.. “Can the Subaltern Speak?” //  Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson.  Arts of Living on a Damaged Planet.(Introducción traducida por Mercedes Claus y Pablo Méndez en el marco de Prácticas artísticas en un planeta en emergencia, Centro Cultural Kirchner)
+            span.u-font-size-s09 #[b Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F.] “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”.  //  #[b Braudel, Fernand]. #[i Memorias del Mediterráneo]. #[b Caluya, Gilbert]. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security”.  //  #[b Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P.] “Don’t Judge Species on Their Origins”.   //  #[b Despret, Vinciane]. #[i Habitar como un pájaro. Modos de hacer y de pensar los territorios].   // #[b Escobar, Arturo]. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”.  // #[b Santos, Boaventura de Sousa]. “Introducción: las epistemologías del sur”  //  #[b Spivak, Gayatri Chakravorty].. “Can the Subaltern Speak?” //  #[b Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson]. #[i Arts of Living on a Damaged Planet]. (Introducción traducida por Mercedes Claus y Pablo Méndez en el marco de Prácticas artísticas en un planeta en emergencia, Centro Cultural Kirchner)
 
             style.
+                @media screen and (min-width: 1400px) {
+                    body {
+                        font-size: 1.3em;
+                    }
+                }
                 .index-icon {
                     width: 40px;
                     height: 40px;

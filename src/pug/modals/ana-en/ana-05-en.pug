@@ -1,27 +1,14 @@
-//- include ../../_templates
-//- include ../../_partials
-//- include ../../_content
-
-//- //- En contenidos: Contenido B
-
-//- +partials_modal--grow({palette: 'fluid', name: 'modal-ana-05'})
-//-     h1 Sobre los territorios monstruosos
-//-     +partials_left-floated-image("img/ana_alga.png")
-//-     p [Podcast: Maia Gattás Vargas]
-//-     //- include ../../../assets/ave.svg
-
-
 include ../../_templates
 include ../../_partials
 include ../../_content
 
-+partials_modal--fixed-center({palette: 'fluid', name: 'modal-ana-05'})
++partials_modal--fixed-center({palette: 'fluid', name: 'modal-ana-05-en'})
     +partials_podcast-player({
-        audioUrl: "audio/podcast-maia.mp3",
+        audioUrl: "audio/maia_ingles_editado.mp3",
         videoUrl: "video/video5comprimido.mp4",
     })
-        h1 Sobre los territorios monstruosos (podcast)
-        h2 Por #[a(href="https://cargocollective.com/maiagattasvargas" target="_blank") Maia Gattás Vargas]
+        h1 About the monstrous territories (podcast)
+        h2 By #[a(href="https://cargocollective.com/maiagattasvargas" target="_blank") Maia Gattás Vargas]
         +partials_expandable-box('desplegable-ana-05')
             i
-                p Artista visual, investigadora y docente. Línea de formación en Arte Contemporáneo Latinoamericano de la Universidad Nacional de La Plata, y Licenciada en Ciencias de la Comunicación por la Universidad de Buenos Aires. Trabaja como becaria posdoctoral CONICET en el instituto CITECDE, Bariloche investigando sobre la construcción del paisaje de la región patagónica argentino-chilena. En 2022 editó su libro #[span.u-font-style-normal Diario de exploración al territorio del color] junto a la editorial Biblioteca Popular Astra y está finalizando su primer largometraje documental #[span.u-font-style-normal Viento del este] con un subsidio del INCAA.
+                p Maia Gattás Vargas is a visual artist, researcher and educator. She holds a PhD in Art in the field of Contemporary Latin American Art from the National University of La Plata, as well as a BA in Communication Studies from the University of Buenos Aires. She is a CONICET postdoctoral fellow at the CITECDE Institute in Bariloche, where she conducts research on the construction of landscapes in the Argentine-Chilean Patagonia. In 2022, her book Diario de exploración al territorio del color (Diary of exploration into the territory of color) was published in collaboration with the Biblioteca Popular Astra editorial. She is currently finishing her first feature documentary film, Viento del este (East wind), with a grant from the National Institute of Cinema and Audiovisual Arts (INCAA).

@@ -31,7 +31,7 @@ mixin partials_modal_outer-structure(options, block)
 
 mixin partials_modal_index-outer-structure(options, block)
     - let modalName = options.name;
-    .u-transition-04s.modal-container.u-position-fixed.u-left.u-top.u-width-100.u-height-100vw(data-modal-name=modalName style="--l: 0; --t: 0")
+    .u-transition-04s.modal-container.u-position-fixed.u-left.u-top.u-width-100.u-height-100vw(data-modal-name=modalName style="--l: 0; --t: 0; opacity: 0; pointer-events: none")
         div.props-palette-fluid
             .l-flex.shape-fullscreen-overlay.u-background-color-secondary-tr.u-cursor-pointer.js-close-modal(
                 data-modal-name=modalName

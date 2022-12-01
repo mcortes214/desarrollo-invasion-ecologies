@@ -1,0 +1,13 @@
+<svg id="favicon-svg" version="1.1" id="preloader-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve" style="">
+    <path fill="none" stroke="var(--color-primary)" stroke-width="1" stroke-linecap="round" d="M84.911,187.163 c-41.871-8.216-73.459-45.117-73.459-89.396" class="SVG-main-preloader_0"></path>
+    <path fill="none" stroke="var(--color-primary)" stroke-width="1" stroke-linecap="round" d="M11.452,97.767c0,0,25.21,37.816,58.445,37.816 c33.236,0,98.367-51.4,117.652-70.686" class="SVG-main-preloader_1"></path>
+    <path fill="none" stroke="var(--color-primary)" stroke-width="1" stroke-linecap="round" d="M11.452,97.767c0,0,29.61,24.664,68.667,11.441 c39.057-13.224,62.588-83.619-7.89-97.371" class="SVG-main-preloader_2"></path>
+    <path fill="none" stroke="var(--color-primary)" stroke-width="1" stroke-linecap="round" d="M11.452,97.767c0,0,12.937,43.571,44.693,53.371 c30.385,9.378,76.023-17.156,124.126-5.819" class="SVG-main-preloader_3"></path>
+</svg>
+<style>
+    @media (prefers-color-scheme: dark) {
+        #favicon-svg > path {
+                stroke: var(--color-secondary);
+            }
+    }
+</style>

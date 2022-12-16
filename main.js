@@ -35,7 +35,7 @@ const modalFilenames = [
     {fileName: 'mariela-B2', folder: 'mariela/'},
     {fileName: 'mariela-C1', folder: 'mariela/'},
     //Ilustración que falta:
-    // {fileName: 'mariela-C2', folder: 'mariela/'},
+    {fileName: 'mariela-C2', folder: 'mariela/'},
     {fileName: 'mariela-D1', folder: 'mariela/'},
     {fileName: 'mariela-E1', folder: 'mariela/'},
     {fileName: 'mariela-E3', folder: 'mariela/'},
@@ -77,7 +77,7 @@ const modalFilenames = [
     {fileName: 'mariela-B2-en', folder: 'mariela-en/'},
     {fileName: 'mariela-C1-en', folder: 'mariela-en/'},
     //Ilustración que falta:
-    // {fileName: 'mariela-C2-en', folder: 'mariela-en/'},
+    {fileName: 'mariela-C2-en', folder: 'mariela-en/'},
     {fileName: 'mariela-D1-en', folder: 'mariela-en/'},
     {fileName: 'mariela-E1-en', folder: 'mariela-en/'},
     {fileName: 'mariela-E3-en', folder: 'mariela-en/'},

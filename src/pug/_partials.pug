@@ -260,9 +260,15 @@ mixin partials_audio-player(audioUrl, playerName="audio-player")
                 style="--b: var(--color-accent)"
             )
         .l-flex(style="--j: center")
-            img.u-cursor-pointer.audio-control(src="img/icon-play.svg", alt="Play" data-audio-player-behavior="play")
-            img.u-cursor-pointer.audio-control(src="img/icon-pause.svg", alt="Pause" data-audio-player-behavior="pause")
-            img.u-cursor-pointer.audio-control(src="img/icon-stop.svg", alt="Stop" data-audio-player-behavior="stop")
+            svg.u-cursor-pointer.audio-control(data-audio-player-behavior="play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1)")
+                path(d="M7 6v12l10-6z")
+            svg.u-cursor-pointer.audio-control(data-audio-player-behavior="pause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1)")
+                path(d="M8 7h3v10H8zm5 0h3v10h-3z")
+            svg.u-cursor-pointer.audio-control(data-audio-player-behavior="stop" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1)")
+                path(d="M7 7h10v10H7z")
+                //- img.u-cursor-pointer.audio-control(src="img/icon-play.svg", alt="Play" data-audio-player-behavior="play")
+                //- img.u-cursor-pointer.audio-control(src="img/icon-pause.svg", alt="Pause" data-audio-player-behavior="pause")
+                //- img.u-cursor-pointer.audio-control(src="img/icon-stop.svg", alt="Stop" data-audio-player-behavior="stop")
         style.
             .audio-control {
                 opacity: 0.5;

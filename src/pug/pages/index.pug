@@ -17,7 +17,7 @@ include ../_content
                 //- p The Argentine parrot is for us a metaphor and a pretext to reflect on what it is to be invasive, what is hidden under the conservationist purism, and how to think about new scenarios in which inter contamination, creolization, and dialogue challenge the occluded territories.
                 p What are we talking about when we say "Mediterranean" from our Global South situation? How is the image of a spatially distant sea, but with concrete resonances at a geopolitical level throughout history? We like to see the Mediterranean in its liquid dimension: water-transport, water-exclusion, water-territory, water that distances and brings us closer. Water that connects with the Atlantic mass which, in turn, unveils and on which our south-globality becomes visible. South-global species (human and non-human) arrive on the shores of the Mediterranean. Among them is the Argentine parrot, a species brought by force and which soon becomes "invasive" in the eyes of the conservationist powers. The Argentine parrot is for us a metaphor and a pretext to reflect on what it is to be invasive, what is hidden under the conservationist purism, and how to think about new scenarios in which inter contamination, creolization, and dialogue challenge the occluded territories.
 
-            hr.u-margin(style="--m: 7em")
+            hr.u-margin(style="--m: 4em 7em")
 
             article.lang-en
                 h1.u-color-white De Mares, Cotorras e Intrusos
@@ -38,14 +38,19 @@ include ../_content
                         img.index-icon(src="img/instagram.svg")
                     a(target="_blank" href="https://www.facebook.com/ecoesteticas.colectivo.1")
                         img.index-icon(src="img/facebook.svg")
-                a.js-load-content(href="" data-modal-name="modal-creditos-index").u-padding-2em.u-font-size-s2.u-display-block [Credits/Créditos]
+                .u-padding-2em.u-font-size-s2.u-display-block
+                    span
+                        a.js-load-content(href="" data-modal-name="modal-creditos-index-en") Credits
+                        span  / 
+                        a.js-load-content(href="" data-modal-name="modal-creditos-index-es") Créditos
+
         p.u-text-align-center.u-color-white.u-font-size-s3.u-margin-bottom(style="--mb: 5em")
             a(href="home-en.html") Enter
             span.u-display-inline-block.u-margin(style="--m: 0 1em") |
             a(href="home.html") Entrar
 
     .u-position-absolute.u-left.u-right(style="--l: 0; --r: 0")
-    +partials_modal--index-grow({palette: 'fluid', name: 'modal-creditos-index'})
+    +partials_modal--index-grow({palette: 'fluid', name: 'modal-creditos-index-en'})
         ul.decoration-unstyled-list
             li
                 +partials_credits-item('Idea and Creation: ', 'Colectiva Ecoestéticas: Ana Laura Cantera, Gabriela Munguía, Mariela Yeregui')
@@ -58,15 +63,17 @@ include ../_content
             li
                 +partials_credits-item('Tale\'s Illustration: ', 'Julia Pagani')
             li
-                +partials_credits-item('Podcast transcription voices: ', 'Ana Laura Cantera, Alejandra Mulinari, Norberto Pagani, Richard Shpuntoff, Mariela Yeregui')
+                +partials_credits-item('Podcast transcription voices: ', 'Ana Laura Cantera, Alejandra Mulinari, Norberto Pagani, Richard Shpuntoff, Mariela Yeregui, Daniel Feierstein')
             li
-                +partials_credits-item('Testimonies (podcasts and interviews): ', 'Dr Daniel Feierstein, Dr Jeremy Fernando, Dra. Maia Gattás Vargas, María Eugenia Borsani.')
+                +partials_credits-item('Testimonies (podcasts and interviews): ', 'Dr Daniel Feierstein, Dr Jeremy Fernando, Dra. Maia Gattás Vargas.')
             li
                 +partials_credits-item('Translation: ', 'UNTREF LINGUA')
             br
             b Quoted texts: 
-            span.u-font-size-s09 #[b Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F.] “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”. -//  #[b Braudel, Fernand]. #[i Memorias del Mediterráneo]  //  #[b Caluya, Gilbert]. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security” // #[b Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P.] “Don’t Judge Species on Their Origins”.  // #[b Despret, Vinciane]. #[i Living as a Bird]. // #[b Escobar, Arturo]. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”. // #[b Santos, Boaventura de Sousa]. “Introducción: las epistemologías del sur”.. // #[b Spivak, Gayatri Chakravorty].. “Can the Subaltern Speak?” // #[b Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson]. #[i Arts of Living on a Damaged Planet: Ghosts and Monsters of the Anthropocene].
-        hr.u-margin(style="--m: 7em")
+            span.u-font-size-s09 #[b Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F.] “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”. -//  #[b Braudel, Fernand]. #[i Memorias del Mediterráneo]  //  #[b Caluya, Gilbert]. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security” // #[b Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P.] “Don’t Judge Species on Their Origins”.  // #[b Despret, Vinciane]. #[i Living as a Bird]. // #[b Escobar, Arturo]. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”. // #[b Santos, Boaventura de Sousa]. “Introducción: las epistemologías del sur”.. // #[b Spivak, Gayatri Chakravorty]. “Can the Subaltern Speak?” // #[b Stengers, Isabelle]: “Toward a Speculative Approach to Biological Evolution”. #[i Environmental Philosophy], Vol. 6, No. 1 (Spring 2009) // #[b Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson]. #[i Arts of Living on a Damaged Planet: Ghosts and Monsters of the Anthropocene].
+
+
+    +partials_modal--index-grow({palette: 'fluid', name: 'modal-creditos-index-es'})
         ul.decoration-unstyled-list
             li
                 +partials_credits-item('Idea y Creación: ', 'Colectiva Ecoestéticas: Ana Laura Cantera, Gabriela Munguía, Mariela Yeregui')
@@ -79,14 +86,14 @@ include ../_content
             li
                 +partials_credits-item('Ilustración de cuento: ', 'Julia Pagani')
             li
-                +partials_credits-item('Voces de transcripción de podcasts: ', 'Ana Laura Cantera, Alejandra Mulinari, Norberto Pagani, Richard Shpuntoff, Mariela Yeregui')
+                +partials_credits-item('Voces de transcripción de podcasts: ', 'Ana Laura Cantera, Alejandra Mulinari, Norberto Pagani, Richard Shpuntoff, Mariela Yeregui, Daniel Feierstein')
             li
-                +partials_credits-item('Testimonios (podcasts y entrevistas): ','Dr Daniel Feierstein, Dr Jeremy Fernando, María Eugenia Borsani, Dra. Maia Gattás Vargas.')
+                +partials_credits-item('Testimonios (podcasts y entrevistas): ','Dr Daniel Feierstein, Dr Jeremy Fernando, Dra. Maia Gattás Vargas.')
             li
                 +partials_credits-item('Traducciones: ', 'UNTREF LINGUA')
             br
             b Textos citados: 
-            span.u-font-size-s09 #[b Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F.] “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”.  //  #[b Braudel, Fernand]. #[i Memorias del Mediterráneo]. #[b Caluya, Gilbert]. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security”.  //  #[b Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P.] “Don’t Judge Species on Their Origins”.   //  #[b Despret, Vinciane]. #[i Habitar como un pájaro. Modos de hacer y de pensar los territorios].   // #[b Escobar, Arturo]. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”.  // #[b Santos, Boaventura de Sousa]. “Introducción: las epistemologías del sur”  //  #[b Spivak, Gayatri Chakravorty].. “Can the Subaltern Speak?” //  #[b Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson]. #[i Arts of Living on a Damaged Planet]. (Introducción traducida por Mercedes Claus y Pablo Méndez en el marco de Prácticas artísticas en un planeta en emergencia, Centro Cultural Kirchner)
+            span.u-font-size-s09 #[b Briceño, C.; Sandoval-Rodríguez, A.; Yévenes, K.; Larraechea, M.; Morgado, A.; Chappuzeau, C.; Muñoz, V.; Dufflocq, P.; Olivares, F.] “Interactions between Invasive Monk Parakeets (Myiopsitta monachus) and Other Bird Species during Nesting Seasons in Santiago, Chile”.  //  #[b Braudel, Fernand]. #[i Memorias del Mediterráneo]. #[b Caluya, Gilbert]. “Fragments for a Postcolonial Critique of the Anthropocene. Invasion biology and environmental security”.  //  #[b Davis, M. A., Carroll, S. P., Thompson, K., Pickett, S. T. A., Stromberg, J. C., Del Tredici, P.] “Don’t Judge Species on Their Origins”. // #[b Despret, Vinciane]. #[i Habitar como un pájaro. Modos de hacer y de pensar los territorios].   // #[b Escobar, Arturo]. “Thinking-feeling with the Earth: Territorial Struggles and the Ontological Dimension of the Epistemologies of the South”.  // #[b Santos, Boaventura de Sousa]. “Introducción: las epistemologías del sur”  //  #[b Spivak, Gayatri Chakravorty]. “Can the Subaltern Speak?” // #[b Stengers, Isabelle]: “Toward a Speculative Approach to Biological Evolution”. #[i Environmental Philosophy], Vol. 6, No. 1 (Spring 2009) // #[b Tsing, Anna Lowenhaupt, Nils Bubandt, Elaine Gan, and Heather Anne Swanson]. #[i Arts of Living on a Damaged Planet]. (Introducción traducida por Mercedes Claus y Pablo Méndez en el marco de Prácticas artísticas en un planeta en emergencia, Centro Cultural Kirchner)
 
             style.
                 @media screen and (min-width: 1400px) {
